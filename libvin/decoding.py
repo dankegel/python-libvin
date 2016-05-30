@@ -5,6 +5,7 @@ libvin - VIN Vehicle information number checker
 """
 
 from libvin.static import *
+from epa import epa_mmy_lookup
 
 class Vin(object):
     def __init__(self, vin):
@@ -203,6 +204,20 @@ class Vin(object):
         else:
             return YEARS_CODES_PRE_2040[self.vin[9]]
 
+    @property
+    def model(self):
+        """
+        Returns the model name of the vehicle
+        This is a mock version, only suitable for use with toy test data
+        """
+        return "Civic Hybrid"
+
+    @property
+    def co2TailpipeGpm(self):
+        """
+        Returns the tailpipe greenhouse gas emissions of the vehicle
+        """
+        return epa_mmy_lookup(self.make, self.model, self.year).co2TailpipeGpm
 
 def decode(vin):
     v = Vin(vin)

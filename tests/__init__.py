@@ -29,7 +29,7 @@ TEST_DATA = [
     # http://www.vindecoder.net/?vin=19XFB4F24DE547421&submit=Decode says unknown
     # http://www.civicx.com/threads/2016-civic-vin-translator-decoder-guide.889/
     {'VIN': '19XFB4F24DE547421', 'WMI': '19X', 'VDS': 'FB4F24', 'VIS': 'DE547421',
-     'MODEL': 'Civic Hybrid', 'MAKE':  'Honda', 'YEAR': 2013, 'COUNTRY': 'United States',
+     'MODEL': 'Civic Hybrid', 'MAKE':  'Honda', 'YEAR': 2013, 'COUNTRY': 'United States', 'co2TailpipeGpm': '200',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '547421', 'FEWER_THAN_500_PER_YEAR': False},
 
     # http://www.vindecoder.net/?vin=1FAHP3FN8AW139719&submit=Decode

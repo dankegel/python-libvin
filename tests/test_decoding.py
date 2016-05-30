@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from nose.tools import assert_equals, assert_true, raises
+from nose.tools import assert_equals, assert_true, raises, assert_almost_equals
 
 from libvin.decoding import Vin
 from libvin.static import *
@@ -35,6 +35,13 @@ class TestDecode(object):
             v = Vin(test['VIN'])
             print "Testing: %s, %s" % (test['VIN'], v.make)
             assert_equals(v.make, test['MAKE'])
+
+    def test_co2TailpipeGpm(self):
+        for test in TEST_DATA:
+            if 'co2TailpipeGpm' in test:
+                v = Vin(test['VIN'])
+                print "Testing: %s, %s" % (test['VIN'], v.co2TailpipeGpm)
+                assert_almost_equals(float(v.co2TailpipeGpm), float(test['co2TailpipeGpm']))
 
     def test_region(self):
         for test in TEST_DATA:
