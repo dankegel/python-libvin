@@ -15,10 +15,9 @@ Currently it can extract these informations:
  * World Manufacturer Identifier
  * Year of the vehicle model
 
-This is a work in progress and my only source of information about the many VIN standards
-is a half baked Wikipedia article. So don't expect it to be perfect. 
-
-Feel free to contribute !
+This is a work in progress -- model lookup was only about 90% accurate
+in an informal test -- yet appears to be the most complete open source
+implementation of vin lookup available.  Feel free to contribute !
 
 Low level API example
 ---------------------
@@ -35,9 +34,9 @@ Low level API example
     >>> v.year
     2006
     >>> v.make
-    Honada
+    Chrysler
     >>> v.manufacturer
-    Honada Canda
+    Chrysler Canada
     >>> v.is_pre_2010
     True
     >>> v.wmi
@@ -164,10 +163,11 @@ the United States.
  * http://vpic.nhtsa.dot.gov/decoder/
 
 To find all VIN coding guides from a manufacturer, visit
-http://vpic.nhtsa.dot.gov/mid/
-check the "Part 565" checkbox, enter part of a manufacturer's name, leave DBA blank,
-enter a % wildcard for City, State, Country, and Filename, and click
-Search.  The resulting filenames are cryptic, and you have to slog
+ * http://vpic.nhtsa.dot.gov/mid/
+Then check the "Part 565" checkbox, enter part of a manufacturer's
+name, leave DBA blank, enter a % wildcard for City, State, Country,
+and Filename, and click Search.  
+The resulting filenames are cryptic, and you have to slog
 through a lot of files, but the data is pure gold.
 
 References
