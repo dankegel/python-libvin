@@ -156,9 +156,22 @@ Note to contributors
 --------------------
 
 When submitting a bug fix, please add an entry to TEST_DATA in tests/__init__.py
-that tickles the bug you're fixing.  The following free VIN decoder services
-may come in handy when preparing test cases, at least for cars sold in
-the United States.
+that tickles the bug you're fixing.  
+
+To run the test suite, at least on Ubuntu, I had to do::
+
+    $ sudo apt-get install pip
+    $ pip install nose
+    $ nose
+
+This should output a bunch of verbose test status lines, then end with something like::
+
+    Ran 11 tests in 0.007s
+
+    OK
+
+The following free VIN decoder services may come in handy when preparing
+test cases, at least for cars sold in the United States.
  * http://vpic.nhtsa.dot.gov/api/
  * http://vpic.nhtsa.dot.gov/decoder/
 
