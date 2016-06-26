@@ -4,11 +4,14 @@ libvin - VIN Vehicle information number checker
 (c) Copyright 2016 Dan Kegel <dank@kegel.com>
 """
 
+import requests
+
 from libvin.static import *
 
 class Vin(object):
     def __init__(self, vin):
         self.vin = vin.upper()
+        self.decoded = None
 
     @property
     def country(self):
@@ -25,6 +28,45 @@ class Vin(object):
 
     def decode(self):
         return self.vin
+
+    @property
+    def nhtsa(self):
+        '''
+        Return vpic.nhtsa.dot.gov's interpretation of the VIN in a dictionary.
+        Fields set seem to depend on the make.  Here's which fields seem to be set for some makes:
+        BodyClass, Make, Model, ModelYear, GVWR: all
+        Doors: most
+        EngineModel: Honda, Acura
+        EngineCylinders: Dodge
+        DisplacementCC: Infiniti, BMW, Dodge
+        DriveType: Infiniti, Dodge, Mitsubishi
+        Series: BMW, Dodge, Mitsubishi
+        Trim: BMW, Dodge
+        '''
+        if self.decoded != None:
+            return self.decoded
+
+        url = 'https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/' + self.vin + '?format=json'
+        try:
+            r = requests.get(url)
+        except requests.ConnectionError:
+            print "nhtsa: connection failed"
+            return
+        except requests.Timeout:
+            print "nhtsa: connection timed out"
+            return
+        try:
+            result = r.json()
+        except ValueError:
+            print "nhtsa: could not parse result"
+            return
+        self.decoded = result['Results'][0]
+
+        # Strip trailing spaces
+        for key in self.decoded:
+            self.decoded[key] = self.decoded[key].rstrip()
+
+        return self.decoded
 
     @property
     def is_pre_2010(self):

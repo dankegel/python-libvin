@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from time import sleep
+from os import environ
 from nose.tools import assert_equals, assert_true, raises
 
 from libvin.decoding import Vin
@@ -35,6 +37,13 @@ class TestDecode(object):
             v = Vin(test['VIN'])
             print "Testing: %s, %s" % (test['VIN'], v.make)
             assert_equals(v.make, test['MAKE'])
+
+            # To run tests that depend on network, do 'NETWORK_OK=1 nose2'
+            if 'NETWORK_OK' in os.environ:
+                sleep(1)
+                n = v.nhtsa
+                if n['ErrorCode'][0] == '0':
+                    assert_equals(v.make.upper(), n['Make'])
 
     def test_region(self):
         for test in TEST_DATA:

@@ -160,9 +160,9 @@ that tickles the bug you're fixing.
 
 To run the test suite, at least on Ubuntu, I had to do::
 
-    $ sudo apt-get install pip
+    $ sudo apt-get install pip python-nose
     $ pip install nose
-    $ nose
+    $ nose2
 
 This should output a bunch of verbose test status lines, then end with something like::
 
