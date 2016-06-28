@@ -8,6 +8,7 @@ TEST_DATA = [
     # http://www.vindecoder.net/?vin=1C4RJEAG2EC476429&submit=Decode
     {'VIN': '1C4RJEAG2EC476429', 'WMI': '1C4', 'VDS': 'RJEAG2', 'VIS': 'EC476429',
      'MODEL': 'Grand Cherokee', 'MAKE':  'Jeep', 'YEAR': 2014, 'COUNTRY': 'United States',
+     'CO2': '443.0',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '476429', 'FEWER_THAN_500_PER_YEAR': False},
 
     # http://www.vindecoder.net/?vin=1D7RB1CP8BS798034&submit=Decode

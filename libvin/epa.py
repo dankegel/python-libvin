@@ -72,6 +72,7 @@ class EPAVin(Vin):
 
         models = []
         url = 'http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=%s&make=%s' % (self.year, self.make)
+        print url
         try:
             r = requests.get(url)
         except requests.Timeout:
@@ -85,6 +86,9 @@ class EPAVin(Vin):
             # You can't make this stuff up.  I love xml.
             for item in xmltodict.parse(content).popitem()[1].items()[0][1]:
                models.append(item.popitem()[1])
+        except AttributeError:
+            print "epa: no models for year %s, make %s" % (self.year, self.make)
+            return None
         except ValueError:
             print "epa: could not parse result"
             return None
@@ -96,6 +100,8 @@ class EPAVin(Vin):
         Given a decoded vin and its nhtsa data, look up its epa model name
         '''
         models = self.__get_possible_models()
+        if models == None:
+            return None
 
         model = self.nhtsa['Model']
 
@@ -170,18 +176,18 @@ class EPAVin(Vin):
             return key
 
         # Filter by engine displacement
-        displacement = '%s L' % nhtsa['DisplacementL']
+        displacement = '%s L' % self.nhtsa['DisplacementL']
         print "Filtering by displacement %s" % displacement
         matches = [key for key, value in id2trim.items() if displacement in value.upper()]
         if (len(matches) == 1):
             return matches[0]
 
         # Filter by transmission
-        print "Filtering by transmission %s" % nhtsa['TransmissionStyle']
+        print "Filtering by transmission %s" % self.nhtsa['TransmissionStyle']
         tran = None
-        if 'Manual' in nhtsa['TransmissionStyle']:
+        if 'Manual' in self.nhtsa['TransmissionStyle']:
             tran = 'MAN'
-        if 'Auto' in nhtsa['TransmissionStyle']:
+        if 'Auto' in self.nhtsa['TransmissionStyle']:
             tran = 'AUTO'
         if tran != None:
             matches = [key for key, value in id2trim.items() if tran in value.upper()]
@@ -190,7 +196,7 @@ class EPAVin(Vin):
 
         print "Failed to match"
         pprint(id2trim)
-        pprint(nhtsa)
+        pprint(self.nhtsa)
         return None
 
     def __get_vehicle_economy(self):
@@ -215,22 +221,3 @@ class EPAVin(Vin):
             print "epa: could not parse result"
             return None
         return None
-
-def main():
-    #v = Vin('2A4GM684X6R632476')  fails!  NHTSA engine info wrong
-    #'19XFB4F24DE547421',
-    for vin in [
-        'YV1902FH5D1796335']:
-        v = EPAVin(vin)
-        print "VIN %s, Make: %s, Model: %s, Year: %s, id: %s" % (vin, v.make, v.model, v.year, v.id)
-        if v.id == None:
-            print("Could not find EPA id for vin %s" % vin)
-        else:
-            co2 = v.eco['co2TailpipeGpm']     # This value doesn't quite match what's on website
-            #co2 = v.eco['co2TailpipeAGpm']   # This one does, but isn't always present
-            print "VIN %s, Make: %s, Model: %s, Year: %s, Grams co2 per mile: %s" % (vin, v.make, v.model, v.year, co2)
-            if co2 == 0.0:
-                pprint(v.eco)
-
-if __name__ == "__main__":
-    main()
