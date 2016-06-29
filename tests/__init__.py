@@ -1,37 +1,47 @@
 # Sorted alphabetically by VIN
 TEST_DATA = [
-    # http://www.vindecoder.net/?vin=137ZA903X1E412677&submit=Decode unchecked
-    {'VIN': '137ZA903X1E412677', 'WMI': '137', 'VDS': 'ZA903X', 'VIS': '1E412677',
-     'MODEL': 'H1', 'MAKE':  'Hummer', 'YEAR': 2001, 'COUNTRY': 'United States',
-     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '412677', 'FEWER_THAN_500_PER_YEAR': False},
-
     # http://www.vindecoder.net/?vin=1C4RJEAG2EC476429&submit=Decode
     {'VIN': '1C4RJEAG2EC476429', 'WMI': '1C4', 'VDS': 'RJEAG2', 'VIS': 'EC476429',
      'MODEL': 'Grand Cherokee', 'MAKE':  'Jeep', 'YEAR': 2014, 'COUNTRY': 'United States',
-     'CO2': '443.0',
-     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '476429', 'FEWER_THAN_500_PER_YEAR': False},
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '476429', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.model' : 'Grand Cherokee',
+     'epa.model' : 'Grand Cherokee 2WD', 'epa.co2TailpipeGpm': '443.0',
+    },
 
     # http://www.vindecoder.net/?vin=1D7RB1CP8BS798034&submit=Decode
     {'VIN': '1D7RB1CP8BS798034', 'WMI': '1D7', 'VDS': 'RB1CP8', 'VIS': 'BS798034',
      'MODEL': 'Ram 1500', 'MAKE':  'Dodge', 'YEAR': 2011, 'COUNTRY': 'United States',
-     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '798034', 'FEWER_THAN_500_PER_YEAR': False},
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '798034', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.model' : 'Ram',
+     'epa.model' : 'Ram 1500 Pickup 2WD', 'epa.co2TailpipeGpm': '592.4666666666667',
+    },
 
     # http://www.vindecoder.net/?vin=1D7RB1CT1BS488952&submit=Decode
     {'VIN': '1D7RB1CT1BS488952', 'WMI': '1D7', 'VDS': 'RB1CT1', 'VIS': 'BS488952',
      'MODEL': 'Ram 1500', 'MAKE':  'Dodge', 'YEAR': 2011, 'COUNTRY': 'United States',
-     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '488952', 'FEWER_THAN_500_PER_YEAR': False},
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '488952', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.model' : 'Ram',
+     'epa.model' : 'Ram 1500 Pickup 2WD', 'epa.co2TailpipeGpm': '555.4375',
+    },
 
     # http://www.vindecoder.net/?vin=19UUA65694A043249&submit=Decode
     # http://acurazine.com/forums/vindecoder.php?vin=19UUA65694A043249
     {'VIN': '19UUA65694A043249', 'WMI': '19U', 'VDS': 'UA6569', 'VIS': '4A043249',
      'MODEL': 'TL', 'MAKE':  'Acura', 'YEAR': 2004, 'COUNTRY': 'United States',
-     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '043249', 'FEWER_THAN_500_PER_YEAR': False},
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '043249', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.model' : 'TL',
+     'epa.model' : 'TL', 'epa.co2TailpipeGpm': '423.1904761904762',
+    },
 
     # http://www.vindecoder.net/?vin=19XFB4F24DE547421&submit=Decode says unknown
     # http://www.civicx.com/threads/2016-civic-vin-translator-decoder-guide.889/
+    # http://honda-tech.com/forums/vindecoder.php?vin=19XFB4F24DE547421
     {'VIN': '19XFB4F24DE547421', 'WMI': '19X', 'VDS': 'FB4F24', 'VIS': 'DE547421',
      'MODEL': 'Civic Hybrid', 'MAKE':  'Honda', 'YEAR': 2013, 'COUNTRY': 'United States',
-     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '547421', 'FEWER_THAN_500_PER_YEAR': False},
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '547421', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.model' : 'Civic',
+     'epa.model' : 'Civic Hybrid', 'epa.co2TailpipeGpm': '200.0',
+    },
 
     # http://www.vindecoder.net/?vin=1FAHP3FN8AW139719&submit=Decode
     {'VIN': '1FAHP3FN8AW139719', 'WMI': '1FA', 'VDS': 'HP3FN8', 'VIS': 'AW139719',
@@ -41,7 +51,10 @@ TEST_DATA = [
     # http://www.vindecoder.net/?vin=1GKEV13728J123735&submit=Decode
     {'VIN': '1GKEV13728J123735', 'WMI': '1GK', 'VDS': 'EV1372', 'VIS': '8J123735',
      'MODEL': 'Acadia', 'MAKE':  'GMC', 'YEAR': 2008, 'COUNTRY': 'United States',
-     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '123735', 'FEWER_THAN_500_PER_YEAR': False},
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '123735', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.model' : 'Acadia',
+     'epa.model' : 'Acadia AWD', 'epa.co2TailpipeGpm': '493.72222222222223',
+    },
 
     # http://www.vindecoder.net/?vin=1GT020CG4EF828544&submit=Decode
     {'VIN': '1GT020CG4EF828544', 'WMI': '1GT', 'VDS': '020CG4', 'VIS': 'EF828544',

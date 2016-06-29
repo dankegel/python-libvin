@@ -10,7 +10,6 @@ import requests
 import requests_cache
 # Cache responses for 7 days to be kind to nhtsa's server
 requests_cache.install_cache('libvin_tests_cache', expire_after=7*24*60*60)
-from pprint import pprint
 import itertools
 import json
 import xmltodict
@@ -37,6 +36,13 @@ class EPAVin(Vin):
         NHTSA info dictionary for this vehicle.
         '''
         return self.__nhtsa
+
+    @property
+    def nhtsaModel(self):
+        '''
+        NHTSA model name for this vehicle.
+        '''
+        return self.nhtsa['Model']
 
     @property
     def model(self):
@@ -72,14 +78,13 @@ class EPAVin(Vin):
 
         models = []
         url = 'http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=%s&make=%s' % (self.year, self.make)
-        print url
         try:
             r = requests.get(url)
         except requests.Timeout:
-            print "epa: connection timed out"
+            print "epa:__get_possible_models: connection timed out"
             return None
         except requests.ConnectionError:
-            print "epa: connection failed"
+            print "epa:__get_possible_models: connection failed"
             return None
         try:
             content = r.content
@@ -87,12 +92,11 @@ class EPAVin(Vin):
             for item in xmltodict.parse(content).popitem()[1].items()[0][1]:
                models.append(item.popitem()[1])
         except AttributeError:
-            print "epa: no models for year %s, make %s" % (self.year, self.make)
+            print "epa:__get_possible_models: no models for year %s, make %s" % (self.year, self.make)
             return None
         except ValueError:
-            print "epa: could not parse result"
+            print "epa:__get_possible_models: could not parse result"
             return None
-        pprint(models)
         return models
 
     def __get_model(self):
@@ -103,32 +107,44 @@ class EPAVin(Vin):
         if models == None:
             return None
 
-        model = self.nhtsa['Model']
-
-        # Try it without modifiers first
-        if model in models: 
-            return model
-
         # Get candidate modifier strings
         modifiers = []
         driveType = self.nhtsa['DriveType']
-        if 'Front' in driveType or 'FWD' in driveType or '4x2' in driveType:
+        if 'AWD' in driveType or '4WD' in driveType or '4x4' in driveType:
+            modifiers.append("4WD")
+            modifiers.append("AWD")
+            # Special cases
+            if self.make == 'GMC' and self.nhtsaModel == 'Sierra':
+                modifiers.append("K15")
+        elif 'Front' in driveType or 'FWD' in driveType or '4x2' in driveType:
             modifiers.append("2WD")
             modifiers.append("FWD")
+            # Special cases
+            if self.make == 'GMC' and self.nhtsaModel == 'Sierra':
+                modifiers.append("C15")
+        else:
+            # special cases
+            if self.make == 'Ford' and self.nhtsaModel == 'Focus':
+                modifiers.append("FWD")
         if 'Trim' in self.nhtsa and self.nhtsa['Trim'] != "":
             modifiers.append(self.nhtsa['Trim'])
         if 'BodyClass' in self.nhtsa and self.nhtsa['BodyClass'] != "":
             modifiers.append(self.nhtsa['BodyClass'])
+        if 'Series' in self.nhtsa and self.nhtsa['Series'] != "":
+            modifiers.append(self.nhtsa['Series'])
 
         # Throw them against the wall and see what sticks
-        for L in range(0, len(modifiers)+1):
+        # FIXME: pick model with highest number of matches regardless of order
+        for L in range(len(modifiers)+1, 0, -1):
             for subset in itertools.permutations(modifiers, L):
-                modified_model = model + " " + " ".join(subset) 
-                print "Checking %s" % modified_model
-                if modified_model in models: 
+                modified_model = self.nhtsaModel + " " + " ".join(subset)
+                if modified_model in models:
                     return modified_model
 
-        print "Failed to find model for %s" % self.vin
+        if self.nhtsaModel in models:
+            return self.nhtsaModel
+
+        print "epa:__get_model: Failed to find model for %s" % self.vin
         return None
 
     def __get_possible_ids(self):
@@ -142,23 +158,25 @@ class EPAVin(Vin):
         try:
             r = requests.get(url)
         except requests.Timeout:
-            print "epa: connection timed out"
+            print "epa:__get_possible_ids: connection timed out"
             return None
         except requests.ConnectionError:
-            print "epa: connection failed"
+            print "epa:__get_possible_ids: connection failed"
             return None
         try:
             content = r.content
             # You can't make this stuff up.  I love xml.
-            print("Content is %s" % content)
             parsed = xmltodict.parse(content)
-            pprint(parsed)
-            for item in xmltodict.parse(content).popitem()[1].items()[0][1]:
+            innards = parsed.popitem()[1].items()[0][1]
+            # special case for N=1
+            if not isinstance(innards, list):
+               innards = [ innards ]
+            for item in innards:
                id = item.popitem()[1]
                trim = item.popitem()[1]
                id2trim[id] = trim
         except ValueError:
-            print "epa: could not parse result"
+            print "epa:__get_possible_ids: could not parse result"
             return None
         return id2trim
 
@@ -177,13 +195,11 @@ class EPAVin(Vin):
 
         # Filter by engine displacement
         displacement = '%s L' % self.nhtsa['DisplacementL']
-        print "Filtering by displacement %s" % displacement
         matches = [key for key, value in id2trim.items() if displacement in value.upper()]
         if (len(matches) == 1):
             return matches[0]
 
         # Filter by transmission
-        print "Filtering by transmission %s" % self.nhtsa['TransmissionStyle']
         tran = None
         if 'Manual' in self.nhtsa['TransmissionStyle']:
             tran = 'MAN'
@@ -194,9 +210,7 @@ class EPAVin(Vin):
             if (len(matches) == 1):
                 return matches[0]
 
-        print "Failed to match"
-        pprint(id2trim)
-        pprint(self.nhtsa)
+        print "epa:__get_id: Failed to match trim for %s" % self.vin
         return None
 
     def __get_vehicle_economy(self):
@@ -209,15 +223,15 @@ class EPAVin(Vin):
         try:
             r = requests.get(url)
         except requests.Timeout:
-            print "epa: connection timed out"
+            print "epa:__get_vehicle_economy: connection timed out"
             return None
         except requests.ConnectionError:
-            print "epa: connection failed"
+            print "epa:__get_vehicle_economy: connection failed"
             return None
         try:
             content = r.content
             return xmltodict.parse(content).popitem()[1]
         except ValueError:
-            print "epa: could not parse result"
+            print "epa:__get_vehicle_economy: could not parse result"
             return None
         return None

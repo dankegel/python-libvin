@@ -19,15 +19,20 @@ else:
         def test_model(self):
             for test in TEST_DATA:
                 v = EPAVin(test['VIN'])
+                if not 'nhtsa.model' in test:
+                    continue
+                print "Testing nhtsaModel of %s - %s" % (test['VIN'], v.nhtsaModel)
+                assert_equals(v.nhtsaModel, test['nhtsa.model'])
+                if not 'epa.model' in test:
+                    continue
                 print "Testing model of %s - %s" % (test['VIN'], v.model)
-                assert_equals(v.model, test['MODEL'])
+                assert_equals(v.model, test['epa.model'])
 
         def test_co2(self):
             for test in TEST_DATA:
                 v = EPAVin(test['VIN'])
-                if 'CO2' in test:
-                    co2 = v.eco['co2TailpipeGpm']     # This value doesn't quite match what's on website, but is always there
-                    print "Testing co2 of %s - %s" % (test['VIN'], co2)
-                    assert_equals(co2, test['CO2'])
-                    break
-
+                if not 'epa.co2TailpipeGpm' in test:
+                    continue
+                co2 = v.eco['co2TailpipeGpm']
+                print "Testing co2 of %s - %s" % (test['VIN'], co2)
+                assert_equals(co2, test['epa.co2TailpipeGpm'])
