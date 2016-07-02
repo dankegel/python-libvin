@@ -35,8 +35,15 @@ TEST_DATA = [
     # http://www.fueleconomy.gov/ws/rest/vehicle/36354
     {'VIN': '1GNKRHKD2GJ223195', 'WMI': '1GN', 'VDS': 'KRHKD2', 'VIS': 'GJ223195',
      'MODEL': 'Traverse AWD', 'MAKE': 'Chevrolet', 'YEAR': 2016, 'COUNTRY': 'United States',
-     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': 'GJ223195', 'FEWER_THAN_500_PER_YEAR': False,
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '223195', 'FEWER_THAN_500_PER_YEAR': False,
      'epa.id' : '36354', 'epa.co2TailpipeGpm': '519.0', 'epa.model' : 'Traverse AWD', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.6 L',
+    },
+
+    # http://www.fueleconomy.gov/ws/rest/vehicle/35571
+    {'VIN': '1GTN1TEC9FZ904179', 'WMI': '1GT', 'VDS': 'N1TEC9', 'VIS': 'FZ904179',
+     'MODEL': 'Sierra', 'MAKE': 'GMC', 'YEAR': 2015, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '904179', 'FEWER_THAN_500_PER_YEAR': False,
+     'epa.id' : '35571', 'epa.co2TailpipeGpm': '478.0', 'epa.model' : 'Sierra C15 2WD', 'epa.trim' : 'Auto 6-spd, 8 cyl, 5.3 L, SIDI',
     },
 
     # http://www.vindecoder.net/?vin=19UUA65694A043249&submit=Decode

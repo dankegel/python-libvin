@@ -145,6 +145,9 @@ class EPAVin(Vin):
         elif 'Front' in driveType or 'FWD' in driveType:
             attributes.append("FWD")
             attributes.append("2WD")
+        elif 'Rear' in driveType or 'RWD' in driveType:
+            attributes.append("RWD")
+            attributes.append("2WD")
 
         if 'Trim' in self.nhtsa and self.nhtsa['Trim'] != "":
             attributes.append(self.nhtsa['Trim'])
@@ -395,7 +398,7 @@ def main():
             print("    # http://www.fueleconomy.gov/ws/rest/vehicle/%s" % v.ids[i])
         print("    {'VIN': '%s', 'WMI': '%s', 'VDS': '%s', 'VIS': '%s'," % (v.decode(), v.wmi, v.vds, v.vis))
         print("     'MODEL': '%s', 'MAKE': '%s', 'YEAR': %d, 'COUNTRY': '%s'," % (v.nhtsaModel, v.make, v.year, v.country))
-        print("     'REGION': '%s', 'SEQUENTIAL_NUMBER': '%s', 'FEWER_THAN_500_PER_YEAR': %s," % (v.region, v.vis, v.less_than_500_built_per_year))
+        print("     'REGION': '%s', 'SEQUENTIAL_NUMBER': '%s', 'FEWER_THAN_500_PER_YEAR': %s," % (v.region, v.vsn, v.less_than_500_built_per_year))
         for i in range(0, len(v.ecos)):
             print("     'epa.id' : '%s', 'epa.co2TailpipeGpm': '%s', 'epa.model' : '%s', 'epa.trim' : '%s'," %
                   (v.ids[i], round(float(v.ecos[i]['co2TailpipeGpm']), 1), v.model, v.trims[i]))
