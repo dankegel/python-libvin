@@ -8,7 +8,7 @@ License: AGPL v3.0
 # to avoid duplicate fetches
 import requests
 
-def nhtsa_decode(vin):
+def nhtsa_decode(vin, verbosity=0):
     '''
     Return vpic.nhtsa.dot.gov's interpretation of the VIN in a dictionary, or None on error.
 
@@ -29,6 +29,8 @@ def nhtsa_decode(vin):
     '''
 
     url = 'https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/' + vin + '?format=json'
+    if (verbosity > 0):
+        print "nhtsa_decode: url is %s" % url
     try:
         r = requests.get(url)
     except requests.Timeout:
@@ -41,7 +43,7 @@ def nhtsa_decode(vin):
         jresult = r.json()
         results = jresult['Results'][0]
     except ValueError:
-        print "nhtsa: could not parse result"
+        print "nhtsa: could not parse result %s" % r.text
         return None
 
     # Strip trailing spaces (as in 'Hummer ')

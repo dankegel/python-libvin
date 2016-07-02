@@ -6,10 +6,11 @@ License: AGPL v3.0
 
 # Note: client app may wish to 'import requests_cache' and install a cache
 # to avoid duplicate fetches
-import requests
-import itertools
 import json
+import requests
+import sys
 import xmltodict
+from pprint import pprint
 
 # Local
 from decoding import Vin
@@ -19,15 +20,18 @@ class EPAVin(Vin):
 
     # Public interfaces
 
-    def __init__(self, vin):
+    def __init__(self, vin, verbosity=0):
         super(EPAVin, self).__init__(vin)
 
-        self.__nhtsa = nhtsa_decode(vin)
+        self.verbosity = verbosity
+        self.__nhtsa = nhtsa_decode(vin, verbosity)
+        if (self.__nhtsa == None):
+            return
         self.__attribs = self.__get_attributes()
         self.__model = self.__get_model()
         if (self.__model != None):
             self.__ids, self.__trims = self.__get_ids()
-            self.__eco   = self.__get_vehicle_economy()
+            self.__eco   = [self.__get_vehicle_economy(id) for id in self.__ids]
 
     @property
     def nhtsa(self):
@@ -60,6 +64,13 @@ class EPAVin(Vin):
         return self.__ids[0]
 
     @property
+    def ids(self):
+        '''
+        List of likely EPA ids for this vehicle.
+        '''
+        return self.__ids
+
+    @property
     def trim(self):
         '''
         EPA trim for this vehicle.
@@ -69,23 +80,60 @@ class EPAVin(Vin):
         return self.__trims[0]
 
     @property
+    def trims(self):
+        '''
+        List of likely EPA trim for this vehicle.
+        '''
+        return self.__trims
+
+    @property
     def eco(self):
         '''
         EPA fuel economy info dictionary for this vehicle.
         Fields of interest:
         - co2TailpipeGpm - present for most vehicles
         - co2TailpipeAGpm - present for some vehicles, matches EPA website
+        In case of ambiguity, just one record is returned.
+        '''
+        return self.__eco[0]
+
+    @property
+    def ecos(self):
+        '''
+        List of EPA fuel economy info dictionaries for this vehicle.
+        Fields of interest:
+        - co2TailpipeGpm - present for most vehicles
+        - co2TailpipeAGpm - present for some vehicles, matches EPA website
+        In case of ambiguity, all possible records are returned.
         '''
         return self.__eco
 
     # Private interfaces
+
+    def __remodel(self):
+        '''
+        Return model name translated from NHTSA-ese into EPA-ese
+        '''
+        m = self.nhtsa['Model']
+        if self.make == 'Mazda':
+            if m.startswith('Mazda'):
+                return m.replace('Mazda', '')
+        elif self.make == 'Mercedes-Benz':
+            if m.endswith('-Class'):
+                # Rest of model name is in nhtsa['Series'], kind of
+                return m.replace('-Class', '')
+        elif self.make == 'Toyota':
+            if m == 'Corolla Matrix':
+                # Nobody has ever heard the official name 'Corolla Matrix'
+                return 'Matrix'
+        return m
 
     def __get_attributes(self):
         '''
         Returns a list of adjectives for this vehicle that might help identify it in EPA model or trim names
         '''
         # Strongest attribute: the model name!
-        attributes = [self.nhtsa['Model']]
+        attributes = [self.__remodel()]
 
         driveType = self.nhtsa['DriveType']
         if 'AWD' in driveType:
@@ -115,6 +163,12 @@ class EPAVin(Vin):
         if 'EngineCylinders' in self.nhtsa and self.nhtsa['EngineCylinders'] != '':
             attributes.append('%s cyl' % self.nhtsa['EngineCylinders'])
 
+        if 'FuelTypePrimary' in self.nhtsa:
+            # FIXME: also check FuelTypeSecondary?
+            ftp = self.nhtsa['FuelTypePrimary']
+            if 'FFV' in ftp or 'E85' in ftp:
+                attributes.append('FFV')
+
         if 'Manual' in self.nhtsa['TransmissionStyle']:
             attributes.append('MAN')
         elif 'Auto' in self.nhtsa['TransmissionStyle']:
@@ -137,6 +191,8 @@ class EPAVin(Vin):
 
         key2model = dict()
         url = 'http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=%s&make=%s' % (self.year, self.make)
+        if self.verbosity > 0:
+            print "epa:__get_possible_models: URL is %s" % url
         try:
             r = requests.get(url)
         except requests.Timeout:
@@ -167,6 +223,8 @@ class EPAVin(Vin):
 
         id2trim = dict()
         url = 'http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=%s&make=%s&model=%s' % (self.year, self.make, self.model)
+        if self.verbosity > 0:
+            print "epa:__get_possible_ids: URL is %s" % url
         try:
             r = requests.get(url)
         except requests.Timeout:
@@ -213,29 +271,43 @@ class EPAVin(Vin):
             # In case of a tie, prefer shortest choice.
             chars_matched = 0
             for attrib in attributes:
-                if attrib != "" and attrib.upper() in val.upper():
+                if attrib == "":
+                    continue
+                u = val.upper()
+                if ((attrib.upper() in u)
+                 or (attrib == '2WD' and ('FWD' in u or 'RWD' in u))
+                 or (attrib == '4WD' and 'AWD' in u)):
                     if chars_matched == 0:
                         chars_matched = len(attrib)
                     else:
                         chars_matched += len(attrib) + 1  # for space
-            #print "chars_matched %d, for %s" % (chars_matched, val)
+
+            if self.verbosity > 1:
+                print "chars_matched %d, for %s" % (chars_matched, val)
             if (chars_matched > best_matched):
                 best_ids = [key]
                 best_len = len(val)
                 best_matched = chars_matched
             elif (chars_matched > 0 and chars_matched == best_matched):
                 if len(val) < best_len:
-                    #print "chars %d == %d, len %d < %d, breaking tie in favor of shorter trim" % (chars_matched, best_matched, len(val), best_len)
+                    if self.verbosity > 1:
+                       print "chars %d == %d, len %d < %d, breaking tie in favor of shorter trim" % (chars_matched, best_matched, len(val), best_len)
                     best_ids = [key]
                     best_len = len(val)
                     best_matched = chars_matched
                 elif len(val) == best_len:
-                    #print "chars %d == %d, len %d == %d, marking tie" % (chars_matched, best_matched, len(val), best_len)
+                    if self.verbosity > 1:
+                        print "chars %d == %d, len %d == %d, marking tie" % (chars_matched, best_matched, len(val), best_len)
                     best_ids.append(key)
         if len(best_ids) == 0:
-            print "epa:__fuzzy_match: no match found for vin %s" % self.vin
+            if self.verbosity > 0:
+                print "epa:__fuzzy_match: no match found for vin %s" % self.vin
+                pprint(mustmatch)
+                pprint(attributes)
+                pprint(choices)
         elif len(best_ids) > 1:
-            print "epa:__fuzzy_match: multiple matches for vin %s: " % self.vin + " / ".join(best_ids)
+            if self.verbosity > 0:
+                print "epa:__fuzzy_match: multiple matches for vin %s: " % self.vin + " / ".join(best_ids)
         return best_ids
 
     def __get_model(self):
@@ -246,37 +318,20 @@ class EPAVin(Vin):
         id2models = self.__get_possible_models()
         if id2models == None:
             return None
-        #print "Finding model for vin %s" % self.vin
-        # Special case for Mercedes-Benz, which puts the real model in Series
-        oldmodel = self.nhtsa['Model']
-        model = oldmodel.replace('-Class', '')
-        ids = self.__fuzzy_match(model, self.__attribs, id2models)
+        if self.verbosity > 0:
+            print "Finding model for vin %s" % self.vin
+        ids = self.__fuzzy_match(self.__remodel(), self.__attribs, id2models)
         if len(ids) != 1:
-            # Second chance for alternate spellings
-            if '4WD' in self.__attribs:
-                tribs = self.__attribs
-                tribs.append('AWD')
-                print "Searching again with AWD"
-                ids = self.__fuzzy_match(self.nhtsa['Model'], tribs, id2models)
-            elif '2WD' in self.__attribs and 'FWD' not in self.__attribs:
-                tribs = self.__attribs
-                tribs.append('RWD')
-                print "Searching again with RWD"
-                ids = self.__fuzzy_match(self.nhtsa['Model'], tribs, id2models)
-            elif 'Mazda' in self.nhtsa['Model']:
-                oldmodel = self.nhtsa['Model']
-                model = oldmodel.replace('Mazda', '')
-                tribs = self.__attribs
-                tribs.append(model)
-                print "Searching again with %s instead of %s" % (model, oldmodel)
-                ids = self.__fuzzy_match(model, tribs, id2models)
-
-        if len(ids) != 1:
-            print "epa:__get_model: Failed to find model for vin %s" % self.vin
+            if self.verbosity > 0:
+                print "epa:__get_model: Failed to find model for vin %s" % self.vin
+                pprint(id2models)
+                pprint(self.__attribs)
+                pprint(self.nhtsa)
             return None
 
         modelname = ids[0]  # key same as val
-        #print "VIN %s has model %s" % (self.vin, modelname)
+        if self.verbosity > 0:
+            print "VIN %s has model %s" % (self.vin, modelname)
         return modelname
 
     def __get_ids(self):
@@ -288,22 +343,31 @@ class EPAVin(Vin):
         id2trim = self.__get_possible_ids()
         if id2trim == None:
             return None
-        #print "Finding trims for vin %s" % self.vin
+        if len(id2trim.items()) == 1:
+            # No point in filtering if there's only one choice
+            return [id2trim.keys(), id2trim.values()]
+        if self.verbosity > 0:
+            print "Finding trims for vin %s" % self.vin
         ids = self.__fuzzy_match(None, self.__attribs, id2trim)
         if len(ids) == 0:
-            print "epa:__get_id: No trims found for vin %s" % self.vin
-            return None
+            # Sometimes (e.g. Toyota Matrix) there is very little info
+            # in the NHTSA decode, and filtering comes up empty.
+            # So return unfiltered view.
+            ids = id2trim.keys()
         trims = map(lambda x: id2trim[x], ids)
-        #print("VIN %s has trim names %s" % (self.vin, " / ".join(trims)))
+        if self.verbosity > 0:
+            print("VIN %s has trim names %s" % (self.vin, " / ".join(trims)))
         return [ids, trims]
 
-    def __get_vehicle_economy(self):
+    def __get_vehicle_economy(self, id):
         '''
         Return dictionary of a particular vehicle's economy data from fueleconomy.gov, or None on error.
         id is from __get_vehicle_ids().
         '''
 
-        url = 'http://www.fueleconomy.gov/ws/rest/vehicle/%s' % self.id
+        url = 'http://www.fueleconomy.gov/ws/rest/vehicle/%s' % id
+        if self.verbosity > 0:
+            print "epa:__get_vehicle_economy: URL is %s" % url
         try:
             r = requests.get(url)
         except requests.Timeout:
@@ -319,3 +383,23 @@ class EPAVin(Vin):
             print "epa:__get_vehicle_economy: could not parse result"
             return None
         return None
+
+def main():
+    verbosity = 0
+    if len(sys.argv) > 1:
+        verbosity = int(sys.argv[1])
+    for line in sys.stdin:
+        vin = line.strip()
+        v = EPAVin(vin, verbosity=verbosity)
+        for i in range(0, len(v.ecos)):
+            print("    # http://www.fueleconomy.gov/ws/rest/vehicle/%s" % v.ids[i])
+        print("    {'VIN': '%s', 'WMI': '%s', 'VDS': '%s', 'VIS': '%s'," % (v.decode(), v.wmi, v.vds, v.vis))
+        print("     'MODEL': '%s', 'MAKE': '%s', 'YEAR': %d, 'COUNTRY': '%s'," % (v.model, v.make, v.year, v.country))
+        print("     'REGION': '%s', 'SEQUENTIAL_NUMBER': '%s', 'FEWER_THAN_500_PER_YEAR': %s," % (v.region, v.vis, v.less_than_500_built_per_year))
+        for i in range(0, len(v.ecos)):
+            print("     'epa.id' : '%s', 'epa.co2TailpipeGpm': '%s', 'epa.model' : '%s', 'epa.trim' : '%s'," %
+                  (v.ids[i], round(float(v.ecos[i]['co2TailpipeGpm']), 1), v.model, v.trims[i]))
+        print("    },")
+
+if __name__ == "__main__":
+    main()
