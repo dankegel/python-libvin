@@ -394,7 +394,7 @@ def main():
         for i in range(0, len(v.ecos)):
             print("    # http://www.fueleconomy.gov/ws/rest/vehicle/%s" % v.ids[i])
         print("    {'VIN': '%s', 'WMI': '%s', 'VDS': '%s', 'VIS': '%s'," % (v.decode(), v.wmi, v.vds, v.vis))
-        print("     'MODEL': '%s', 'MAKE': '%s', 'YEAR': %d, 'COUNTRY': '%s'," % (v.model, v.make, v.year, v.country))
+        print("     'MODEL': '%s', 'MAKE': '%s', 'YEAR': %d, 'COUNTRY': '%s'," % (v.nhtsaModel, v.make, v.year, v.country))
         print("     'REGION': '%s', 'SEQUENTIAL_NUMBER': '%s', 'FEWER_THAN_500_PER_YEAR': %s," % (v.region, v.vis, v.less_than_500_built_per_year))
         for i in range(0, len(v.ecos)):
             print("     'epa.id' : '%s', 'epa.co2TailpipeGpm': '%s', 'epa.model' : '%s', 'epa.trim' : '%s'," %
