@@ -46,6 +46,13 @@ TEST_DATA = [
      'epa.id' : '35571', 'epa.co2TailpipeGpm': '478.0', 'epa.model' : 'Sierra C15 2WD', 'epa.trim' : 'Auto 6-spd, 8 cyl, 5.3 L, SIDI',
     },
 
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37066
+    {'VIN': '1N4AZ0CP6GC304290', 'WMI': '1N4', 'VDS': 'AZ0CP6', 'VIS': 'GC304290',
+     'MODEL': 'Leaf', 'MAKE': 'Nissan', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '304290', 'FEWER_THAN_500_PER_YEAR': False,
+     'epa.id' : '37066', 'epa.co2TailpipeGpm': '0.0', 'epa.model' : 'Leaf (24 kW-hr battery pack)', 'epa.trim' : 'Auto (A1)',
+    },
+
     # http://www.vindecoder.net/?vin=19UUA65694A043249&submit=Decode
     # http://acurazine.com/forums/vindecoder.php?vin=19UUA65694A043249
     # http://www.fueleconomy.gov/ws/rest/vehicle/19711

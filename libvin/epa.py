@@ -172,6 +172,9 @@ class EPAVin(Vin):
             if 'FFV' in ftp or 'E85' in ftp:
                 attributes.append('FFV')
 
+        if 'BatteryKWh' in self.nhtsa and self.nhtsa['BatteryKWh'] != '':
+            attributes.append('%s kW-hr' % self.nhtsa['BatteryKWh'])
+
         if 'Manual' in self.nhtsa['TransmissionStyle']:
             attributes.append('MAN')
         elif 'Auto' in self.nhtsa['TransmissionStyle']:
