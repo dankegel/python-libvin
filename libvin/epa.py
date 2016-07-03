@@ -134,6 +134,10 @@ class EPAVin(Vin):
             if m.endswith('-Class'):
                 # Rest of model name is in nhtsa['Series'], kind of
                 return m.replace('-Class', '')
+        elif self.make == 'Nissan':
+            if m == 'Versa Note':
+                # Note is just the hatchback
+                return 'Versa'
         elif self.make == 'Toyota':
             if m == 'Corolla Matrix':
                 # Nobody has ever heard the official name 'Corolla Matrix'

@@ -311,6 +311,16 @@ TEST_DATA = [
      'epa.id' : '30367', 'epa.co2TailpipeGpm': '423.2', 'epa.model' : 'MKZ FWD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L',
     },
 
+    # http://www.downtownnissan.com/inventory/New-2016-Nissan-Versa_Note-SR-3N1CE2CP0GL391251/ says this is a CVT
+    # but https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3N1CE2CP0GL391251/ doesn't indicate transmission type
+    # We normally just guess shortest epa trim in that case, but that gives the wrong answer here,
+    # so leave off epa info.
+    # FIXME: add notion of XFAIL to tests
+    {'VIN': '3N1CE2CP0GL391251', 'WMI': '3N1', 'VDS': 'CE2CP0', 'VIS': 'GL391251',
+     'MODEL': 'Versa Note', 'MAKE': 'Nissan', 'YEAR': 2016, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '391251', 'FEWER_THAN_500_PER_YEAR': False,
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/31173
     {'VIN': '3VWVA7AT5CM635721', 'WMI': '3VW', 'VDS': 'VA7AT5', 'VIS': 'CM635721',
      'MODEL': 'New Beetle', 'MAKE': 'Volkswagen', 'YEAR': 2012, 'COUNTRY': 'Mexico',
