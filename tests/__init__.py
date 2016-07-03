@@ -154,13 +154,11 @@ TEST_DATA = [
      'epa.id' : '32977', 'epa.co2TailpipeGpm': '425.0', 'epa.model' : 'Challenger', 'epa.trim' : 'Auto 5-spd, 6 cyl, 3.6 L',
      },
 
-    # http://www.vindecoder.net/?vin=2C4RDGBG4FR987134&submit=Decode
-    # http://www.fueleconomy.gov/ws/rest/vehicle/35310
-    # NOTE: NHTSA model name is 'Caravan/Grand Caravan' but EPA wants just Grand Caravan
-    # FIXME: try exploding name on spaces and slashes if no match?
-    {'VIN': '2C4RDGBG4FR987134', 'WMI': '2C4', 'VDS': 'RDGBG4', 'VIS': 'FR987134',
-     'MODEL': 'Grand Caravan', 'MAKE':  'Dodge', 'YEAR': 2015, 'COUNTRY': 'Canada',
-     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '987134', 'FEWER_THAN_500_PER_YEAR': False,
+    # http://www.fueleconomy.gov/ws/rest/vehicle/35462
+    {'VIN': '2C4RDGBG1FR710120', 'WMI': '2C4', 'VDS': 'RDGBG1', 'VIS': 'FR710120',
+     'MODEL': 'Caravan/Grand Caravan', 'MAKE': 'Dodge', 'YEAR': 2015, 'COUNTRY': 'Canada',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '710120', 'FEWER_THAN_500_PER_YEAR': False,
+     'epa.id' : '35462', 'epa.co2TailpipeGpm': '444.0', 'epa.model' : 'Grand Caravan', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.6 L',
     },
 
     # http://www.vindecoder.net/?vin=2D4RN6DX5AR939562&submit=Decode

@@ -124,7 +124,10 @@ class EPAVin(Vin):
         Return model name translated from NHTSA-ese into EPA-ese
         '''
         m = self.nhtsa['Model']
-        if self.make == 'Mazda':
+        if self.make == 'Dodge':
+            if m == 'Caravan/Grand Caravan':
+                return 'Grand Caravan'
+        elif self.make == 'Mazda':
             if m.startswith('Mazda'):
                 return m.replace('Mazda', '')
         elif self.make == 'Mercedes-Benz':
@@ -357,7 +360,8 @@ class EPAVin(Vin):
                 print "epa:__get_model: Failed to find model for vin %s" % self.vin
                 pprint(id2models)
                 pprint(self.__attribs)
-                pprint(self.nhtsa)
+                if self.verbosity > 1:
+                    pprint(self.nhtsa)
             return None
 
         modelname = ids[0]  # key same as val
