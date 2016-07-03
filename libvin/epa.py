@@ -126,6 +126,10 @@ class EPAVin(Vin):
             if m == 'Corolla Matrix':
                 # Nobody has ever heard the official name 'Corolla Matrix'
                 return 'Matrix'
+        elif self.make == 'Volkswagen':
+            if m == 'New Beetle':
+                # EPA has just 'Beetle' for some years
+                return 'Beetle'
         return m
 
     def __get_attributes(self):
@@ -308,12 +312,17 @@ class EPAVin(Vin):
         if len(best_ids) == 0:
             if self.verbosity > 0:
                 print "epa:__fuzzy_match: no match found for vin %s" % self.vin
+            if self.verbosity > 1:
                 pprint(mustmatch)
                 pprint(attributes)
                 pprint(choices)
         elif len(best_ids) > 1:
             if self.verbosity > 0:
                 print "epa:__fuzzy_match: multiple matches for vin %s: " % self.vin + " / ".join(best_ids)
+            if self.verbosity > 1:
+                pprint(mustmatch)
+                pprint(attributes)
+                pprint(choices)
         return best_ids
 
     def __get_model(self):

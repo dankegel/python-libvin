@@ -279,6 +279,13 @@ TEST_DATA = [
      'epa.id' : '30367', 'epa.co2TailpipeGpm': '423.2', 'epa.model' : 'MKZ FWD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L',
     },
 
+    # http://www.fueleconomy.gov/ws/rest/vehicle/31173
+    {'VIN': '3VWVA7AT5CM635721', 'WMI': '3VW', 'VDS': 'VA7AT5', 'VIS': 'CM635721',
+     'MODEL': 'New Beetle', 'MAKE': 'Volkswagen', 'YEAR': 2012, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '635721', 'FEWER_THAN_500_PER_YEAR': False,
+     'epa.id' : '31173', 'epa.co2TailpipeGpm': '355.5', 'epa.model' : 'Beetle', 'epa.trim' : 'Auto (S6), 4 cyl, 2.0 L, Turbo',
+    },
+
     # http://www.vindecoder.net/?vin=4A31K3DT4CE403200&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/31170
     {'VIN': '4A31K3DT4CE403200', 'WMI': '4A3', 'VDS': '1K3DT4', 'VIS': 'CE403200',
