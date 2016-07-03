@@ -164,6 +164,13 @@ class EPAVin(Vin):
         elif 'Rear' in driveType or 'RWD' in driveType:
             attributes.append("RWD")
             attributes.append("2WD")
+        else:
+            # 3FA6P0G76ER244757 has no drivetype listed at all, but is FWD.
+            # FIXME: make this special case more specific somehow?
+            if self.year > 1990:
+                attributes.append("FWD")
+                if self.verbosity > 1:
+                    print("No drive type given, defaulting to FWD")
 
         if 'Trim' in self.nhtsa and self.nhtsa['Trim'] != "":
             attributes.append(self.nhtsa['Trim'])

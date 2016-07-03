@@ -266,6 +266,21 @@ TEST_DATA = [
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '113805', 'FEWER_THAN_500_PER_YEAR': False,
     },
 
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34088
+    {'VIN': '3FA6P0G76ER244757', 'WMI': '3FA', 'VDS': '6P0G76', 'VIS': 'ER244757',
+     'MODEL': 'Fusion', 'MAKE': 'Ford', 'YEAR': 2014, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '244757', 'FEWER_THAN_500_PER_YEAR': False,
+     'epa.id' : '34088', 'epa.co2TailpipeGpm': '339.0', 'epa.model' : 'Fusion FWD', 'epa.trim' : 'Auto (S6), 4 cyl, 2.5 L',
+    },
+
+    # A Fusion Titanium.  It's AWD, but NHTSA mistakenly identifies it as FWD,
+    # and EPA uses FWD or AWD in the model name, so we can't even look up EPA data correctly.
+    {'VIN': '3FA6P0K95GR305754', 'WMI': '3FA', 'VDS': '6P0K95', 'VIS': 'GR305754',
+     'MODEL': 'Fusion', 'MAKE': 'Ford', 'YEAR': 2016, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '305754', 'FEWER_THAN_500_PER_YEAR': False,
+     # FIXME: if NHTSA ever fixes their database, add epa data here.
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/23047
     {'VIN': '3GNFK16387G115163', 'WMI': '3GN', 'VDS': 'FK1638', 'VIS': '7G115163',
      'MODEL': 'Suburban', 'MAKE':  'Chevrolet', 'YEAR': 2007, 'COUNTRY': 'Mexico',
