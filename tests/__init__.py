@@ -108,6 +108,18 @@ TEST_DATA = [
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '410242', 'FEWER_THAN_500_PER_YEAR': False,
     },
 
+    # The EPA doesn't even have this vehicle for 2016 (as of July 2016); have to use yearoffset = -1 to get any epa data:
+    # Can't tell whether this is flex-fuel from the vin
+    # http://www.fueleconomy.gov/ws/rest/vehicle/35975
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/35974
+    {'VIN': '1N6AA1F2XGN509474', 'WMI': '1N6', 'VDS': 'AA1F2X', 'VIS': 'GN509474',
+     'MODEL': 'Titan', 'MAKE': 'Nissan', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '509474', 'FEWER_THAN_500_PER_YEAR': False,
+     'yearoffset':'-1',
+     'epa.id' : '35975', 'epa.co2TailpipeGpm': '600.0', 'epa.model' : 'Titan 2WD', 'epa.trim' : 'Auto 5-spd, 8 cyl, 5.6 L, FFV',
+     #'epa.id' : '35974', 'epa.co2TailpipeGpm': '591.0', 'epa.model' : 'Titan 2WD', 'epa.trim' : 'Auto 5-spd, 8 cyl, 5.6 L',
+    },
+
     # http://www.vindecoder.net/?vin=19VDE2E5XEE644230&submit=Decode unchecked
     # http://acurazine.com/forums/vindecoder.php?vin=19VDE2E5XEE644230
     # https://vpic.nhtsa.dot.gov/decoder/ says it has errors

@@ -17,15 +17,13 @@ else:
                 if not 'epa.co2TailpipeGpm' in test:
                     continue
                 print("Testing co2 of %s:" % test['VIN'])
-                v = EPAVin(test['VIN'])
+                yearoffset = 0
+                if 'yearoffset' in test:
+                    yearoffset=int(test['yearoffset'])
+                v = EPAVin(test['VIN'], verbosity=0, yearoffset=yearoffset)
                 if v.model == None:
                     print "Model unknown, skipping"
                     continue
-                co2 = v.eco['co2TailpipeGpm']
-                print("%s ; id %s, model %s, co2TailpipeGpm %s" % (test['VIN'], v.id, v.model, co2))
-                # Prints to help when extending the test matrix
-                #print("    # http://www.fueleconomy.gov/ws/rest/vehicle/%s" % v.id)
-                #print("     'epa.id' : '%s', 'epa.co2TailpipeGpm': '%s', 'epa.model' : '%s', 'epa.trim' : '%s'," %
-                #      (v.id, round(float(co2), 1), v.model, v.trim))
-                #print("")
+                co2 = round(float(v.eco['co2TailpipeGpm']), 1)
+                print("%s ; id %s, co2TailpipeGpm %s, make %s, model %s, trim %s" % (test['VIN'], v.id, co2, v.make, v.model, v.trim))
                 assert_almost_equals(float(co2), float(test['epa.co2TailpipeGpm']), places=0)

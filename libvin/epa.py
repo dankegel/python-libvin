@@ -20,10 +20,19 @@ class EPAVin(Vin):
 
     # Public interfaces
 
-    def __init__(self, vin, verbosity=0):
+    def __init__(self, vin, verbosity=0, yearoffset=0):
+        '''
+        Decode the given vin and gather data about it from fueleconomy.gov.
+        Verbosity above 0 adds logging to stdout.
+        Set yearoffset = -1 to use the previous year's EPA data
+        (for when EPA has a hole in its database).
+        '''
         super(EPAVin, self).__init__(vin)
 
         self.verbosity = verbosity
+        self.yearoffset = yearoffset
+        if self.verbosity > 0 and self.yearoffset != 0:
+            print "Setting yearoffset to %d" % yearoffset
         self.__nhtsa = nhtsa_decode(vin, verbosity)
         if (self.__nhtsa == None):
             return
@@ -207,7 +216,7 @@ class EPAVin(Vin):
         '''
 
         key2model = dict()
-        url = 'http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=%s&make=%s' % (self.year, self.make)
+        url = 'http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=%s&make=%s' % (self.year + self.yearoffset, self.make)
         if self.verbosity > 0:
             print "epa:__get_possible_models: URL is %s" % url
         try:
@@ -239,7 +248,7 @@ class EPAVin(Vin):
         '''
 
         id2trim = dict()
-        url = 'http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=%s&make=%s&model=%s' % (self.year, self.make, self.model)
+        url = 'http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=%s&make=%s&model=%s' % (self.year + self.yearoffset, self.make, self.model)
         if self.verbosity > 0:
             print "epa:__get_possible_ids: URL is %s" % url
         try:
@@ -408,11 +417,14 @@ class EPAVin(Vin):
 
 def main():
     verbosity = 0
+    yearoffset = 0
     if len(sys.argv) > 1:
         verbosity = int(sys.argv[1])
+    if len(sys.argv) > 2:
+        yearoffset = int(sys.argv[2])
     for line in sys.stdin:
         vin = line.strip()
-        v = EPAVin(vin, verbosity=verbosity)
+        v = EPAVin(vin, verbosity=verbosity, yearoffset=yearoffset)
         for i in range(0, len(v.ecos)):
             print("    # http://www.fueleconomy.gov/ws/rest/vehicle/%s" % v.ids[i])
         print("    {'VIN': '%s', 'WMI': '%s', 'VDS': '%s', 'VIS': '%s'," % (v.decode(), v.wmi, v.vds, v.vis))
