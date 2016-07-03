@@ -158,7 +158,14 @@ class EPAVin(Vin):
         if 'BodyClass' in self.nhtsa and self.nhtsa['BodyClass'] != "":
             attributes.append(self.nhtsa['BodyClass'])
         if 'Series' in self.nhtsa and self.nhtsa['Series'] != "":
-            attributes.append(self.nhtsa['Series'])
+            s = self.nhtsa['Series']
+            attributes.append(s)
+            # Special cases
+            if self.make == 'Mercedes-Benz':
+                # e.g. WDBTJ65JX5F126044: NHTSA calls it CLK320C, but EPA expects CLK320
+                if s.endswith('0C'):
+                    attributes.append(s[:-1])
+
         if 'Series2' in self.nhtsa and self.nhtsa['Series2'] != "":
             attributes.append(self.nhtsa['Series2'])
 

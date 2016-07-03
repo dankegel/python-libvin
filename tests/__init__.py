@@ -529,6 +529,13 @@ TEST_DATA = [
      'epa.id' : '29710', 'epa.co2TailpipeGpm': '555.4', 'epa.model' : 'M3', 'epa.trim' : 'Auto (S7), 8 cyl, 4.0 L',
     },
 
+    # http://www.fueleconomy.gov/ws/rest/vehicle/20623
+    {'VIN': 'WDBTJ65JX5F126044', 'WMI': 'WDB', 'VDS': 'TJ65JX', 'VIS': '5F126044',
+     'MODEL': 'CLK-Class', 'MAKE': 'Mercedes-Benz', 'YEAR': 2005, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '126044', 'FEWER_THAN_500_PER_YEAR': False,
+     'epa.id' : '20623', 'epa.co2TailpipeGpm': '423.2', 'epa.model' : 'CLK320', 'epa.trim' : 'Auto 5-spd, 6 cyl, 3.2 L',
+    },
+
     # http://www.vindecoder.net/?vin=WDCYC7DF3FX109287&submit=Decode
     # http://www.vindecoderz.com/EN/check-lookup/WDCYC7DF3FX109287
     # http://www.autocalculator.org/VIN/WMI.aspx says WDC is Mercedes-Benz, hmm
