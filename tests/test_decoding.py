@@ -44,7 +44,10 @@ class TestDecode(object):
                 # Verify that our decoded make is the same as NHTSA's.
                 n = nhtsa_decode(test['VIN'])
                 if n['ErrorCode'][0] == '0':
-                    assert_equals(v.make.upper(), n['Make'])
+                    # Well, snap.  NHTSA says 3N6CM0KN1GK696703 is NISSAN, CHEVROLET
+                    # Try trimming NHTSA make at the comma.
+                    nmake = n['Make'].split(',')[0]
+                    assert_equals(v.make.upper(), nmake)
                 # Avoid swamping nhtsa server when cache empty.
                 # FIXME: Using requests_cache throttling would be better, wouldn't slow down cache full case.
                 sleep(0.05)

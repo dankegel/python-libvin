@@ -321,6 +321,13 @@ TEST_DATA = [
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '391251', 'FEWER_THAN_500_PER_YEAR': False,
     },
 
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37237
+    {'VIN': '3N6CM0KN0GK696126', 'WMI': '3N6', 'VDS': 'CM0KN0', 'VIS': 'GK696126',
+     'MODEL': 'NV200, City Express', 'MAKE': 'Nissan', 'YEAR': 2016, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '696126', 'FEWER_THAN_500_PER_YEAR': False,
+     'epa.id' : '37237', 'epa.co2TailpipeGpm': '363.0', 'epa.model' : 'NV200 NYC Taxi', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 2.0 L',
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/31173
     {'VIN': '3VWVA7AT5CM635721', 'WMI': '3VW', 'VDS': 'VA7AT5', 'VIS': 'CM635721',
      'MODEL': 'New Beetle', 'MAKE': 'Volkswagen', 'YEAR': 2012, 'COUNTRY': 'Mexico',

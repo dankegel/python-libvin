@@ -138,6 +138,9 @@ class EPAVin(Vin):
             if m == 'Versa Note':
                 # Note is just the hatchback
                 return 'Versa'
+            elif m == 'NV200, City Express':
+                # NHTSA's Make for this is 'Nissan, Chevrolet'!
+                return 'NV200'
         elif self.make == 'Toyota':
             if m == 'Corolla Matrix':
                 # Nobody has ever heard the official name 'Corolla Matrix'
