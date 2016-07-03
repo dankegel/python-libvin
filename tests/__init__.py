@@ -416,6 +416,13 @@ TEST_DATA = [
      'epa.id' : '35241', 'epa.co2TailpipeGpm': '413.0', 'epa.model' : 'X4 xDrive35i', 'epa.trim' : 'Auto (S8), 6 cyl, 3.0 L, Turbo',
     },
 
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34949
+    {'VIN': '5XXGM4A7XFG459047', 'WMI': '5XX', 'VDS': 'GM4A7X', 'VIS': 'FG459047',
+     'MODEL': 'Optima', 'MAKE': 'Kia', 'YEAR': 2015, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '459047', 'FEWER_THAN_500_PER_YEAR': False,
+     'epa.id' : '34949', 'epa.co2TailpipeGpm': '330.0', 'epa.model' : 'Optima', 'epa.trim' : 'Auto (S6), 4 cyl, 2.4 L',
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/35500
     {'VIN': '5YFBURHE9FP280940', 'WMI': '5YF', 'VDS': 'BURHE9', 'VIS': 'FP280940',
      'MODEL': 'Corolla', 'MAKE':  'Toyota', 'YEAR': 2015, 'COUNTRY': 'United States',
