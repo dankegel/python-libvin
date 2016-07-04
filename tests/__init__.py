@@ -368,6 +368,13 @@ TEST_DATA = [
      'epa.id' : '31170', 'epa.co2TailpipeGpm': '444.4', 'epa.model' : 'Eclipse', 'epa.trim' : 'Auto (S5), 6 cyl, 3.8 L',
     },
 
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36406
+    {'VIN': '4S3BNAH62G3049699', 'WMI': '4S3', 'VDS': 'BNAH62', 'VIS': 'G3049699',
+     'MODEL': 'Legacy', 'MAKE': 'Subaru', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '049699', 'FEWER_THAN_500_PER_YEAR': False,
+     'epa.id' : '36406', 'epa.co2TailpipeGpm': '298.0', 'epa.model' : 'Legacy AWD', 'epa.trim' : 'Auto(AV-S6), 4 cyl, 2.5 L',
+    },
+
     # http://www.vindecoder.net/?vin=5FRYD3H26GB020813&submit=Decode unchecked
     # Note: can't tell if it has stop-start
     # http://www.fueleconomy.gov/ws/rest/vehicle/36119 'Auto (S9), 6 cyl, 3.5 L, SIDI; Stop-Start'
