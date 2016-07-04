@@ -15,6 +15,13 @@ TEST_DATA = [
      'epa.id' : '37077', 'epa.co2TailpipeGpm': '256.0', 'epa.model' : 'Civic 4Dr', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 2.0 L',
     },
 
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37075
+    {'VIN': '19XFC1F7XGE028370', 'WMI': '19X', 'VDS': 'FC1F7X', 'VIS': 'GE028370',
+     'MODEL': 'Civic', 'MAKE': 'Honda', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '028370', 'FEWER_THAN_500_PER_YEAR': False,
+     'epa.id' : '37075', 'epa.co2TailpipeGpm': '252.0', 'epa.model' : 'Civic 4Dr', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 1.5 L, Turbo',
+    },
+
     # http://www.vindecoder.net/?vin=1C4RJEAG2EC476429&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/33496
     {'VIN': '1C4RJEAG2EC476429', 'WMI': '1C4', 'VDS': 'RJEAG2', 'VIS': 'EC476429',

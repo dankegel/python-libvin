@@ -50,4 +50,19 @@ def nhtsa_decode(vin, verbosity=0):
     for key in results:
         results[key] = results[key].rstrip()
 
+    # Add missing decodes
+    if results['Make'] == 'HONDA' and results['Turbo'] == '':
+        # NHTSA does not yet decode turbo for some models, e.g.
+        # 2016 Civic EX-L Sedan 19XFC1F7XGE028370
+        # 2016 Civic EX-T Coupe 2HGFC3B37GH354325
+        # FC1 and FC3 don't show up in older VIN guides:
+        # 2014: https://vpic.nhtsa.dot.gov/mid/home/displayfile/29820
+        # 2015: https://vpic.nhtsa.dot.gov/mid/home/displayfile/29821
+        # FC1 first showed up in
+        # 2016: https://vpic.nhtsa.dot.gov/mid/home/displayfile/29039
+        # FC3 is on sale in 2016 (early?), NHTSA can't decode it yet at all
+        vds = vin[3:6]
+        if vds == 'FC1' or vds == 'FC3':
+            results['Turbo'] = 'Yes'
+
     return results
