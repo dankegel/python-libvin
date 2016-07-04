@@ -325,6 +325,17 @@ TEST_DATA = [
      'epa.id' : '30367', 'epa.co2TailpipeGpm': '423.2', 'epa.model' : 'MKZ FWD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L',
     },
 
+    # Can't tell transmission from vin, so pick one at random :-(
+    # https://vpic.nhtsa.dot.gov/mid/home/displayfile/6089
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36534
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/36535
+    {'VIN': '3MZBM1K72GM303265', 'WMI': '3MZ', 'VDS': 'BM1K72', 'VIS': 'GM303265',
+     'MODEL': 'Mazda3', 'MAKE': 'Mazda', 'YEAR': 2016, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '303265', 'FEWER_THAN_500_PER_YEAR': False,
+     'epa.id' : '36534', 'epa.co2TailpipeGpm': '269.0', 'epa.model' : '3 5-Door', 'epa.trim' : 'Man 6-spd, 4 cyl, 2.0 L, SIDI',
+     #'epa.id' : '36535', 'epa.co2TailpipeGpm': '265.0', 'epa.model' : '3 5-Door', 'epa.trim' : 'Auto (S6), 4 cyl, 2.0 L, SIDI',
+    },
+
     # http://www.downtownnissan.com/inventory/New-2016-Nissan-Versa_Note-SR-3N1CE2CP0GL391251/ says this is a CVT
     # but https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3N1CE2CP0GL391251/ doesn't indicate transmission type
     # We normally just guess shortest epa trim in that case, but that gives the wrong answer here,
