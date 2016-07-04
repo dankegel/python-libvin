@@ -257,6 +257,14 @@ TEST_DATA = [
      'epa.id' : '31451', 'epa.co2TailpipeGpm': '592.5', 'epa.model' : 'Ram 1500 Pickup 4WD', 'epa.trim' : 'Auto 6-spd, 8 cyl, 5.7 L',
     },
 
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3CZRU5H35GM739695
+    # http://www.fueleconomy.gov/ws/rest/vehicle/35999
+    {'VIN': '3CZRU5H35GM739695', 'WMI': '3CZ', 'VDS': 'RU5H35', 'VIS': 'GM739695',
+     'MODEL': 'HR-V', 'MAKE': 'Honda', 'YEAR': 2016, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '739695', 'FEWER_THAN_500_PER_YEAR': False,
+     'epa.id' : '35999', 'epa.co2TailpipeGpm': '285.0', 'epa.model' : 'HR-V 2WD', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 1.8 L',
+    },
+
     # http://www.vindecoder.net/?vin=3D4PH6FV5AT152960&submit=Decode
     # http://www.rambodybuilder.com/2010/docs/intro/vin.pdf
     # http://www.fueleconomy.gov/ws/rest/vehicle/28788
