@@ -185,6 +185,7 @@ class EPAVin(Vin):
             attributes.append(self.nhtsa['BodyClass'])
         if 'Doors' in self.nhtsa and self.nhtsa['Doors'] != "":
             attributes.append(self.nhtsa['Doors']+'Dr')
+            attributes.append(self.nhtsa['Doors']+'-Door')
         if 'Series' in self.nhtsa and self.nhtsa['Series'] != "":
             s = self.nhtsa['Series']
             attributes.append(s)
