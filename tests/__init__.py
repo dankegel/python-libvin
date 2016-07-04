@@ -8,6 +8,13 @@ if 'NETWORK_OK' in os.environ:
 
 # Sorted alphabetically by VIN
 TEST_DATA = [
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37077
+    {'VIN': '19XFC2F58GE223856', 'WMI': '19X', 'VDS': 'FC2F58', 'VIS': 'GE223856',
+     'MODEL': 'Civic', 'MAKE': 'Honda', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '223856', 'FEWER_THAN_500_PER_YEAR': False,
+     'epa.id' : '37077', 'epa.co2TailpipeGpm': '256.0', 'epa.model' : 'Civic 4Dr', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 2.0 L',
+    },
+
     # http://www.vindecoder.net/?vin=1C4RJEAG2EC476429&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/33496
     {'VIN': '1C4RJEAG2EC476429', 'WMI': '1C4', 'VDS': 'RJEAG2', 'VIS': 'EC476429',
