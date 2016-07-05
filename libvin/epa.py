@@ -127,6 +127,9 @@ class EPAVin(Vin):
         if self.make == 'Dodge':
             if m == 'Caravan/Grand Caravan':
                 return 'Grand Caravan'
+        elif self.make == 'Ford':
+            if m.startswith('F-150'):
+                return m.replace('F-', 'F', 1)
         elif self.make == 'Mazda':
             if m.startswith('Mazda'):
                 return m.replace('Mazda', '')

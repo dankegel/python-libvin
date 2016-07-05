@@ -46,6 +46,13 @@ TEST_DATA = [
      'epa.id' : '30457', 'epa.co2TailpipeGpm': '555.4', 'epa.model' : 'Ram 1500 Pickup 2WD', 'epa.trim' : 'Auto 5-spd, 8 cyl, 5.7 L',
     },
 
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37047
+    {'VIN': '1FTEW1EP7GKD77746', 'WMI': '1FT', 'VDS': 'EW1EP7', 'VIS': 'GKD77746',
+     'MODEL': 'F-150', 'MAKE': 'Ford', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': 'D77746', 'FEWER_THAN_500_PER_YEAR': False,
+     'epa.id' : '37047', 'epa.co2TailpipeGpm': '453.0', 'epa.model' : 'F150 Pickup 4WD', 'epa.trim' : 'Auto (S6), 6 cyl, 2.7 L, Turbo',
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/36354
     {'VIN': '1GNKRHKD2GJ223195', 'WMI': '1GN', 'VDS': 'KRHKD2', 'VIS': 'GJ223195',
      'MODEL': 'Traverse AWD', 'MAKE': 'Chevrolet', 'YEAR': 2016, 'COUNTRY': 'United States',
