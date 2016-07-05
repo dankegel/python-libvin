@@ -47,6 +47,14 @@ TEST_DATA = [
     },
 
     # http://www.fueleconomy.gov/ws/rest/vehicle/37047
+    # Note: EPA has option package names like
+    #  F150 5.0L 2WD FFV GVWR>7599 LBS PAYLOAD PACKAGE
+    #  F150 Pickup 4WD FFV
+    #  F150 2.7L 4WD GVWR>6799 LBS PAYLOAD PACKAGE
+    # and NHTSA has attributes like
+    #  <GVWR>Class 2E: 6,001 - 7,000 lb (2,722 - 3,175 kg)</GVWR>
+    # libvin/epa.py will need to handle GVWR intelligently to match those.
+    # Not sure it's worth it yet.
     {'VIN': '1FTEW1EP7GKD77746', 'WMI': '1FT', 'VDS': 'EW1EP7', 'VIS': 'GKD77746',
      'MODEL': 'F-150', 'MAKE': 'Ford', 'YEAR': 2016, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': 'D77746', 'FEWER_THAN_500_PER_YEAR': False,
