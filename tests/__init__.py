@@ -501,6 +501,18 @@ TEST_DATA = [
      'REGION': 'asia', 'SEQUENTIAL_NUMBER': '426420', 'FEWER_THAN_500_PER_YEAR': False,
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JF2SJGVC3GH555328
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Subaru
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Subaru&model=Forester%20AWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36147
+    {'VIN': 'JF2SJGVC3GH555328', 'WMI': 'JF2', 'VDS': 'SJGVC3', 'VIS': 'GH555328',
+     'MODEL': 'Forester', 'MAKE': 'Subaru', 'YEAR': 2016, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '555328', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Touring + MR + H/K Premium + KA', 'nhtsa.series': '',
+     'epa.id' : '36147', 'epa.co2TailpipeGpm': '328.0', 'epa.model' : 'Forester AWD', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 2.5 L',
+    },
+
     # http://www.vindecoder.net/?vin=JH4CW2H53BC567925&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/34758
     {'VIN': 'JH4CW2H53BC567925', 'WMI': 'JH4', 'VDS': 'CW2H53', 'VIS': 'BC567925',
