@@ -597,6 +597,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/SADCM2BV5HA056855
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Jaguar
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Jaguar&model=F-Pace
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37394
+    {'VIN': 'SADCM2BV5HA056855', 'WMI': 'SAD', 'VDS': 'CM2BV5', 'VIS': 'HA056855',
+     'MODEL': 'F-Pace', 'MAKE': 'Jaguar', 'YEAR': 2017, 'COUNTRY': 'United Kingdom',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '056855', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'S',
+     'epa.id' : '37394', 'epa.co2TailpipeGpm': '446.0', 'epa.model' : 'F-Pace', 'epa.trim' : 'Auto (S8), 6 cyl, 3.0 L, Sup Charg',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/SAJWJ6HL9HMK36791
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Jaguar
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Jaguar&model=F-Type%20R%20AWD%20Convertible

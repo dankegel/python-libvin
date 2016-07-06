@@ -260,6 +260,7 @@ WMI_MAP = {
     'PE1': 'Ford Phillipines',
     'PE3': 'Mazda Phillipines',
     'PL1': 'Proton, Malaysia',
+    'SAD': 'Jaguar',
     'SAL': 'Land Rover',
     'SAJ': 'Jaguar',
     'SAR': 'Rover',
