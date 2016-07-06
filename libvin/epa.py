@@ -198,7 +198,10 @@ class EPAVin(Vin):
             attributes.append(self.nhtsa['Doors']+'-Door')
         if 'Series' in self.nhtsa and self.nhtsa['Series'] != "":
             s = self.nhtsa['Series']
-            attributes.append(s)
+            if len(s) < 2:
+                attributes.append(" " + s)
+            else:
+                attributes.append(s)
             # Special cases
             if self.make == 'Mercedes-Benz':
                 # e.g. WDBTJ65JX5F126044: NHTSA calls it CLK320C, but EPA expects CLK320

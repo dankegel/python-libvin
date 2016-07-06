@@ -596,6 +596,18 @@ TEST_DATA = [
      'epa.id' : '36940', 'epa.co2TailpipeGpm': '318.0', 'epa.model' : 'Rogue FWD', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 2.5 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/SAJWJ6HL9HMK36791
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Jaguar
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Jaguar&model=F-Type%20R%20AWD%20Convertible
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37312
+    {'VIN': 'SAJWJ6HL9HMK36791', 'WMI': 'SAJ', 'VDS': 'WJ6HL9', 'VIS': 'HMK36791',
+     'MODEL': 'F-Type', 'MAKE': 'Jaguar', 'YEAR': 2017, 'COUNTRY': 'United Kingdom',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'K36791', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'R',
+     'epa.id' : '37312', 'epa.co2TailpipeGpm': '500.0', 'epa.model' : 'F-Type R AWD Convertible', 'epa.trim' : 'Auto (S8), 8 cyl, 5.0 L, Sup Charg',
+    },
+
     # http://www.vindecoder.net/?vin=SCBEC9ZA1EC225243&submit=Decode
     # https://www.vinaudit.com/vin-search?vin=SCBEC9ZA1EC225243 got model slightly wrong
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Bentley confirms model name
@@ -747,7 +759,7 @@ TEST_DATA = [
     },
 
     #------- Volvo --------
-    # https://vpic.nhtsa.dot.gov/mid/home/displayfile/32205 "Volvo MY 2016 VIN decoder – USA/Canada"
+    # https://vpic.nhtsa.dot.gov/mid/home/displayfile/32205 "Volvo MY 2016 VIN decoder - USA/Canada"
 
     # http://www.vindecoder.net/?vin=YV1902FH5D1796335&submit=Decode doesn't have model
     # http://www.vindecoderz.com/EN/check-lookup/YV1902FH5D1796335
