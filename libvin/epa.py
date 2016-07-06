@@ -152,6 +152,9 @@ class EPAVin(Vin):
             if m == 'New Beetle':
                 # EPA has just 'Beetle' for some years
                 return 'Beetle'
+        elif self.make == 'Volvo':
+            if m.endswith("0CC"):
+                return m.replace("0CC", "0 CC")
         return m
 
     def __get_attributes(self):

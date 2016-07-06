@@ -756,4 +756,15 @@ TEST_DATA = [
      'epa.id' : '32588', 'epa.co2TailpipeGpm': '425.0', 'epa.model' : 'S60 AWD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.0 L, Turbo',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/YV4612UM8G2001277
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Volvo
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Volvo&model=S60%20CC%20AWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36247
+    {'VIN': 'YV4612UM8G2001277', 'WMI': 'YV4', 'VDS': '612UM8', 'VIS': 'G2001277',
+     'MODEL': 'S60CC', 'MAKE': 'Volvo', 'YEAR': 2016, 'COUNTRY': 'Sweden',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '001277', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '36247', 'epa.co2TailpipeGpm': '383.0', 'epa.model' : 'S60 CC AWD', 'epa.trim' : 'Auto (S6), 5 cyl, 2.5 L, Turbo',
+    },
 ]
