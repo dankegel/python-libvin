@@ -636,6 +636,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/LYV402FK0GB112042
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Volvo
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Volvo&model=S60%20FWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36224
+    {'VIN': 'LYV402FK0GB112042', 'WMI': 'LYV', 'VDS': '402FK0', 'VIS': 'GB112042',
+     'MODEL': 'S60/S60I', 'MAKE': 'Volvo', 'YEAR': 2016, 'COUNTRY': 'China',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '112042', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'SV33 Premier', 'nhtsa.series': '',
+     'epa.id' : '36224', 'epa.co2TailpipeGpm': '292.0', 'epa.model' : 'S60 FWD', 'epa.trim' : 'Auto (S8), 4 cyl, 2.0 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/SADCM2BV5HA056855
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Jaguar
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Jaguar&model=F-Pace

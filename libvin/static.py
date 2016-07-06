@@ -234,6 +234,7 @@ WMI_MAP = {
     'LTV': 'Toyota Tian Jin',
     'LVS': 'Ford Chang An',
     'LVV': 'Chery, China',
+    'LYV': 'Volvo China',
     'LZM': 'MAN China',
     'LZE': 'Isuzu Guangzhou, China',
     'LZG': 'Shaanxi Automobile Group, China',

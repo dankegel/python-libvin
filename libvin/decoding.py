@@ -156,6 +156,7 @@ class Vin(object):
         for suffix in [
            'Canada',
            'Cars',
+           'China',
            'France',
            'Hungary',
            'Mexico',
