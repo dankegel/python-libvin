@@ -746,6 +746,9 @@ TEST_DATA = [
      'epa.id' : '30536', 'epa.co2TailpipeGpm': '404.0', 'epa.model' : 'Tiguan', 'epa.trim' : 'Auto (S6), 4 cyl, 2.0 L, Turbo',
     },
 
+    #------- Volvo --------
+    # https://vpic.nhtsa.dot.gov/mid/home/displayfile/32205 "Volvo MY 2016 VIN decoder – USA/Canada"
+
     # http://www.vindecoder.net/?vin=YV1902FH5D1796335&submit=Decode doesn't have model
     # http://www.vindecoderz.com/EN/check-lookup/YV1902FH5D1796335
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Volvo confirms XC60
@@ -754,6 +757,30 @@ TEST_DATA = [
      'MODEL': 'XC60', 'MAKE':  'Volvo', 'YEAR': 2013, 'COUNTRY': 'Sweden',
      'REGION': 'europe', 'SEQUENTIAL_NUMBER': '796335', 'FEWER_THAN_500_PER_YEAR': False,
      'epa.id' : '32588', 'epa.co2TailpipeGpm': '425.0', 'epa.model' : 'S60 AWD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.0 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/YV126MFK7G2412996
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Volvo
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Volvo&model=S60%20FWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36224
+    {'VIN': 'YV126MFK7G2412996', 'WMI': 'YV1', 'VDS': '26MFK7', 'VIS': 'G2412996',
+     'MODEL': 'S60/S60I', 'MAKE': 'Volvo', 'YEAR': 2016, 'COUNTRY': 'Sweden',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '412996', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'SV33 Premier', 'nhtsa.series': '',
+     'epa.id' : '36224', 'epa.co2TailpipeGpm': '292.0', 'epa.model' : 'S60 FWD', 'epa.trim' : 'Auto (S8), 4 cyl, 2.0 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/YV1A92TS3G1394112
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Volvo
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Volvo&model=S60%20PoleStar%20AWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36226
+    {'VIN': 'YV1A92TS3G1394112', 'WMI': 'YV1', 'VDS': 'A92TS3', 'VIS': 'G1394112',
+     'MODEL': 'S60/S60I', 'MAKE': 'Volvo', 'YEAR': 2016, 'COUNTRY': 'Sweden',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '394112', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'SVP9 Polestar Special Edition', 'nhtsa.series': '',
+     'epa.id' : '36226', 'epa.co2TailpipeGpm': '412.0', 'epa.model' : 'S60 PoleStar AWD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.0 L, Turbo',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:

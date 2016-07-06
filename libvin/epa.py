@@ -155,6 +155,8 @@ class EPAVin(Vin):
         elif self.make == 'Volvo':
             if m.endswith("0CC"):
                 return m.replace("0CC", "0 CC")
+            if m == "S60/S60I":
+                return "S60"
         return m
 
     def __get_attributes(self):
