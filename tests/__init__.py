@@ -579,6 +579,32 @@ TEST_DATA = [
      'epa.id' : '26373', 'epa.co2TailpipeGpm': '329.1', 'epa.model' : '3', 'epa.trim' : 'Auto (S5), 4 cyl, 2.0 L',
     },
 
+    # https://vpic.nhtsa.dot.gov/mid/home/displayfile/29702 "2016 Model Year Vin Coding" for cx-9 and cx-3
+    # Note: DKA and DKB didn't encode 2WD vs 4WD, but DKC-DKF do.
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JM1DKDD75G0135172
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Mazda
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Mazda&model=CX-3%202WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36219
+    {'VIN': 'JM1DKDD75G0135172', 'WMI': 'JM1', 'VDS': 'DKDD75', 'VIS': 'G0135172',
+     'MODEL': 'CX-3', 'MAKE': 'Mazda', 'YEAR': 2016, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '135172', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Grand Touring/GT',
+     'epa.id' : '36219', 'epa.co2TailpipeGpm': '288.0', 'epa.model' : 'CX-3 2WD', 'epa.trim' : 'Auto (S6), 4 cyl, 2.0 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JM1DKFD76G0130140
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Mazda
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Mazda&model=CX-3%204WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36220
+    {'VIN': 'JM1DKFD76G0130140', 'WMI': 'JM1', 'VDS': 'DKFD76', 'VIS': 'G0130140',
+     'MODEL': 'CX-3', 'MAKE': 'Mazda', 'YEAR': 2016, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '130140', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Grand Touring/GT',
+     'epa.id' : '36220', 'epa.co2TailpipeGpm': '305.0', 'epa.model' : 'CX-3 4WD', 'epa.trim' : 'Auto (S6), 4 cyl, 2.0 L',
+    },
+
     # http://www.vindecoder.net/?vin=KNDJT2A54D7883468&submit=Decode
     # Note: can't tell transmission
     # http://www.fueleconomy.gov/ws/rest/vehicle/32802 'Auto 6-spd, 4 cyl, 1.6 L'

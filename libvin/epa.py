@@ -171,19 +171,21 @@ class EPAVin(Vin):
             attributes.append("AWD")
         elif '4WD' in driveType or '4x4' in driveType:
             attributes.append("4WD")
-        elif '4x2' in driveType:
-            attributes.append("2WD")
         elif 'Front' in driveType or 'FWD' in driveType:
             attributes.append("FWD")
             attributes.append("2WD")
         elif 'Rear' in driveType or 'RWD' in driveType:
             attributes.append("RWD")
             attributes.append("2WD")
+        elif '4x2' in driveType or '2WD' in driveType:
+            attributes.append("2WD")
         else:
             # 3FA6P0G76ER244757 has no drivetype listed at all, but is FWD.
             # FIXME: make this special case more specific somehow?
+            # This guesses wrong for e.g. JM1DKBD74G0111725, can we improve that?
             if self.year > 1990:
                 attributes.append("FWD")
+                attributes.append("2WD")
                 if self.verbosity > 1:
                     print("No drive type given, defaulting to FWD")
 
