@@ -61,6 +61,13 @@ TEST_DATA = [
      'epa.id' : '37047', 'epa.co2TailpipeGpm': '453.0', 'epa.model' : 'F150 Pickup 4WD', 'epa.trim' : 'Auto (S6), 6 cyl, 2.7 L, Turbo',
     },
 
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37040
+    {'VIN': '1FTEW1C80GKD23989', 'WMI': '1FT', 'VDS': 'EW1C80', 'VIS': 'GKD23989',
+     'MODEL': 'F-150', 'MAKE': 'Ford', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': 'D23989', 'FEWER_THAN_500_PER_YEAR': False,
+     'epa.id' : '37040', 'epa.co2TailpipeGpm': '453.0', 'epa.model' : 'F150 Pickup 2WD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L, Turbo',
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/36354
     {'VIN': '1GNKRHKD2GJ223195', 'WMI': '1GN', 'VDS': 'KRHKD2', 'VIS': 'GJ223195',
      'MODEL': 'Traverse AWD', 'MAKE': 'Chevrolet', 'YEAR': 2016, 'COUNTRY': 'United States',
@@ -501,16 +508,21 @@ TEST_DATA = [
      'epa.id' : '34758', 'epa.co2TailpipeGpm': '355.5', 'epa.model' : 'TSX Wagon', 'epa.trim' : 'Auto (S5), 4 cyl, 2.4 L',
     },
 
-    # http://www.vindecoder.net/?vin=JN1CV6FE4EM164066&submit=Decode
-    # http://infinitihelp.com/diy/common/infiniti_vin.php
-    # http://www.fueleconomy.gov/ws/rest/vehicle/34135
-    # http://www.fueleconomy.gov/ws/rest/vehicle/34136
-    # Note: can't tell whether this is manual or auto, just picking one.
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN1CV6FE4EM164066
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Infiniti
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Infiniti&model=Q60%20Convertible
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34134
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/34133
     {'VIN': 'JN1CV6FE4EM164066', 'WMI': 'JN1', 'VDS': 'CV6FE4', 'VIS': 'EM164066',
-     'MODEL': 'Q60 Convertible', 'MAKE':  'Infiniti', 'YEAR': 2014, 'COUNTRY': 'Japan',
+     'MODEL': 'Q60', 'MAKE': 'Infiniti', 'YEAR': 2014, 'COUNTRY': 'Japan',
      'REGION': 'asia', 'SEQUENTIAL_NUMBER': '164066', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '34136', 'epa.co2TailpipeGpm': '440.0', 'epa.model' : 'Q60 Coupe', 'epa.trim' : 'Man 6-spd, 6 cyl, 3.7 L',
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '34134', 'epa.co2TailpipeGpm': '464.0', 'epa.model' : 'Q60 Convertible', 'epa.trim' : 'Man 6-spd, 6 cyl, 3.7 L',
+     #'epa.id' : '34133', 'epa.co2TailpipeGpm': '434.0', 'epa.model' : 'Q60 Convertible', 'epa.trim' : 'Auto (S7), 6 cyl, 3.7 L',
     },
+
 
     # And another random JN1 that isn't Infiniti
     # http://nissanvindecoder.com/vins/jn1az44ex9m403788 says this is a 370Z
@@ -637,14 +649,57 @@ TEST_DATA = [
      'REGION': 'europe', 'SEQUENTIAL_NUMBER': '205644', 'FEWER_THAN_500_PER_YEAR': False,
     },
 
-    # http://www.vindecoder.net/?vin=WBSWL9C54AP786013&submit=Decode
-    # Note: can't tell transmission
-    # http://www.fueleconomy.gov/ws/rest/vehicle/29709
-    # http://www.fueleconomy.gov/ws/rest/vehicle/29710
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WBA1L9C54GV325753
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=BMW
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=BMW&model=228i%20xDrive%20Convertible
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36640
+    {'VIN': 'WBA1L9C54GV325753', 'WMI': 'WBA', 'VDS': '1L9C54', 'VIS': 'GV325753',
+     'MODEL': '228i', 'MAKE': 'BMW', 'YEAR': 2016, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '325753', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'xDrive SULEV', 'nhtsa.series': '2-series',
+     'epa.id' : '36640', 'epa.co2TailpipeGpm': '338.0', 'epa.model' : '228i xDrive Convertible', 'epa.trim' : 'Auto (S8), 4 cyl, 2.0 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WBA3C1C53FK119625
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2015&make=BMW
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2015&make=BMW&model=328i
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/35331
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/35330
+    {'VIN': 'WBA3C1C53FK119625', 'WMI': 'WBA', 'VDS': '3C1C53', 'VIS': 'FK119625',
+     'MODEL': '328i', 'MAKE': 'BMW', 'YEAR': 2015, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '119625', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'SULEV', 'nhtsa.series': '3-Series',
+     'epa.id' : '35331', 'epa.co2TailpipeGpm': '341.0', 'epa.model' : '328i', 'epa.trim' : 'Man 6-spd, 4 cyl, 2.0 L, Turbo',
+     #'epa.id' : '35330', 'epa.co2TailpipeGpm': '324.0', 'epa.model' : '328i', 'epa.trim' : 'Auto (S8), 4 cyl, 2.0 L, Turbo',
+    },
+
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WBA3F9C50DF483691
+    # http://www.fueleconomy.gov/ws/rest/vehicle/32907
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/33054
+    {'VIN': 'WBA3F9C50DF483691', 'WMI': 'WBA', 'VDS': '3F9C50', 'VIS': 'DF483691',
+     'MODEL': '335i', 'MAKE': 'BMW', 'YEAR': 2013, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '483691', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'ActiveHybrid 3 Sedan', 'nhtsa.series': '3-Series',
+     'epa.id' : '32907', 'epa.co2TailpipeGpm': '385.0', 'epa.model' : '335i', 'epa.trim' : 'Man 6-spd, 6 cyl, 3.0 L, Turbo',
+     #'epa.id' : '33054', 'epa.co2TailpipeGpm': '341.0', 'epa.model' : '335i', 'epa.trim' : 'Auto (S8), 6 cyl, 3.0 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WBSWL9C54AP786013
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2010&make=BMW
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2010&make=BMW&model=M3%20Convertible
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/29697
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/29806
     {'VIN': 'WBSWL9C54AP786013', 'WMI': 'WBS', 'VDS': 'WL9C54', 'VIS': 'AP786013',
-     'MODEL': 'M3 Convertible', 'MAKE':  'BMW', 'YEAR': 2010, 'COUNTRY': 'Germany',
+     'MODEL': 'M3', 'MAKE': 'BMW', 'YEAR': 2010, 'COUNTRY': 'Germany',
      'REGION': 'europe', 'SEQUENTIAL_NUMBER': '786013', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '29710', 'epa.co2TailpipeGpm': '555.4', 'epa.model' : 'M3', 'epa.trim' : 'Auto (S7), 8 cyl, 4.0 L',
+     'nhtsa.trim': '', 'nhtsa.series': '3 - Series',
+     'epa.id' : '29697', 'epa.co2TailpipeGpm': '555.4', 'epa.model' : 'M3 Convertible', 'epa.trim' : 'Auto (S7), 8 cyl, 4.0 L',
+     #'epa.id' : '29806', 'epa.co2TailpipeGpm': '555.4', 'epa.model' : 'M3 Convertible', 'epa.trim' : 'Man 6-spd, 8 cyl, 4.0 L',
     },
 
     # http://www.fueleconomy.gov/ws/rest/vehicle/20623

@@ -183,9 +183,11 @@ class EPAVin(Vin):
                     print("No drive type given, defaulting to FWD")
 
         if 'Trim' in self.nhtsa and self.nhtsa['Trim'] != "":
-            attributes.append(self.nhtsa['Trim'])
+            for word in self.nhtsa['Trim'].split():
+                attributes.append(word)
         if 'BodyClass' in self.nhtsa and self.nhtsa['BodyClass'] != "":
-            attributes.append(self.nhtsa['BodyClass'])
+            for word in self.nhtsa['BodyClass'].split("/"):
+                attributes.append(word)
         if 'Doors' in self.nhtsa and self.nhtsa['Doors'] != "":
             attributes.append(self.nhtsa['Doors']+'Dr')
             attributes.append(self.nhtsa['Doors']+'-Door')
@@ -439,6 +441,9 @@ class EPAVin(Vin):
             return None
         return None
 
+def myquote(s):
+    return s.replace(" ", "%20")
+
 def main():
     verbosity = 0
     yearoffset = 0
@@ -449,11 +454,20 @@ def main():
     for line in sys.stdin:
         vin = line.strip()
         v = EPAVin(vin, verbosity=verbosity, yearoffset=yearoffset)
+        url1 = myquote("http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=%s&make=%s" % (v.year, v.make))
+        url2 = myquote("http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=%s&make=%s&model=%s" % (v.year, v.make, v.model))
+        print("    # Breadcrumbs for how libvin/epa.py looks up the epa results:")
+        print("    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/%s" % v.decode())
+        print("    # %s" % url1)
+        print("    # %s" % url2)
+        if len(v.ecos) > 1:
+            print("    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:")
         for i in range(0, len(v.ecos)):
             print("    # http://www.fueleconomy.gov/ws/rest/vehicle/%s" % v.ids[i])
         print("    {'VIN': '%s', 'WMI': '%s', 'VDS': '%s', 'VIS': '%s'," % (v.decode(), v.wmi, v.vds, v.vis))
         print("     'MODEL': '%s', 'MAKE': '%s', 'YEAR': %d, 'COUNTRY': '%s'," % (v.nhtsaModel, v.make, v.year, v.country))
         print("     'REGION': '%s', 'SEQUENTIAL_NUMBER': '%s', 'FEWER_THAN_500_PER_YEAR': %s," % (v.region, v.vsn, v.less_than_500_built_per_year))
+        print("     'nhtsa.trim': '%s', 'nhtsa.series': '%s'," % (v.nhtsa['Trim'], v.nhtsa['Series']))
         for i in range(0, len(v.ecos)):
             print("     'epa.id' : '%s', 'epa.co2TailpipeGpm': '%s', 'epa.model' : '%s', 'epa.trim' : '%s'," %
                   (v.ids[i], round(float(v.ecos[i]['co2TailpipeGpm']), 1), v.model, v.trims[i]))
