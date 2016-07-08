@@ -804,6 +804,21 @@ TEST_DATA = [
      'epa.id' : '29413', 'epa.co2TailpipeGpm': '493.7', 'epa.model' : 'S550', 'epa.trim' : 'Auto 7-spd, 8 cyl, 5.5 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WMWSV3C56DT393104
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=MINI
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=MINI&model=Cooper%20S
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/32877
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/32876
+    {'VIN': 'WMWSV3C56DT393104', 'WMI': 'WMW', 'VDS': 'SV3C56', 'VIS': 'DT393104',
+     'MODEL': 'Cooper S Hardtop', 'MAKE': 'MINI', 'YEAR': 2013, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '393104', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Cooper S',
+     'epa.id' : '32877', 'epa.co2TailpipeGpm': '301.0', 'epa.model' : 'Cooper S', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.6 L, Turbo',
+     #'epa.id' : '32876', 'epa.co2TailpipeGpm': '310.0', 'epa.model' : 'Cooper S', 'epa.trim' : 'Auto (S6), 4 cyl, 1.6 L, Turbo',
+    },
+
     # http://www.vindecoder.net/?vin=WUADUAFG6AN410499&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/28523
     {'VIN': 'WUADUAFG6AN410499', 'WMI': 'WUA', 'VDS': 'DUAFG6', 'VIS': 'AN410499',
