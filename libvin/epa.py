@@ -151,6 +151,8 @@ class EPAVin(Vin):
             if m == 'Corolla Matrix':
                 # Nobody has ever heard the official name 'Corolla Matrix'
                 return 'Matrix'
+            elif m == '4-Runner':
+                return '4Runner'
         elif self.make == 'Volkswagen':
             if m == 'New Beetle':
                 # EPA has just 'Beetle' for some years

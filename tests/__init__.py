@@ -564,6 +564,18 @@ TEST_DATA = [
      'epa.id' : '32818', 'epa.co2TailpipeGpm': '460.0', 'epa.model' : 'FX37 RWD', 'epa.trim' : 'Auto (S7), 6 cyl, 3.7 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JTEBU5JR5G5340695
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Toyota
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Toyota&model=4Runner%204WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36858
+    {'VIN': 'JTEBU5JR5G5340695', 'WMI': 'JTE', 'VDS': 'BU5JR5', 'VIS': 'G5340695',
+     'MODEL': '4-Runner', 'MAKE': 'Toyota', 'YEAR': 2016, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '340695', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Base Grade', 'nhtsa.series': 'GRN280L/GRN285L',
+     'epa.id' : '36858', 'epa.co2TailpipeGpm': '478.0', 'epa.model' : '4Runner 4WD', 'epa.trim' : 'Auto (S5), 6 cyl, 4.0 L, Part-time 4WD',
+    },
+
     # http://www.vindecoder.net/?vin=JTHBW1GG7D2369737&submit=Decode has no model
     # http://www.autocalculator.org/VIN/WMI.aspx agrees JTH is Lexus
     # http://www.clublexus.com/forums/vindecoder.php?vin=JTHBW1GG7D2369737
