@@ -42,25 +42,45 @@ class Vin(object):
         """
         return self.vin[6].isdigit()
 
-    @property
-    def is_valid(self):
+    def calculate_checkdigit(self, v):
         """
-        Returns True if a VIN is valid, otherwise returns False.
+        Returns calculated check digit of the given VIN string.
         """
-        if len(self.vin) != 17:
+        products = [VIN_WEIGHT[i] * VIN_TRANSLATION[j] for i, j in enumerate(v)]
+        check_digit = sum(products) % 11
+        if check_digit == 10:
+            check_digit = 'X'
+        return str(check_digit)
+
+    def anonvin(self):
+        """
+        Return an anonymized VIN, where the sequential number has been replaced with zeroes.
+        """
+        v = self.vin
+        if self.less_than_500_built_per_year:
+            v = v[0:14] + "000"
+        else:
+            v = v[0:11] + "000000"
+        return v[0:8]+ self.calculate_checkdigit(v) + v[9:17]
+
+    def __is_valid(self, v):
+        """
+        Returns True if the given VIN is valid, otherwise returns False.
+        """
+        if len(v) != 17:
             """
             For model years 1981 to present, the VIN is composed of 17 
             alphanumeric values
             """
             return False
 
-        if any(x in 'IOQ' for x in self.vin):
+        if any(x in 'IOQ' for x in v):
             """ 
             The letters I,O, Q are prohibited from any VIN position 
             """
             return False
 
-        if self.vin[9] in 'UZ0':
+        if v[9] in 'UZ0':
             """
             The tenth position of the VIN represents the Model Year and 
             does not permit the use of the characters U and Z, as well 
@@ -68,12 +88,7 @@ class Vin(object):
             """
             return False
         
-        products = [VIN_WEIGHT[i] * VIN_TRANSLATION[j] for i, j in enumerate(self.vin)]
-        check_digit = sum(products) % 11
-        if check_digit == 10:
-            check_digit = 'X'
-
-        if self.vin[8] != str(check_digit):
+        if v[8] != self.calculate_checkdigit(v):
             """
             The ninth position of the VIN is a calculated value based on 
             the other 16 alphanumeric values, it's called the 
@@ -83,6 +98,13 @@ class Vin(object):
             return False
 
         return True
+
+    @property
+    def is_valid(self):
+        """
+        Returns True if a VIN is valid, otherwise returns False.
+        """
+        return self.__is_valid(self.vin)
 
     @property
     def less_than_500_built_per_year(self):

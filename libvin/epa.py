@@ -33,7 +33,9 @@ class EPAVin(Vin):
         self.yearoffset = yearoffset
         if self.verbosity > 0 and self.yearoffset != 0:
             print "Setting yearoffset to %d" % yearoffset
-        self.__nhtsa = nhtsa_decode(vin, verbosity)
+        # Use the anonymized vin for privacy, and because it'll make lookups of
+        # lots of identical-ish cars faster when using a web cache
+        self.__nhtsa = nhtsa_decode(self.anonvin(), verbosity)
         if (self.__nhtsa == None):
             return
         self.__attribs = self.__get_attributes()
