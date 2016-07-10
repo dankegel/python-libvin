@@ -468,7 +468,11 @@ TEST_DATA = [
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '421092', 'FEWER_THAN_500_PER_YEAR': False,
     },
 
-    # https://vpic.nhtsa.dot.gov/mid/home/displayfile/6197 "BMW Model Year 2015 Decipherment of VINs in Accordance with Part 565"
+    # BMW 2010-2015
+    # Cover letter: "Update - Vehicle Identification Number (VIN) Decipherments for 2010, 2011, 2012, 2013, 2014 & 2015 Model Year BMW Vehicles"
+    # Table: "BMW Model Year 2015 Decipherment of VINs in Accordance with Part 565"
+    # https://vpic.nhtsa.dot.gov/mid/home/displayfile/6197
+
     # http://www.vindecoder.net/?vin=5UXXW5C54F0791433&submit=Decode
     # http://www.partesymas.com/VIN-Interpretation-Tables-2026.pdf showed 4-7 were the model,body,engine code
     # http://www.autoredbook.com/ distinguished between the two X4 models
@@ -746,6 +750,18 @@ TEST_DATA = [
      'REGION': 'europe', 'SEQUENTIAL_NUMBER': '325753', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': 'xDrive SULEV', 'nhtsa.series': '2-series',
      'epa.id' : '36640', 'epa.co2TailpipeGpm': '338.0', 'epa.model' : '228i xDrive Convertible', 'epa.trim' : 'Auto (S8), 4 cyl, 2.0 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WBAVM1C50EVW50347
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=BMW
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=BMW&model=X1%20sDrive28i
+    # http://www.fueleconomy.gov/ws/rest/vehicle/33552
+    {'VIN': 'WBAVM1C50EVW50347', 'WMI': 'WBA', 'VDS': 'VM1C50', 'VIS': 'EVW50347',
+     'MODEL': 'X1', 'MAKE': 'BMW', 'YEAR': 2014, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'W50347', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'SAV', 'nhtsa.series': 'sDrive 28i',
+     'epa.id' : '33552', 'epa.co2TailpipeGpm': '332.0', 'epa.model' : 'X1 sDrive28i', 'epa.trim' : 'Auto (S8), 4 cyl, 2.0 L, Turbo',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:

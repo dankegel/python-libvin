@@ -216,6 +216,8 @@ class EPAVin(Vin):
                 # e.g. WDBTJ65JX5F126044: NHTSA calls it CLK320C, but EPA expects CLK320
                 if s.endswith('0C'):
                     attributes.append(s[:-1])
+            # sDrive 28i -> sDrive28i
+            attributes.append(self.nhtsa['Series'].replace(" ", ""))
 
         if 'Series2' in self.nhtsa and self.nhtsa['Series2'] != "":
             attributes.append(self.nhtsa['Series2'])
