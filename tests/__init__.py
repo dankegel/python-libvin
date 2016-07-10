@@ -85,6 +85,18 @@ TEST_DATA = [
      #'epa.id' : '37008', 'epa.co2TailpipeGpm': '527.0', 'epa.model' : 'Silverado C15 2WD', 'epa.trim' : 'Auto 8-spd, 8 cyl, 6.2 L, SIDI',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1GCEK19B45E223906
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2005&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2005&make=Chevrolet&model=Silverado%201500%204WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/21155
+    {'VIN': '1GCEK19B45E223906', 'WMI': '1GC', 'VDS': 'EK19B4', 'VIS': '5E223906',
+     'MODEL': 'Silverado', 'MAKE': 'Chevrolet', 'YEAR': 2005, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '223906', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '1500',
+     'epa.id' : '21155', 'epa.co2TailpipeGpm': '592.5', 'epa.model' : 'Silverado 1500 4WD', 'epa.trim' : 'Auto 4-spd, 8 cyl, 5.3 L',
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/36354
     {'VIN': '1GNKRHKD2GJ223195', 'WMI': '1GN', 'VDS': 'KRHKD2', 'VIS': 'GJ223195',
      'MODEL': 'Traverse AWD', 'MAKE': 'Chevrolet', 'YEAR': 2016, 'COUNTRY': 'United States',

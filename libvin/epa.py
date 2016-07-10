@@ -345,8 +345,7 @@ class EPAVin(Vin):
                     continue
                 u = val.upper()
                 if ((attrib.upper() in u)
-                 or (attrib == '2WD' and ('FWD' in u or 'RWD' in u))
-                 or (attrib == '4WD' and 'AWD' in u)):
+                 or (attrib == '2WD' and ('FWD' in u or 'RWD' in u))):
                     if chars_matched == 0:
                         chars_matched = len(attrib)
                     else:
