@@ -253,6 +253,18 @@ TEST_DATA = [
      'epa.id' : '24510', 'epa.co2TailpipeGpm': '555.4', 'epa.model' : 'Silverado C15 2WD', 'epa.trim' : 'Auto 4-spd, 8 cyl, 4.8 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2GNFLPE55C6105926
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2012&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2012&make=Chevrolet&model=Equinox%20FWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/31467
+    {'VIN': '2GNFLPE55C6105926', 'WMI': '2GN', 'VDS': 'FLPE55', 'VIS': 'C6105926',
+     'MODEL': 'Equinox', 'MAKE': 'Chevrolet', 'YEAR': 2012, 'COUNTRY': 'Canada',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '105926', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '2LT (FWD)',
+     'epa.id' : '31467', 'epa.co2TailpipeGpm': '444.4', 'epa.model' : 'Equinox FWD', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.0 L, SIDI',
+    },
+
     # http://www.gmforum.com/vindecoder.php?vin=2G61W5S83E9422251
     # ftp://safercar.gov/MfrMail/ORG7595.pdf "General Motors LLC 2013 Vehicle Identification Numbering Standard"
     # http://www.fueleconomy.gov/ws/rest/vehicle/33852
@@ -371,6 +383,18 @@ TEST_DATA = [
      'MODEL': 'Fusion', 'MAKE': 'Ford', 'YEAR': 2016, 'COUNTRY': 'Mexico',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '305754', 'FEWER_THAN_500_PER_YEAR': False,
      # FIXME: if NHTSA ever fixes their database, add epa data here.
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3GCEC13078G157479
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2008&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2008&make=Chevrolet&model=Silverado%20C15%202WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/24511
+    {'VIN': '3GCEC13078G157479', 'WMI': '3GC', 'VDS': 'EC1307', 'VIS': '8G157479',
+     'MODEL': 'Silverado', 'MAKE': 'Chevrolet', 'YEAR': 2008, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '157479', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '1/2 ton Work Truck / LS',
+     'epa.id' : '24511', 'epa.co2TailpipeGpm': '522.8', 'epa.model' : 'Silverado C15 2WD', 'epa.trim' : 'Auto 4-spd, 8 cyl, 5.3 L',
     },
 
     # http://www.fueleconomy.gov/ws/rest/vehicle/23047
