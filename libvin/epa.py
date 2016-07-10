@@ -58,6 +58,17 @@ class EPAVin(Vin):
         '''
         return self.nhtsa['Model']
 
+    def nhtsaGVWRClass(self):
+        '''
+        FHWA GVWR class for this vehicle.
+        1 - 0-6000 lbs
+        2 - 6001-10000 lbs
+        '''
+        if self.nhtsa['GVWR'].startswith('Class'):
+             # 'Class 3: 10,001 - 14,000 lb (4,536 - 6,350 kg)'
+             return self.nhtsa['GVWR'].split(':')[0].split()[1]
+        return None
+
     @property
     def model(self):
         '''
