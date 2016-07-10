@@ -241,6 +241,18 @@ TEST_DATA = [
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': 'A55516', 'FEWER_THAN_500_PER_YEAR': False,
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2GCEC13C981202392
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2008&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2008&make=Chevrolet&model=Silverado%20C15%202WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/24510
+    {'VIN': '2GCEC13C981202392', 'WMI': '2GC', 'VDS': 'EC13C9', 'VIS': '81202392',
+     'MODEL': 'Silverado', 'MAKE': 'Chevrolet', 'YEAR': 2008, 'COUNTRY': 'Canada',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '202392', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '1/2 ton Work Truck / LS',
+     'epa.id' : '24510', 'epa.co2TailpipeGpm': '555.4', 'epa.model' : 'Silverado C15 2WD', 'epa.trim' : 'Auto 4-spd, 8 cyl, 4.8 L',
+    },
+
     # http://www.gmforum.com/vindecoder.php?vin=2G61W5S83E9422251
     # ftp://safercar.gov/MfrMail/ORG7595.pdf "General Motors LLC 2013 Vehicle Identification Numbering Standard"
     # http://www.fueleconomy.gov/ws/rest/vehicle/33852
