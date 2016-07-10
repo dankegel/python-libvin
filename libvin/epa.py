@@ -211,6 +211,11 @@ class EPAVin(Vin):
                 attributes.append(" " + s)
             else:
                 attributes.append(s)
+            # Handle Chevy Spark, where Series is e.g. "EV, 2LT"
+            words = self.nhtsa['Series'].replace(",", "").split()
+            if len(words) > 1:
+                for word in words:
+                    attributes.append(word)
             # Special cases
             if self.make == 'Mercedes-Benz':
                 # e.g. WDBTJ65JX5F126044: NHTSA calls it CLK320C, but EPA expects CLK320
