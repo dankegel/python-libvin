@@ -699,6 +699,18 @@ TEST_DATA = [
      'epa.id' : '36220', 'epa.co2TailpipeGpm': '305.0', 'epa.model' : 'CX-3 4WD', 'epa.trim' : 'Auto (S6), 4 cyl, 2.0 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/KL7CJPSB2GB657170
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Chevrolet&model=Trax%20AWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36769
+    {'VIN': 'KL7CJPSB2GB657170', 'WMI': 'KL7', 'VDS': 'CJPSB2', 'VIS': 'GB657170',
+     'MODEL': 'Trax', 'MAKE': 'Chevrolet', 'YEAR': 2016, 'COUNTRY': 'Korea (South)',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '657170', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '1LT AWD',
+     'epa.id' : '36769', 'epa.co2TailpipeGpm': '330.0', 'epa.model' : 'Trax AWD', 'epa.trim' : 'Auto (S6), 4 cyl, 1.4 L, Turbo',
+    },
+
     # http://www.vindecoder.net/?vin=KNDJT2A54D7883468&submit=Decode
     # Note: can't tell transmission
     # http://www.fueleconomy.gov/ws/rest/vehicle/32802 'Auto 6-spd, 4 cyl, 1.6 L'
