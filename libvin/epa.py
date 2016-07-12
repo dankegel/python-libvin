@@ -143,6 +143,10 @@ class EPAVin(Vin):
         elif self.make == 'Ford':
             if m.startswith('F-150'):
                 return m.replace('F-', 'F', 1)
+        elif self.make == 'Infiniti':
+            # L is a slightly longer version...
+            if m == "Q70L":
+                return "Q70"
         elif self.make == 'Mazda':
             if m.startswith('Mazda'):
                 return m.replace('Mazda', '')

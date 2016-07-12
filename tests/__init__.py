@@ -643,6 +643,18 @@ TEST_DATA = [
      'epa.id' : '31820', 'epa.co2TailpipeGpm': '444.4', 'epa.model' : 'EX35', 'epa.trim' : 'Auto (S7), 6 cyl, 3.5 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN1AY1PP4FM170016
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2015&make=Infiniti
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2015&make=Infiniti&model=Q70
+    # http://www.fueleconomy.gov/ws/rest/vehicle/35712
+    # NOTE: EPA doesn't seem to have separate data for the L, it's slightly longer
+    {'VIN': 'JN1AY1PP4FM170016', 'WMI': 'JN1', 'VDS': 'AY1PP4', 'VIS': 'FM170016',
+     'MODEL': 'Q70L', 'MAKE': 'Infiniti', 'YEAR': 2015, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '170016', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '35712', 'epa.co2TailpipeGpm': '463.0', 'epa.model' : 'Q70', 'epa.trim' : 'Auto (S7), 8 cyl, 5.6 L',
+    },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN1AZ44EX9M403788
