@@ -531,6 +531,18 @@ TEST_DATA = [
      'epa.id' : '31946', 'epa.co2TailpipeGpm': '467.7', 'epa.model' : 'RDX 4WD', 'epa.trim' : 'Auto (S5), 4 cyl, 2.3 L, Turbo',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5N1AL0MM1DC339116
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Infiniti
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Infiniti&model=JX35%20FWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/32314
+    {'VIN': '5N1AL0MM1DC339116', 'WMI': '5N1', 'VDS': 'AL0MM1', 'VIS': 'DC339116',
+     'MODEL': 'JX35', 'MAKE': 'Infiniti', 'YEAR': 2013, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '339116', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '32314', 'epa.co2TailpipeGpm': '432.0', 'epa.model' : 'JX35 FWD', 'epa.trim' : 'Auto(AV-S6), 6 cyl, 3.5 L',
+    },
+
     # http://www.vindecoder.net/?vin=5N1CR2MN6EC875492&submit=Decode
     # NOTE: Disagreement between NHTSA and EPA about engine size, so skipping
     {'VIN': '5N1CR2MN6EC875492', 'WMI': '5N1', 'VDS': 'CR2MN6', 'VIS': 'EC875492',
@@ -602,6 +614,8 @@ TEST_DATA = [
      'epa.id' : '34758', 'epa.co2TailpipeGpm': '355.5', 'epa.model' : 'TSX Wagon', 'epa.trim' : 'Auto (S5), 4 cyl, 2.4 L',
     },
 
+    # ftp://safercar.gov/MfrMail/ORG7377.pdf "MY12 Nissan VIN Coding System"
+
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN1CV6FE4EM164066
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Infiniti
@@ -617,15 +631,32 @@ TEST_DATA = [
      #'epa.id' : '34133', 'epa.co2TailpipeGpm': '434.0', 'epa.model' : 'Q60 Convertible', 'epa.trim' : 'Auto (S7), 6 cyl, 3.7 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN1AJ0HP7CM401080
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2012&make=Infiniti
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2012&make=Infiniti&model=EX35
+    # http://www.fueleconomy.gov/ws/rest/vehicle/31820
+    {'VIN': 'JN1AJ0HP7CM401080', 'WMI': 'JN1', 'VDS': 'AJ0HP7', 'VIS': 'CM401080',
+     'MODEL': 'EX35', 'MAKE': 'Infiniti', 'YEAR': 2012, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '401080', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '31820', 'epa.co2TailpipeGpm': '444.4', 'epa.model' : 'EX35', 'epa.trim' : 'Auto (S7), 6 cyl, 3.5 L',
+    },
 
-    # And another random JN1 that isn't Infiniti
-    # http://nissanvindecoder.com/vins/jn1az44ex9m403788 says this is a 370Z
-    # NOTE: NHTSA says it's a 350Z
-    # but the engine size doesn't match any 350Z's at EPA, so NHTSA may be wrong on model
-    # Report sent to NHTSA
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN1AZ44EX9M403788
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2009&make=Nissan
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2009&make=Nissan&model=370z
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/26324
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/26323
     {'VIN': 'JN1AZ44EX9M403788', 'WMI': 'JN1', 'VDS': 'AZ44EX', 'VIS': '9M403788',
-     'MODEL': '370Z', 'MAKE':  'Nissan', 'YEAR': 2009, 'COUNTRY': 'Japan',
+     'MODEL': '370Z', 'MAKE': 'Nissan', 'YEAR': 2009, 'COUNTRY': 'Japan',
      'REGION': 'asia', 'SEQUENTIAL_NUMBER': '403788', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '26324', 'epa.co2TailpipeGpm': '423.2', 'epa.model' : '370z', 'epa.trim' : 'Man 6-spd, 6 cyl, 3.7 L',
+     #'epa.id' : '26323', 'epa.co2TailpipeGpm': '423.2', 'epa.model' : '370z', 'epa.trim' : 'Auto (S7), 6 cyl, 3.7 L',
     },
 
     # http://www.vindecoder.net/?vin=JN8BS1MW7EM920252&submit=Decode
