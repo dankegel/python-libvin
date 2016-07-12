@@ -147,6 +147,9 @@ class EPAVin(Vin):
             # L is a slightly longer version...
             if m == "Q70L":
                 return "Q70"
+            elif self.year == 2013 and m == 'EX35':
+                # Rebadged, and NHTSA didn't notice
+                return 'EX37'
         elif self.make == 'Mazda':
             if m.startswith('Mazda'):
                 return m.replace('Mazda', '')

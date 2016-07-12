@@ -617,6 +617,19 @@ TEST_DATA = [
     # ftp://safercar.gov/MfrMail/ORG7377.pdf "MY12 Nissan VIN Coding System"
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN1BJ0HP3DM430419
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Infiniti
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Infiniti&model=EX37
+    # http://www.fueleconomy.gov/ws/rest/vehicle/33276
+    # Note: Wikipedia mentioned this was rebadged.  Looks like EPA noticed and NHTSA didn't.
+    {'VIN': 'JN1BJ0HP3DM430419', 'WMI': 'JN1', 'VDS': 'BJ0HP3', 'VIS': 'DM430419',
+     'MODEL': 'EX35', 'MAKE': 'Infiniti', 'YEAR': 2013, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '430419', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '33276', 'epa.co2TailpipeGpm': '438.0', 'epa.model' : 'EX37', 'epa.trim' : 'Auto (S7), 6 cyl, 3.7 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN1CV6FE4EM164066
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Infiniti
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Infiniti&model=Q60%20Convertible
