@@ -118,6 +118,18 @@ TEST_DATA = [
      'epa.id' : '37066', 'epa.co2TailpipeGpm': '0.0', 'epa.model' : 'Leaf (24 kW-hr battery pack)', 'epa.trim' : 'Auto (A1)',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1N4BL3AP5DN508203
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Nissan
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Nissan&model=Altima
+    # http://www.fueleconomy.gov/ws/rest/vehicle/32612
+    {'VIN': '1N4BL3AP5DN508203', 'WMI': '1N4', 'VDS': 'BL3AP5', 'VIS': 'DN508203',
+     'MODEL': 'Altima', 'MAKE': 'Nissan', 'YEAR': 2013, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '508203', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '32612', 'epa.co2TailpipeGpm': '351.0', 'epa.model' : 'Altima', 'epa.trim' : 'Auto(AV-S6), 6 cyl, 3.5 L',
+    },
+
     # http://www.vindecoder.net/?vin=19UUA65694A043249&submit=Decode
     # http://acurazine.com/forums/vindecoder.php?vin=19UUA65694A043249
     # http://www.fueleconomy.gov/ws/rest/vehicle/19711
