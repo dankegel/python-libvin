@@ -222,6 +222,16 @@ class EPAVin(Vin):
         if 'Trim' in self.nhtsa and self.nhtsa['Trim'] != "":
             for word in self.nhtsa['Trim'].split():
                 attributes.append(word)
+            # Special cases
+            s = self.nhtsa['Trim']
+            # Chevrolet: 1500=1/2ton, 2500=3/4ton, 3500=1 ton?
+            if self.make == 'Chevrolet':
+                if "1/2 ton" in s:
+                    attributes.append('1500')
+                if "3/4 ton" in s:
+                    attributes.append('2500')
+                if "1 ton" in s:
+                    attributes.append('3500')
         if 'BodyClass' in self.nhtsa and self.nhtsa['BodyClass'] != "":
             for word in self.nhtsa['BodyClass'].split("/"):
                 attributes.append(word)
@@ -240,6 +250,14 @@ class EPAVin(Vin):
                 for word in words:
                     attributes.append(word)
             # Special cases
+            # Chevrolet: 1500=1/2ton, 2500=3/4ton, 3500=1 ton?
+            if self.make == 'Chevrolet':
+                if "1/2 ton" in s:
+                    attributes.append('1500')
+                if "3/4 ton" in s:
+                    attributes.append('2500')
+                if "1 ton" in s:
+                    attributes.append('3500')
             if self.make == 'Mercedes-Benz':
                 # e.g. WDBTJ65JX5F126044: NHTSA calls it CLK320C, but EPA expects CLK320
                 if s.endswith('0C'):

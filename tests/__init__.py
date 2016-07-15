@@ -104,6 +104,30 @@ TEST_DATA = [
      'epa.id' : '36354', 'epa.co2TailpipeGpm': '519.0', 'epa.model' : 'Traverse AWD', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.6 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1GNSCHE00CR257349
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2012&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2012&make=Chevrolet&model=Suburban%201500%202WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/31472
+    {'VIN': '1GNSCHE00CR257349', 'WMI': '1GN', 'VDS': 'SCHE00', 'VIS': 'CR257349',
+     'MODEL': 'Suburban', 'MAKE': 'Chevrolet', 'YEAR': 2012, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '257349', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '1/2 ton LS',
+     'epa.id' : '31472', 'epa.co2TailpipeGpm': '522.8', 'epa.model' : 'Suburban 1500 2WD', 'epa.trim' : 'Auto 6-spd, 8 cyl, 5.3 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1GNWCMEG8BR257377
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2011&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2011&make=Chevrolet&model=Suburban%202500%202WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/30523
+    {'VIN': '1GNWCMEG8BR257377', 'WMI': '1GN', 'VDS': 'WCMEG8', 'VIS': 'BR257377',
+     'MODEL': 'Suburban', 'MAKE': 'Chevrolet', 'YEAR': 2011, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '257377', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '3/4 ton', 'nhtsa.series': 'LT',
+     'epa.id' : '30523', 'epa.co2TailpipeGpm': '740.6', 'epa.model' : 'Suburban 2500 2WD', 'epa.trim' : 'Auto 6-spd, 8 cyl, 6.0 L',
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/35571
     {'VIN': '1GTN1TEC9FZ904179', 'WMI': '1GT', 'VDS': 'N1TEC9', 'VIS': 'FZ904179',
      'MODEL': 'Sierra', 'MAKE': 'GMC', 'YEAR': 2015, 'COUNTRY': 'United States',
