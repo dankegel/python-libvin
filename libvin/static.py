@@ -346,6 +346,7 @@ WMI_MAP = {
     'ZDF': 'Ferrari Dino',
     'ZD4': 'Aprilia',
     'ZFA': 'Fiat',
+    'ZFB': 'Fiat',
     'ZFC': 'Fiat V.I.',
     'ZFF': 'Ferrari',
     'ZHW': 'Lamborghini',

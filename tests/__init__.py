@@ -1118,4 +1118,20 @@ TEST_DATA = [
     # 'nhtsa.trim': 'Latitude (US-Mex.), North(Can)', 'nhtsa.series': '',
     # 'epa.id' : '36124', 'epa.co2TailpipeGpm': '333.0', 'epa.model' : 'Renegade 2WD', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.4 L, Turbo',
     #},
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/ZFBCFADH0FZ036733
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2015&make=Fiat
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2015&make=Fiat&model=500%20L
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/35306
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/35307
+    {'VIN': 'ZFBCFADH0FZ036733', 'WMI': 'ZFB', 'VDS': 'CFADH0', 'VIS': 'FZ036733',
+     'MODEL': '500L', 'MAKE': 'Fiat', 'YEAR': 2015, 'COUNTRY': 'Italy',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '036733', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'TREKKING', 'nhtsa.series': '',
+     'epa.id' : '35306', 'epa.co2TailpipeGpm': '327.0', 'epa.model' : '500 L', 'epa.trim' : 'Auto(AM6), 4 cyl, 1.4 L, Turbo',
+     #'epa.id' : '35307', 'epa.co2TailpipeGpm': '312.0', 'epa.model' : '500 L', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.4 L, Turbo',
+    },
+
 ]
