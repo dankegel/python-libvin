@@ -314,6 +314,18 @@ TEST_DATA = [
      'epa.id' : '22123', 'epa.co2TailpipeGpm': '329.1', 'epa.model' : 'Matrix', 'epa.trim' : 'Auto 4-spd, 4 cyl, 1.8 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2T2BGMCA0GC004299
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Lexus
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Lexus&model=RX%20350
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37108
+    {'VIN': '2T2BGMCA0GC004299', 'WMI': '2T2', 'VDS': 'BGMCA0', 'VIS': 'GC004299',
+     'MODEL': 'RX', 'MAKE': 'Lexus', 'YEAR': 2016, 'COUNTRY': 'Canada',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '004299', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'G grade', 'nhtsa.series': 'GYL25L/GGL25L/GGL20L/GYL20L',
+     'epa.id' : '37108', 'epa.co2TailpipeGpm': '389.0', 'epa.model' : 'RX 350', 'epa.trim' : 'Auto (S8), 6 cyl, 3.5 L',
+    },
+
     # http://www.vin-decoder.org/details?vin=3C3CFFCR9FT528063
     # http://www.fiat500usa.com/2013/08/decoding-fiat-500-vin.html
     # Chrysler Passenger Car Vehicle Identification Number Code Guide
