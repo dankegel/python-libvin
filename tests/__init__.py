@@ -1120,6 +1120,18 @@ TEST_DATA = [
     #},
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/ZAM56PPA0E1082014
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Maserati
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Maserati&model=Quattroporte%20GTS
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34100
+    {'VIN': 'ZAM56PPA0E1082014', 'WMI': 'ZAM', 'VDS': '56PPA0', 'VIS': 'E1082014',
+     'MODEL': 'Quattroporte', 'MAKE': 'Maserati', 'YEAR': 2014, 'COUNTRY': 'Italy',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '082014', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'M156',
+     'epa.id' : '34100', 'epa.co2TailpipeGpm': '548.0', 'epa.model' : 'Quattroporte GTS', 'epa.trim' : 'Auto 8-spd, 8 cyl, 3.8 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/ZFBCFADH0FZ036733
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2015&make=Fiat
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2015&make=Fiat&model=500%20L
