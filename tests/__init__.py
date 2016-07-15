@@ -1134,4 +1134,16 @@ TEST_DATA = [
      #'epa.id' : '35307', 'epa.co2TailpipeGpm': '312.0', 'epa.model' : '500 L', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.4 L, Turbo',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/ZFBCFXBT2GP392995
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Fiat
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Fiat&model=500%20X
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36200
+    {'VIN': 'ZFBCFXBT2GP392995', 'WMI': 'ZFB', 'VDS': 'CFXBT2', 'VIS': 'GP392995',
+     'MODEL': '500X', 'MAKE': 'Fiat', 'YEAR': 2016, 'COUNTRY': 'Italy',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '392995', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'EASY(US-Mex), SPORT (CAN)', 'nhtsa.series': '',
+     'epa.id' : '36200', 'epa.co2TailpipeGpm': '350.0', 'epa.model' : '500 X', 'epa.trim' : 'Auto 9-spd, 4 cyl, 2.4 L',
+    },
+
 ]
