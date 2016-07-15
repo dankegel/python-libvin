@@ -1105,4 +1105,17 @@ TEST_DATA = [
      'nhtsa.trim': '', 'nhtsa.series': '',
      'epa.id' : '36247', 'epa.co2TailpipeGpm': '383.0', 'epa.model' : 'S60 CC AWD', 'epa.trim' : 'Auto (S6), 5 cyl, 2.5 L, Turbo',
     },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/ZACCJABH0FPB66736
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2015&make=Jeep
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2015&make=Jeep&model=Renegade%202WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36124
+    # NOTE: invalid but real: https://vpic.nhtsa.dot.gov/mid/home/displayfile/29290
+    #{'VIN': 'ZACCJABH0FPB66736', 'WMI': 'ZAC', 'VDS': 'CJABH0', 'VIS': 'FPB66736',
+    # 'MODEL': 'Renegade', 'MAKE': 'Jeep', 'YEAR': 2015, 'COUNTRY': 'Italy',
+    # 'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'B66736', 'FEWER_THAN_500_PER_YEAR': False,
+    # 'nhtsa.trim': 'Latitude (US-Mex.), North(Can)', 'nhtsa.series': '',
+    # 'epa.id' : '36124', 'epa.co2TailpipeGpm': '333.0', 'epa.model' : 'Renegade 2WD', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.4 L, Turbo',
+    #},
 ]

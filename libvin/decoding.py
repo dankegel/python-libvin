@@ -192,10 +192,11 @@ class Vin(object):
                 man = man.replace(" %s" % suffix, "")
         if man == "General Motors":
             return "GMC"
-        if man == 'Chrysler':
+        if man == 'Chrysler' or man == 'FCA':
             # 2012 and later: first 3 positions became overloaded, some 'make' aka brand info moved further in; see
             # https://en.wikibooks.org/wiki/Vehicle_Identification_Numbers_(VIN_codes)/Chrysler/VIN_Codes
             # http://www.allpar.com/mopar/vin-decoder.html
+            # https://vpic.nhtsa.dot.gov/mid/home/displayfile/32250
             if self.year > 2011:
                 brandcode = self.vin[4]
                 if brandcode == 'D':
@@ -204,6 +205,8 @@ class Vin(object):
                     return 'Fiat'
                 if brandcode == 'J':
                     return 'Jeep'
+                if brandcode == 'R':
+                    return 'Ram'
         if man == "Fuji Heavy Industries (Subaru)":
             return 'Subaru'
         if man == 'Nissan':

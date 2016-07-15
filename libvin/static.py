@@ -337,6 +337,7 @@ WMI_MAP = {
     'YV4': 'Volvo Cars',
     'YV2': 'Volvo Trucks',
     'YV3': 'Volvo Buses',
+    'ZAC': 'FCA',
     'ZAM': 'Maserati Biturbo',
     'ZAP': 'Piaggio/Vespa/Gilera',
     'ZAR': 'Alfa Romeo',
