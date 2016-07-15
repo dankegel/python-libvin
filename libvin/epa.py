@@ -244,6 +244,14 @@ class EPAVin(Vin):
 
         if 'Series2' in self.nhtsa and self.nhtsa['Series2'] != "":
             attributes.append(self.nhtsa['Series2'])
+            # https://vpic.nhtsa.dot.gov/mid/home/displayfile/29218
+            # shows 2016 Lexus NX has Series2 of NX 200t / NX200t ... AWD
+            # unfortunately, the AWD there is just a possibility
+            for words in self.nhtsa['Series2'].split("/"):
+                for word in words.split():
+                    # FIXME: make this special case specific to Lexus?
+                    if word != 'AWD':
+                        attributes.append(word)
 
         if 'DisplacementL' in self.nhtsa and self.nhtsa['DisplacementL'] != '':
             attributes.append('%s L' % self.nhtsa['DisplacementL'])

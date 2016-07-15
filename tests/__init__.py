@@ -747,6 +747,18 @@ TEST_DATA = [
      'epa.id' : '32711', 'epa.co2TailpipeGpm': '224.0', 'epa.model' : 'ES 300h', 'epa.trim' : 'Auto(AV-S6), 4 cyl, 2.5 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JTJYARBZ3G2042318
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Lexus
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Lexus&model=NX%20200t
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37058
+    {'VIN': 'JTJYARBZ3G2042318', 'WMI': 'JTJ', 'VDS': 'YARBZ3', 'VIS': 'G2042318',
+     'MODEL': 'NX', 'MAKE': 'Lexus', 'YEAR': 2016, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '042318', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Luxury', 'nhtsa.series': 'AGZ10L/AGZ15L/AYZ10L/AYZ15L',
+     'epa.id' : '37058', 'epa.co2TailpipeGpm': '357.0', 'epa.model' : 'NX 200t', 'epa.trim' : 'Auto (S6), 4 cyl, 2.0 L, Turbo',
+    },
+
     # http://www.vindecoder.net/?vin=JTJHY7AX4D4667505&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/32226
     {'VIN': 'JTJHY7AX4D4667505', 'WMI': 'JTJ', 'VDS': 'HY7AX4', 'VIS': 'D4667505',
