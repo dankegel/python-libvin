@@ -506,6 +506,18 @@ TEST_DATA = [
      'epa.id' : '36739', 'epa.co2TailpipeGpm': '315.0', 'epa.model' : 'C300', 'epa.trim' : 'Auto 7-spd, 4 cyl, 2.0 L, Turbo',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/58ABK1GG4GU016219
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Lexus
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Lexus&model=ES%20350
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36750
+    {'VIN': '58ABK1GG4GU016219', 'WMI': '58A', 'VDS': 'BK1GG4', 'VIS': 'GU016219',
+     'MODEL': 'ES', 'MAKE': 'Lexus', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '016219', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '350', 'nhtsa.series': 'GSV60L/AVV60L',
+     'epa.id' : '36750', 'epa.co2TailpipeGpm': '368.0', 'epa.model' : 'ES 350', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L',
+    },
+
     # http://www.vindecoder.net/?vin=5FRYD3H26GB020813&submit=Decode unchecked
     # Note: can't tell if it has stop-start
     # http://www.fueleconomy.gov/ws/rest/vehicle/36119 'Auto (S9), 6 cyl, 3.5 L, SIDI; Stop-Start'
