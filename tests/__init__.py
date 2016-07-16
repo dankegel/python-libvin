@@ -97,11 +97,16 @@ TEST_DATA = [
      'epa.id' : '21155', 'epa.co2TailpipeGpm': '592.5', 'epa.model' : 'Silverado 1500 4WD', 'epa.trim' : 'Auto 4-spd, 8 cyl, 5.3 L',
     },
 
-    # http://www.fueleconomy.gov/ws/rest/vehicle/36354
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1GNKRHKD2GJ223195
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Chevrolet&model=Traverse%20FWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36351
     {'VIN': '1GNKRHKD2GJ223195', 'WMI': '1GN', 'VDS': 'KRHKD2', 'VIS': 'GJ223195',
-     'MODEL': 'Traverse AWD', 'MAKE': 'Chevrolet', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'MODEL': 'Traverse', 'MAKE': 'Chevrolet', 'YEAR': 2016, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '223195', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '36354', 'epa.co2TailpipeGpm': '519.0', 'epa.model' : 'Traverse AWD', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.6 L',
+     'nhtsa.trim': '', 'nhtsa.series': '2LT',
+     'epa.id' : '36351', 'epa.co2TailpipeGpm': '508.0', 'epa.model' : 'Traverse FWD', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.6 L',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
