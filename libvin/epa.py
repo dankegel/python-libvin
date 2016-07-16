@@ -169,7 +169,7 @@ class EPAVin(Vin):
                 # Rest of model name is in nhtsa['Series'], kind of
                 return m.replace('-Class', '')
         elif self.make == 'MINI':
-            if m.endswith('Hardtop'):
+            if m.endswith('Hardtop') and (self.year >= 2013 and self.year <= 2014):
                 return m.replace(' Hardtop', '')
         elif self.make == 'Nissan':
             if m == 'Versa Note':
@@ -244,6 +244,12 @@ class EPAVin(Vin):
         if 'Doors' in self.nhtsa and self.nhtsa['Doors'] != "":
             attributes.append(self.nhtsa['Doors']+'Dr')
             attributes.append(self.nhtsa['Doors']+'-Door')
+            if self.make == 'MINI':
+                if self.nhtsa['Doors'] == '3':
+                    attributes.append('2 Door')
+                elif self.nhtsa['Doors'] == '5':
+                    attributes.append('4 Door')
+
         if 'Series' in self.nhtsa and self.nhtsa['Series'] != "":
             s = self.nhtsa['Series']
             if len(s) < 2:

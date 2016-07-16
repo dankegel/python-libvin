@@ -1105,6 +1105,51 @@ TEST_DATA = [
      #'epa.id' : '32876', 'epa.co2TailpipeGpm': '310.0', 'epa.model' : 'Cooper S', 'epa.trim' : 'Auto (S6), 4 cyl, 1.6 L, Turbo',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WMWXM7C58ET986724
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=MINI
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=MINI&model=Cooper%20S%20(3-doors)
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34792
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/34858
+    {'VIN': 'WMWXM7C58ET986724', 'WMI': 'WMW', 'VDS': 'XM7C58', 'VIS': 'ET986724',
+     'MODEL': 'Cooper S Hardtop', 'MAKE': 'MINI', 'YEAR': 2014, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '986724', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Cooper S',
+     'epa.id' : '34792', 'epa.co2TailpipeGpm': '316.0', 'epa.model' : 'Cooper S (3-doors)', 'epa.trim' : 'Man 6-spd, 4 cyl, 2.0 L, Turbo',
+     #'epa.id' : '34858', 'epa.co2TailpipeGpm': '300.0', 'epa.model' : 'Cooper S (3-doors)', 'epa.trim' : 'Auto (S6), 4 cyl, 2.0 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WMWXP5C50G3B76912
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=MINI
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=MINI&model=Cooper%20Hardtop%202%20door
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36790
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/36843
+    {'VIN': 'WMWXP5C50G3B76912', 'WMI': 'WMW', 'VDS': 'XP5C50', 'VIS': 'G3B76912',
+     'MODEL': 'Cooper Hardtop', 'MAKE': 'MINI', 'YEAR': 2016, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'B76912', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Cooper',
+     'epa.id' : '36790', 'epa.co2TailpipeGpm': '287.0', 'epa.model' : 'Cooper Hardtop 2 door', 'epa.trim' : 'Auto (S6), 4 cyl, 1.5 L, Turbo',
+     #'epa.id' : '36843', 'epa.co2TailpipeGpm': '277.0', 'epa.model' : 'Cooper Hardtop 2 door', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.5 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WMWXU1C50G2E16676
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=MINI
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=MINI&model=Cooper%20Hardtop%204%20door
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36791
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/36719
+    {'VIN': 'WMWXU1C50G2E16676', 'WMI': 'WMW', 'VDS': 'XU1C50', 'VIS': 'G2E16676',
+     'MODEL': 'Cooper', 'MAKE': 'MINI', 'YEAR': 2016, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'E16676', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Cooper',
+     'epa.id' : '36791', 'epa.co2TailpipeGpm': '287.0', 'epa.model' : 'Cooper Hardtop 4 door', 'epa.trim' : 'Auto (S6), 4 cyl, 1.5 L, Turbo',
+     #'epa.id' : '36719', 'epa.co2TailpipeGpm': '272.0', 'epa.model' : 'Cooper Hardtop 4 door', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.5 L, Turbo',
+    },
+
     # http://www.vindecoder.net/?vin=WUADUAFG6AN410499&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/28523
     {'VIN': 'WUADUAFG6AN410499', 'WMI': 'WUA', 'VDS': 'DUAFG6', 'VIS': 'AN410499',
