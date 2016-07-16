@@ -484,6 +484,7 @@ WMI_MAP = {
     '5UM' : 'BMW',
     '5UX' : 'BMW',
     '5XX' : 'Kia',
+    '5XY' : 'Kia',
     '5YF' : 'Toyota',
     '55S' : 'Mercedes-Benz',
     '58A' : 'Lexus',

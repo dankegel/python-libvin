@@ -639,6 +639,18 @@ TEST_DATA = [
      'epa.id' : '34949', 'epa.co2TailpipeGpm': '330.0', 'epa.model' : 'Optima', 'epa.trim' : 'Auto (S6), 4 cyl, 2.4 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5XYPK4A57GG169415
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Kia
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Kia&model=Sorento%20FWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/35987
+    {'VIN': '5XYPK4A57GG169415', 'WMI': '5XY', 'VDS': 'PK4A57', 'VIS': 'GG169415',
+     'MODEL': 'Sorento', 'MAKE': 'Kia', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '169415', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'SX / SX Limited',
+     'epa.id' : '35987', 'epa.co2TailpipeGpm': '435.0', 'epa.model' : 'Sorento FWD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.3 L',
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/35500
     {'VIN': '5YFBURHE9FP280940', 'WMI': '5YF', 'VDS': 'BURHE9', 'VIS': 'FP280940',
      'MODEL': 'Corolla', 'MAKE':  'Toyota', 'YEAR': 2015, 'COUNTRY': 'United States',
