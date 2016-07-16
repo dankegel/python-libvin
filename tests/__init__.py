@@ -1034,6 +1034,30 @@ TEST_DATA = [
      #'epa.id' : '29806', 'epa.co2TailpipeGpm': '555.4', 'epa.model' : 'M3 Convertible', 'epa.trim' : 'Man 6-spd, 8 cyl, 4.0 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WBY1Z2C51GV556326
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=BMW
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=BMW&model=i3%20BEV
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37216
+    {'VIN': 'WBY1Z2C51GV556326', 'WMI': 'WBY', 'VDS': '1Z2C51', 'VIS': 'GV556326',
+     'MODEL': 'i3', 'MAKE': 'BMW', 'YEAR': 2016, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '556326', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '37216', 'epa.co2TailpipeGpm': '0.0', 'epa.model' : 'i3 BEV', 'epa.trim' : 'Auto (A1)',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WBY1Z4C5XGV505984
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=BMW
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=BMW&model=i3%20REX
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37222
+    {'VIN': 'WBY1Z4C5XGV505984', 'WMI': 'WBY', 'VDS': '1Z4C5X', 'VIS': 'GV505984',
+     'MODEL': 'i3', 'MAKE': 'BMW', 'YEAR': 2016, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '505984', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Range Extender',
+     'epa.id' : '37222', 'epa.co2TailpipeGpm': '37.0', 'epa.model' : 'i3 REX', 'epa.trim' : 'Auto (A1), 2 cyl, 0.6 L',
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/20623
     {'VIN': 'WDBTJ65JX5F126044', 'WMI': 'WDB', 'VDS': 'TJ65JX', 'VIS': '5F126044',
      'MODEL': 'CLK-Class', 'MAKE': 'Mercedes-Benz', 'YEAR': 2005, 'COUNTRY': 'Germany',

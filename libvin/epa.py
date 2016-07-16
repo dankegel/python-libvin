@@ -137,7 +137,13 @@ class EPAVin(Vin):
         Return model name translated from NHTSA-ese into EPA-ese
         '''
         m = self.nhtsa['Model']
-        if self.make == 'Dodge':
+        if self.make == 'BMW':
+            if m == 'i3':
+                if self.nhtsa['FuelTypeSecondary'] == 'Gasoline':
+                   return 'i3 REX'
+                else:
+                   return 'i3 BEV'
+        elif self.make == 'Dodge':
             if m == 'Caravan/Grand Caravan':
                 return 'Grand Caravan'
         elif self.make == 'Fiat':
