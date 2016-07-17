@@ -1150,6 +1150,18 @@ TEST_DATA = [
      #'epa.id' : '36719', 'epa.co2TailpipeGpm': '272.0', 'epa.model' : 'Cooper Hardtop 4 door', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.5 L, Turbo',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WP1AE2A20FLA52901
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2015&make=Porsche
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2015&make=Porsche&model=Cayenne%20S%20e-Hybrid
+    # http://www.fueleconomy.gov/ws/rest/vehicle/35896
+    {'VIN': 'WP1AE2A20FLA52901', 'WMI': 'WP1', 'VDS': 'AE2A20', 'VIS': 'FLA52901',
+     'MODEL': 'Cayenne', 'MAKE': 'Porsche', 'YEAR': 2015, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'A52901', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'E-Hybrid', 'nhtsa.series': 'S',
+     'epa.id' : '35896', 'epa.co2TailpipeGpm': '260.0', 'epa.model' : 'Cayenne S e-Hybrid', 'epa.trim' : 'Auto(AM8), 6 cyl, 3.0 L, Sup Charg',
+    },
+
     # http://www.vindecoder.net/?vin=WUADUAFG6AN410499&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/28523
     {'VIN': 'WUADUAFG6AN410499', 'WMI': 'WUA', 'VDS': 'DUAFG6', 'VIS': 'AN410499',

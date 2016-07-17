@@ -320,6 +320,7 @@ WMI_MAP = {
     'WMA': 'MAN Germany',
     'WMW': 'MINI',
     'WP0': 'Porsche',
+    'WP1': 'Porsche',
     'W04': 'Buick',
     'W0L': 'Opel',
     'WUA': 'Audi',
