@@ -276,6 +276,11 @@ class EPAVin(Vin):
                     attributes.append(s[:-1])
             # sDrive 28i -> sDrive28i
             attributes.append(self.nhtsa['Series'].replace(" ", ""))
+            # gle550e-4M -> gle550e 4matic, kinda
+            words = self.nhtsa['Series'].replace("-", " ").split()
+            if len(words) > 1:
+                for word in words:
+                    attributes.append(word)
 
         if 'Series2' in self.nhtsa and self.nhtsa['Series2'] != "":
             attributes.append(self.nhtsa['Series2'])
@@ -405,11 +410,11 @@ class EPAVin(Vin):
                 continue
             # Find choice that matches most chars from attributes.
             # In case of a tie, prefer shortest choice.
+            u = val.upper()
             chars_matched = 0
             for attrib in attributes:
                 if attrib == "":
                     continue
-                u = val.upper()
                 if ((attrib.upper() in u)
                  or (attrib == '2WD' and ('FWD' in u or 'RWD' in u))):
                     if chars_matched == 0:

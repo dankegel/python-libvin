@@ -516,6 +516,18 @@ TEST_DATA = [
      'epa.id' : '31170', 'epa.co2TailpipeGpm': '444.4', 'epa.model' : 'Eclipse', 'epa.trim' : 'Auto (S5), 6 cyl, 3.8 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/4JGDA6DB9GA764832
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Mercedes-Benz
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Mercedes-Benz&model=GLE550e%204matic
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37526
+    {'VIN': '4JGDA6DB9GA764832', 'WMI': '4JG', 'VDS': 'DA6DB9', 'VIS': 'GA764832',
+     'MODEL': 'GLE', 'MAKE': 'Mercedes-Benz', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '764832', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'GLE550e-4M',
+     'epa.id' : '37526', 'epa.co2TailpipeGpm': '294.0', 'epa.model' : 'GLE550e 4matic', 'epa.trim' : 'Auto 7-spd, 6 cyl, 3.0 L, Turbo',
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/36406
     {'VIN': '4S3BNAH62G3049699', 'WMI': '4S3', 'VDS': 'BNAH62', 'VIS': 'G3049699',
      'MODEL': 'Legacy', 'MAKE': 'Subaru', 'YEAR': 2016, 'COUNTRY': 'United States',
