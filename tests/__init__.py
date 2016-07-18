@@ -513,6 +513,21 @@ TEST_DATA = [
      'epa.id' : '37237', 'epa.co2TailpipeGpm': '363.0', 'epa.model' : 'NV200 NYC Taxi', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 2.0 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3TMCZ5AN2GM040551
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Toyota
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Toyota&model=Tacoma%204WD
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36925
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/36924
+    {'VIN': '3TMCZ5AN2GM040551', 'WMI': '3TM', 'VDS': 'CZ5AN2', 'VIS': 'GM040551',
+     'MODEL': 'Tacoma', 'MAKE': 'Toyota', 'YEAR': 2016, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '040551', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'SR5 Grade', 'nhtsa.series': 'GRN305L',
+     'epa.id' : '36925', 'epa.co2TailpipeGpm': '471.0', 'epa.model' : 'Tacoma 4WD', 'epa.trim' : 'Man 6-spd, 6 cyl, 3.5 L',
+     #'epa.id' : '36924', 'epa.co2TailpipeGpm': '444.0', 'epa.model' : 'Tacoma 4WD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L',
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/31173
     {'VIN': '3VWVA7AT5CM635721', 'WMI': '3VW', 'VDS': 'VA7AT5', 'VIS': 'CM635721',
      'MODEL': 'New Beetle', 'MAKE': 'Volkswagen', 'YEAR': 2012, 'COUNTRY': 'Mexico',
