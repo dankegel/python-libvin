@@ -487,6 +487,7 @@ WMI_MAP = {
     '5T': 'Toyota USA - trucks',
     '5UM' : 'BMW',
     '5UX' : 'BMW',
+    '5YM' : 'BMW',
     '5XX' : 'Kia',
     '5XY' : 'Kia',
     '5YF' : 'Toyota',

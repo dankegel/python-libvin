@@ -687,6 +687,18 @@ TEST_DATA = [
      'epa.id' : '35500', 'epa.co2TailpipeGpm': '280.0', 'epa.model' : 'Corolla', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.8 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5YMKT6C52G0R79418
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=BMW
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=BMW&model=X5%20M
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36774
+    {'VIN': '5YMKT6C52G0R79418', 'WMI': '5YM', 'VDS': 'KT6C52', 'VIS': 'G0R79418',
+     'MODEL': 'X5', 'MAKE': 'BMW', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': 'R79418', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'SAV', 'nhtsa.series': 'M',
+     'epa.id' : '36774', 'epa.co2TailpipeGpm': '551.0', 'epa.model' : 'X5 M', 'epa.trim' : 'Auto (S8), 8 cyl, 4.4 L, Turbo',
+    },
+
     # http://www.vindecoder.net/?vin=JA4AD2A3XEZ426420&submit=Decode didn't have model
     # https://www.mitsubishicars.com/owners/support/vin-information
     # NHTSA complains  u'ErrorCode': u'4 - VIN corrected, error in one position only (indicated by ! in Suggested VIN), multiple matches found.',
