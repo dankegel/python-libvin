@@ -345,8 +345,14 @@ class EPAVin(Vin):
         try:
             content = r.content
             # You can't make this stuff up.  I love xml.
-            for item in xmltodict.parse(content).popitem()[1].items()[0][1]:
-               model = item.popitem()[1]
+            list_or_item = xmltodict.parse(content).popitem()[1].items()[0][1]
+            if type(list_or_item) is list:
+               for item in list_or_item:
+                  model = item.popitem()[1]
+                  key2model[model] = model
+            else:
+               # One-model companies like Fisker
+               model = list_or_item.popitem()[1]
                key2model[model] = model
         except AttributeError:
             print "epa:__get_possible_models: no models for year %s, make %s" % (self.year, self.make)

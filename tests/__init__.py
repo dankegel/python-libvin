@@ -1230,6 +1230,19 @@ TEST_DATA = [
      'epa.id' : '30536', 'epa.co2TailpipeGpm': '404.0', 'epa.model' : 'Tiguan', 'epa.trim' : 'Auto (S6), 4 cyl, 2.0 L, Turbo',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/YH4K14AA5CA000763
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2012&make=Fisker
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2012&make=Fisker&model=Karma
+    # http://www.fueleconomy.gov/ws/rest/vehicle/32516
+    # Note: commented out until nhtsa fixes Make to be Fisker, not Karma.
+    #{'VIN': 'YH4K14AA5CA000763', 'WMI': 'YH4', 'VDS': 'K14AA5', 'VIS': 'CA000763',
+    # 'MODEL': 'Karma', 'MAKE': 'Fisker', 'YEAR': 2012, 'COUNTRY': 'Finland',
+    # 'REGION': 'europe', 'SEQUENTIAL_NUMBER': '000763', 'FEWER_THAN_500_PER_YEAR': False,
+    # 'nhtsa.trim': 'Volume Build', 'nhtsa.series': 'ECO Sport',
+    # 'epa.id' : '32516', 'epa.co2TailpipeGpm': '169.0', 'epa.model' : 'Karma', 'epa.trim' : 'Auto (A1), 4 cyl, 2.0 L, Turbo',
+    #},
+
     #------- Volvo --------
     # https://vpic.nhtsa.dot.gov/mid/home/displayfile/32205 "Volvo MY 2016 VIN decoder - USA/Canada"
 
