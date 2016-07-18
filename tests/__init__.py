@@ -226,6 +226,18 @@ TEST_DATA = [
      #'epa.id' : '35974', 'epa.co2TailpipeGpm': '591.0', 'epa.model' : 'Titan 2WD', 'epa.trim' : 'Auto 5-spd, 8 cyl, 5.6 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1ZVBP8CF4E5242560
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Ford
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Ford&model=Mustang
+    # http://www.fueleconomy.gov/ws/rest/vehicle/33431
+    {'VIN': '1ZVBP8CF4E5242560', 'WMI': '1ZV', 'VDS': 'BP8CF4', 'VIS': 'E5242560',
+     'MODEL': 'Mustang', 'MAKE': 'Ford', 'YEAR': 2014, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '242560', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'GT Coupe', 'nhtsa.series': '',
+     'epa.id' : '33431', 'epa.co2TailpipeGpm': '473.0', 'epa.model' : 'Mustang', 'epa.trim' : 'Man 6-spd, 8 cyl, 5.0 L',
+    },
+
     # http://www.vindecoder.net/?vin=19VDE2E5XEE644230&submit=Decode unchecked
     # http://acurazine.com/forums/vindecoder.php?vin=19VDE2E5XEE644230
     # https://vpic.nhtsa.dot.gov/decoder/ says it has errors
