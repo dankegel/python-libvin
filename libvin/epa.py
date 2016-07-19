@@ -10,6 +10,7 @@ import json
 import requests
 import sys
 import xmltodict
+import re
 from pprint import pprint
 
 # Local
@@ -411,9 +412,15 @@ class EPAVin(Vin):
         best_matched = 0
         for (key, val) in choices.iteritems():
             # optional mandatory attribute
-            # to prevent [Q60 AWD] from matching Q85 AWD instead of Q60 AWD Coupe
-            if mustmatch != None and mustmatch.upper() not in val.upper():
-                continue
+            if mustmatch != None:
+                # prevent [Q60 AWD] from matching Q85 AWD instead of Q60 AWD Coupe
+                if mustmatch.upper() not in val.upper():
+                    continue
+                # prevent [2] from matching [2WD], as in Mazda's 2
+                if len(mustmatch) == 1:
+                    if not re.search('\\b%s\\b' % mustmatch, val, re.IGNORECASE):
+                        continue
+
             # Find choice that matches most chars from attributes.
             # In case of a tie, prefer shortest choice.
             u = val.upper()

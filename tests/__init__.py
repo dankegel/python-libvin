@@ -881,6 +881,18 @@ TEST_DATA = [
      'epa.id' : '26373', 'epa.co2TailpipeGpm': '329.1', 'epa.model' : '3', 'epa.trim' : 'Auto (S5), 4 cyl, 2.0 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JM1DE1KZ2E0182845
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Mazda
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Mazda&model=2
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34162
+    {'VIN': 'JM1DE1KZ2E0182845', 'WMI': 'JM1', 'VDS': 'DE1KZ2', 'VIS': 'E0182845',
+     'MODEL': 'Mazda2', 'MAKE': 'Mazda', 'YEAR': 2014, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '182845', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Sport/GX', 'nhtsa.series': '',
+     'epa.id' : '34162', 'epa.co2TailpipeGpm': '281.0', 'epa.model' : '2', 'epa.trim' : 'Man 5-spd, 4 cyl, 1.5 L',
+    },
+
     # https://vpic.nhtsa.dot.gov/mid/home/displayfile/29702 "2016 Model Year Vin Coding" for cx-9 and cx-3
     # Note: DKA and DKB didn't encode 2WD vs 4WD, but DKC-DKF do.
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
