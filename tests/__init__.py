@@ -920,6 +920,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/KL1TD5DE9BB162132
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2011&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2011&make=Chevrolet&model=Aveo
+    # http://www.fueleconomy.gov/ws/rest/vehicle/30314
+    {'VIN': 'KL1TD5DE9BB162132', 'WMI': 'KL1', 'VDS': 'TD5DE9', 'VIS': 'BB162132',
+     'MODEL': 'Aveo', 'MAKE': 'Chevrolet', 'YEAR': 2011, 'COUNTRY': 'Korea (South)',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '162132', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '1LS/1LT',
+     'epa.id' : '30314', 'epa.co2TailpipeGpm': '296.2', 'epa.model' : 'Aveo', 'epa.trim' : 'Man 5-spd, 4 cyl, 1.6 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/KL7CJPSB2GB657170
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Chevrolet
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Chevrolet&model=Trax%20AWD
