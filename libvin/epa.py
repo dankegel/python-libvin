@@ -413,25 +413,35 @@ class EPAVin(Vin):
         best_len = 0      # len of best matching trims
         best_matched = 0
         for (key, val) in choices.iteritems():
+            uval = val.upper()
             # optional mandatory attribute
             if mustmatch != None:
                 # prevent [Q60 AWD] from matching Q85 AWD instead of Q60 AWD Coupe
-                if mustmatch.upper() not in val.upper():
+                if mustmatch.upper() not in uval:
                     continue
                 # prevent [2] from matching [2WD], as in Mazda's 2
                 if len(mustmatch) == 1 and mustmatch.isdigit():
-                    if not re.search('\\b%s\\b' % mustmatch, val, re.IGNORECASE):
+                    if not re.search('\\b%s\\b' % mustmatch, val):
+                        continue
+                    # prevent [6] from matching [6-spd], as in Mazda's 6
+                    if ("%s-SPD" % mustmatch) in uval:
                         continue
 
             # Find choice that matches most chars from attributes.
             # In case of a tie, prefer shortest choice.
-            u = val.upper()
             chars_matched = 0
             for attrib in attributes:
                 if attrib == "":
                     continue
-                if ((attrib.upper() in u)
-                 or (attrib == '2WD' and ('FWD' in u or 'RWD' in u))):
+                if len(attrib) == 1 and attrib.isdigit():
+                    # prevent [2] from matching [2WD], as in Mazda's 2
+                    if not re.search('\\b%s\\b' % attrib, uval):
+                        continue
+                    # prevent [6] from matching [6-spd], as in Mazda's 6
+                    if ("%s-SPD" % attrib) in uval:
+                        continue
+                if ((attrib.upper() in uval)
+                 or (attrib == '2WD' and ('FWD' in uval or 'RWD' in uval))):
                     if chars_matched == 0:
                         chars_matched = len(attrib)
                     else:

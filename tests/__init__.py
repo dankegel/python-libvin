@@ -227,6 +227,21 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1YVHZ8DH0C5M33844
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2012&make=Mazda
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2012&make=Mazda&model=6
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/31223
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/31224
+    {'VIN': '1YVHZ8DH0C5M33844', 'WMI': '1YV', 'VDS': 'HZ8DH0', 'VIS': 'C5M33844',
+     'MODEL': 'Mazda6', 'MAKE': 'Mazda', 'YEAR': 2012, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': 'M33844', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Touring', 'nhtsa.series': '',
+     'epa.id' : '31223', 'epa.co2TailpipeGpm': '355.5', 'epa.model' : '6', 'epa.trim' : 'Auto (S5), 4 cyl, 2.5 L',
+     #'epa.id' : '31224', 'epa.co2TailpipeGpm': '370.3', 'epa.model' : '6', 'epa.trim' : 'Man 6-spd, 4 cyl, 2.5 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1ZVBP8CF4E5242560
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Ford
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Ford&model=Mustang
