@@ -277,6 +277,8 @@ class EPAVin(Vin):
                     attributes.append(s[:-1])
             # sDrive 28i -> sDrive28i
             attributes.append(self.nhtsa['Series'].replace(" ", ""))
+            # sDrive28i -> sDrive 28i
+            attributes.append(self.nhtsa['Series'].replace("sDrive", "sDrive "))
             # gle550e-4M -> gle550e 4matic, kinda
             words = self.nhtsa['Series'].replace("-", " ").split()
             if len(words) > 1:

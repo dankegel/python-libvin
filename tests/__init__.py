@@ -666,6 +666,18 @@ TEST_DATA = [
     # Table: "BMW Model Year 2015 Decipherment of VINs in Accordance with Part 565"
     # https://vpic.nhtsa.dot.gov/mid/home/displayfile/6197
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5UXWZ7C56H0T43955
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=BMW
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=BMW&model=X3%20sDrive%2028i
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37343
+    {'VIN': '5UXWZ7C56H0T43955', 'WMI': '5UX', 'VDS': 'WZ7C56', 'VIS': 'H0T43955',
+     'MODEL': 'X3', 'MAKE': 'BMW', 'YEAR': 2017, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': 'T43955', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'SAV', 'nhtsa.series': 'sDrive28i',
+     'epa.id' : '37343', 'epa.co2TailpipeGpm': '374.0', 'epa.model' : 'X3 sDrive 28i', 'epa.trim' : 'Auto (S8), 4 cyl, 2.0 L, Turbo',
+    },
+
     # http://www.vindecoder.net/?vin=5UXXW5C54F0791433&submit=Decode
     # http://www.partesymas.com/VIN-Interpretation-Tables-2026.pdf showed 4-7 were the model,body,engine code
     # http://www.autoredbook.com/ distinguished between the two X4 models
