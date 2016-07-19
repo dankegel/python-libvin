@@ -1180,6 +1180,18 @@ TEST_DATA = [
      'epa.id' : '35839', 'epa.co2TailpipeGpm': '696.0', 'epa.model' : 'G63 AMG', 'epa.trim' : 'Auto 7-spd, 8 cyl, 5.5 L, Turbo',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WDDGF4HB6DA760028
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Mercedes-Benz
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Mercedes-Benz&model=C250
+    # http://www.fueleconomy.gov/ws/rest/vehicle/32780
+    {'VIN': 'WDDGF4HB6DA760028', 'WMI': 'WDD', 'VDS': 'GF4HB6', 'VIS': 'DA760028',
+     'MODEL': 'C-Class', 'MAKE': 'Mercedes-Benz', 'YEAR': 2013, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '760028', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'C250',
+     'epa.id' : '32780', 'epa.co2TailpipeGpm': '352.0', 'epa.model' : 'C250', 'epa.trim' : 'Auto 7-spd, 4 cyl, 1.8 L, Turbo',
+    },
+
     # http://www.vindecoder.net/?vin=WDDNG7BB4AA522219&submit=Decode
     # ftp://safercar.gov/MfrMail/ORG4488.pdf
     # http://www.fueleconomy.gov/ws/rest/vehicle/29413

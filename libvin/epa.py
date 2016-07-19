@@ -419,7 +419,7 @@ class EPAVin(Vin):
                 if mustmatch.upper() not in val.upper():
                     continue
                 # prevent [2] from matching [2WD], as in Mazda's 2
-                if len(mustmatch) == 1:
+                if len(mustmatch) == 1 and mustmatch.isdigit():
                     if not re.search('\\b%s\\b' % mustmatch, val, re.IGNORECASE):
                         continue
 
