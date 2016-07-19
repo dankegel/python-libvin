@@ -311,6 +311,7 @@ WMI_MAP = {
     'WA1': 'Audi',
     'WBA': 'BMW',
     'WBS': 'BMW',
+    'WBX': 'BMW',
     'WBY': 'BMW',
     'WDB': 'Mercedes-Benz',
     'WDC': 'Mercedes-Benz',

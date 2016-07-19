@@ -1103,6 +1103,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WBXHT3C30G5E55046
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=BMW
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=BMW&model=X1%20xDrive28i
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36936
+    {'VIN': 'WBXHT3C30G5E55046', 'WMI': 'WBX', 'VDS': 'HT3C30', 'VIS': 'G5E55046',
+     'MODEL': 'X1', 'MAKE': 'BMW', 'YEAR': 2016, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'E55046', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'SAV', 'nhtsa.series': 'xDrive28i',
+     'epa.id' : '36936', 'epa.co2TailpipeGpm': '346.0', 'epa.model' : 'X1 xDrive28i', 'epa.trim' : 'Auto (S8), 4 cyl, 2.0 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WBY1Z2C51GV556326
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=BMW
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=BMW&model=i3%20BEV
