@@ -1041,6 +1041,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/SAJWA0HP7FMU61983
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2015&make=Jaguar
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2015&make=Jaguar&model=XF%20FFV
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34948
+    {'VIN': 'SAJWA0HP7FMU61983', 'WMI': 'SAJ', 'VDS': 'WA0HP7', 'VIS': 'FMU61983',
+     'MODEL': 'XF', 'MAKE': 'Jaguar', 'YEAR': 2015, 'COUNTRY': 'United Kingdom',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'U61983', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Supercharged', 'nhtsa.series': '',
+     'epa.id' : '34948', 'epa.co2TailpipeGpm': '500.0', 'epa.model' : 'XF FFV', 'epa.trim' : 'Auto (S8), 8 cyl, 5.0 L, Sup Charg',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/SAJWJ6HL9HMK36791
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Jaguar
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Jaguar&model=F-Type%20R%20AWD%20Convertible

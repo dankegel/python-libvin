@@ -59,6 +59,8 @@ class Vin(object):
         v = self.vin
         if self.less_than_500_built_per_year:
             v = v[0:14] + "000"
+        elif self.make == "Jaguar":
+            v = v[0:13] + "0000"
         else:
             v = v[0:11] + "000000"
         return v[0:8]+ self.calculate_checkdigit(v) + v[9:17]
