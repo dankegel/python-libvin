@@ -910,6 +910,18 @@ TEST_DATA = [
      'epa.id' : '32226', 'epa.co2TailpipeGpm': '623.0', 'epa.model' : 'LX 570', 'epa.trim' : 'Auto (S6), 8 cyl, 5.7 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JTNKARJEXGJ522381
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Scion
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Scion&model=iM
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36902
+    {'VIN': 'JTNKARJEXGJ522381', 'WMI': 'JTN', 'VDS': 'KARJEX', 'VIS': 'GJ522381',
+     'MODEL': 'Scion iM', 'MAKE': 'Scion', 'YEAR': 2016, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '522381', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'ZRE186L',
+     'epa.id' : '36902', 'epa.co2TailpipeGpm': '289.0', 'epa.model' : 'iM', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.8 L',
+    },
+
     ## Breadcrumbs for how libvin/epa.py looks up the epa results:
     ## https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JM1BM1W39E1175532
     ## http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Mazda

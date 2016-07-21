@@ -179,6 +179,9 @@ class EPAVin(Vin):
             elif m == 'NV200, City Express':
                 # NHTSA's Make for this is 'Nissan, Chevrolet'!
                 return 'NV200'
+        elif self.make == 'Scion':
+            if m.startswith("Scion "):
+                return m[6:]
         elif self.make == 'Toyota':
             if m == 'Corolla Matrix':
                 # Nobody has ever heard the official name 'Corolla Matrix'

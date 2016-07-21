@@ -215,6 +215,7 @@ WMI_MAP = {
     'JT': 'Toyota',
     'JTH': 'Lexus',
     'JTJ': 'Lexus',
+    'JTN': 'Scion',
     'KL': 'Daewoo General Motors South Korea',
     'KL1': 'Chevrolet',
     'KL7': 'Chevrolet',    # See page 8, https://vpic.nhtsa.dot.gov/mid/home/displayfile/32014
