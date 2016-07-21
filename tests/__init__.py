@@ -750,6 +750,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JF1VA2Y63G9804991
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Subaru
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Subaru&model=WRX
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36092
+    {'VIN': 'JF1VA2Y63G9804991', 'WMI': 'JF1', 'VDS': 'VA2Y63', 'VIS': 'G9804991',
+     'MODEL': 'WRX', 'MAKE': 'Subaru', 'YEAR': 2016, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '804991', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'STI Limited + MR + KA + NAVI(H/K) + BSD', 'nhtsa.series': '',
+     'epa.id' : '36092', 'epa.co2TailpipeGpm': '458.0', 'epa.model' : 'WRX', 'epa.trim' : 'Man 6-spd, 4 cyl, 2.5 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JF2SJGVC3GH555328
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Subaru
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Subaru&model=Forester%20AWD
@@ -896,6 +908,23 @@ TEST_DATA = [
      'MODEL': 'LX 570', 'MAKE':  'Lexus', 'YEAR': 2013, 'COUNTRY': 'Japan',
      'REGION': 'asia', 'SEQUENTIAL_NUMBER': '667505', 'FEWER_THAN_500_PER_YEAR': False,
      'epa.id' : '32226', 'epa.co2TailpipeGpm': '623.0', 'epa.model' : 'LX 570', 'epa.trim' : 'Auto (S6), 8 cyl, 5.7 L',
+    },
+
+    ## Breadcrumbs for how libvin/epa.py looks up the epa results:
+    ## https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JM1BM1W39E1175532
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Mazda
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Mazda&model=3%204-Door
+    ### http://www.fueleconomy.gov/ws/rest/vehicle/34274
+    ## The Vin info isn't enough, this has the i-ELOOP thingy.  Disable until we can decode it.
+    ## Not likely to be fixed, given https://vpic.nhtsa.dot.gov/mid/home/displayfile/5442 doesn't mention it.
+    ## Fortunately, it almost doesn't matter.
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/34275
+    {'VIN': 'JM1BM1W39E1175532', 'WMI': 'JM1', 'VDS': 'BM1W39', 'VIS': 'E1175532',
+     'MODEL': 'Mazda3', 'MAKE': 'Mazda', 'YEAR': 2014, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '175532', 'FEWER_THAN_500_PER_YEAR': False,
+    # 'nhtsa.trim': 'Grand Touring/GT', 'nhtsa.series': '',
+    # #'epa.id' : '34274', 'epa.co2TailpipeGpm': '277.0', 'epa.model' : '3 4-Door', 'epa.trim' : 'Auto (S6), 4 cyl, 2.5 L, SIDI',
+    # 'epa.id' : '34275', 'epa.co2TailpipeGpm': '275.0', 'epa.model' : '3 4-Door', 'epa.trim' : 'Auto (S6), 4 cyl, 2.5 L, SIDI; with i-ELOOP Technology Package',
     },
 
     # http://www.vindecoder.net/?vin=JM1BL1SF3A1267720&submit=Decode

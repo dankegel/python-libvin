@@ -226,6 +226,11 @@ class EPAVin(Vin):
                 if self.verbosity > 1:
                     print("No drive type given, defaulting to FWD")
 
+        # Needed for Subaru WRX
+        if 'EngineModel' in self.nhtsa and self.nhtsa['EngineModel'] != "":
+            for word in self.nhtsa['EngineModel'].split():
+                attributes.append(word)
+
         if 'Trim' in self.nhtsa and self.nhtsa['Trim'] != "":
             for word in self.nhtsa['Trim'].split():
                 attributes.append(word)
@@ -301,6 +306,9 @@ class EPAVin(Vin):
             # EPA sometimes likes to go all precise
             if '.' not in self.nhtsa['DisplacementL']:
                attributes.append('%s.0 L' % self.nhtsa['DisplacementL'])
+            # Mazda3 had displacement of 2.50, go figure
+            if self.nhtsa['DisplacementL'].endswith("0"):
+               attributes.append('%s L' % self.nhtsa['DisplacementL'][:-1])
         if 'EngineCylinders' in self.nhtsa and self.nhtsa['EngineCylinders'] != '':
             attributes.append('%s cyl' % self.nhtsa['EngineCylinders'])
 
