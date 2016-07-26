@@ -180,7 +180,7 @@ class EPAVin(Vin):
                 # NHTSA's Make for this is 'Nissan, Chevrolet'!
                 return 'NV200'
         elif self.make == 'Scion':
-            if m.startswith("Scion "):
+            if m.upper().startswith("SCION "):
                 return m[6:]
         elif self.make == 'Toyota':
             if m == 'Corolla Matrix':

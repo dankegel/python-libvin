@@ -186,6 +186,7 @@ class Vin(object):
            'Hungary',
            'Mexico',
            'Motor Company',
+           'Thailand',
            'Truck USA',
            'Turkey',
            'USA',
