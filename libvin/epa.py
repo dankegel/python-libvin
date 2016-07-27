@@ -144,6 +144,9 @@ class EPAVin(Vin):
                    return 'i3 REX'
                 else:
                    return 'i3 BEV'
+        elif self.make == 'Chevrolet':
+            if m == 'Captiva Sport':
+                return 'Captiva'
         elif self.make == 'Dodge':
             if m == 'Caravan/Grand Caravan':
                 return 'Grand Caravan'

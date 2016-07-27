@@ -477,6 +477,18 @@ TEST_DATA = [
      'epa.id' : '24511', 'epa.co2TailpipeGpm': '522.8', 'epa.model' : 'Silverado C15 2WD', 'epa.trim' : 'Auto 4-spd, 8 cyl, 5.3 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3GNAL2EK5ES582413
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Chevrolet&model=Captiva%20FWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34120
+    {'VIN': '3GNAL2EK5ES582413', 'WMI': '3GN', 'VDS': 'AL2EK5', 'VIS': 'ES582413',
+     'MODEL': 'Captiva Sport', 'MAKE': 'Chevrolet', 'YEAR': 2014, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '582413', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '2LS',
+     'epa.id' : '34120', 'epa.co2TailpipeGpm': '344.0', 'epa.model' : 'Captiva FWD', 'epa.trim' : 'Auto 6-spd, 4 cyl, 2.4 L',
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/23047
     {'VIN': '3GNFK16387G115163', 'WMI': '3GN', 'VDS': 'FK1638', 'VIS': '7G115163',
      'MODEL': 'Suburban', 'MAKE':  'Chevrolet', 'YEAR': 2007, 'COUNTRY': 'Mexico',
