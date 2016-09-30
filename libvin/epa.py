@@ -147,6 +147,9 @@ class EPAVin(Vin):
         elif self.make == 'Chevrolet':
             if m == 'Captiva Sport':
                 return 'Captiva'
+        elif self.make == 'Chrysler':
+            if m == 'Town & Country':
+                return 'Town and Country'
         elif self.make == 'Dodge':
             if m == 'Caravan/Grand Caravan':
                 return 'Grand Caravan'
@@ -214,6 +217,7 @@ class EPAVin(Vin):
             attributes.append("AWD")
         elif '4WD' in driveType or '4x4' in driveType:
             attributes.append("4WD")
+            attributes.append("AWD")
         elif 'Front' in driveType or 'FWD' in driveType:
             attributes.append("FWD")
             attributes.append("2WD")
@@ -319,10 +323,33 @@ class EPAVin(Vin):
             attributes.append('%s cyl' % self.nhtsa['EngineCylinders'])
 
         if 'FuelTypePrimary' in self.nhtsa:
-            # FIXME: also check FuelTypeSecondary?
-            ftp = self.nhtsa['FuelTypePrimary']
-            if 'FFV' in ftp or 'E85' in ftp:
+            f1 = self.nhtsa['FuelTypePrimary']
+            if 'FFV' in f1 or 'E85' in f1:
                 attributes.append('FFV')
+            f2 = self.nhtsa['FuelTypeSecondary']
+            if f1 == 'Electric':
+               if f2 == '':
+                   attributes.append('BEV')
+                   attributes.append('Electric')
+               else:
+                   attributes.append('PHEV')
+                   attributes.append('Hybrid')
+                   attributes.append('Plug-in')
+                   if self.make == 'Ford':
+                       # awful kludge
+                       attributes.append('Energi')
+            else:
+               if f2 == 'Electric':
+                   attributes.append('HEV')
+                   attributes.append('Hybrid')
+
+        if 'OtherEngineInfo' in self.nhtsa:
+           oei = self.nhtsa['OtherEngineInfo'].upper()
+           # Lexus 450h, Ford Escape Hybrid
+           if 'HYBRID' in oei or 'AC SYNCHONOUS MOTOR' in oei:
+               attributes.append('Hybrid')
+               if self.make == 'Lexus':
+                   attributes.append('0h')
 
         if 'BatteryKWh' in self.nhtsa and self.nhtsa['BatteryKWh'] != '':
             attributes.append('%s kW-hr' % self.nhtsa['BatteryKWh'])
@@ -423,6 +450,12 @@ class EPAVin(Vin):
         Returns: array of ids of best matching choices
         '''
 
+        if self.verbosity > 4:
+            print "__fuzzy_match"
+            pprint(mustmatch)
+            pprint(attributes)
+            pprint(choices)
+
         best_ids = []     # id of best matching trims
         best_len = 0      # len of best matching trims
         best_matched = 0
@@ -447,6 +480,8 @@ class EPAVin(Vin):
             for attrib in attributes:
                 if attrib == "":
                     continue
+                attrib = attrib.upper()
+                #print "Considering attrib %s, uval %s" % (attrib, uval)
                 if len(attrib) == 1 and attrib.isdigit():
                     # prevent [2] from matching [2WD], as in Mazda's 2
                     if not re.search('\\b%s\\b' % attrib, uval):
@@ -454,8 +489,11 @@ class EPAVin(Vin):
                     # prevent [6] from matching [6-spd], as in Mazda's 6
                     if ("%s-SPD" % attrib) in uval:
                         continue
-                if ((attrib.upper() in uval)
+                if ((attrib in uval)
                  or (attrib == '2WD' and ('FWD' in uval or 'RWD' in uval))):
+                    # Kludge: give bonus for hybrid match
+                    if attrib == "HYBRID":
+                        chars_matched += 8
                     if chars_matched == 0:
                         chars_matched = len(attrib)
                     else:

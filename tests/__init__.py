@@ -12,7 +12,7 @@ TEST_DATA = [
     {'VIN': '19XFC2F58GE223856', 'WMI': '19X', 'VDS': 'FC2F58', 'VIS': 'GE223856',
      'MODEL': 'Civic', 'MAKE': 'Honda', 'YEAR': 2016, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '223856', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '37077', 'epa.co2TailpipeGpm': '256.0', 'epa.model' : 'Civic 4Dr', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 2.0 L',
+     'epa.id' : '37077', 'epa.co2TailpipeGpm': '262.0', 'epa.model' : 'Civic 4Dr', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 2.0 L',
     },
 
     # http://www.fueleconomy.gov/ws/rest/vehicle/37075
@@ -27,7 +27,7 @@ TEST_DATA = [
     {'VIN': '1C4RJEAG2EC476429', 'WMI': '1C4', 'VDS': 'RJEAG2', 'VIS': 'EC476429',
      'MODEL': 'Grand Cherokee', 'MAKE':  'Jeep', 'YEAR': 2014, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '476429', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '33496', 'epa.co2TailpipeGpm': '443.0', 'epa.model' : 'Grand Cherokee 2WD', 'epa.trim' : 'Auto 8-spd, 6 cyl, 3.6 L',
+     'epa.id' : '33496', 'epa.co2TailpipeGpm': '444.0', 'epa.model' : 'Grand Cherokee 2WD', 'epa.trim' : 'Auto 8-spd, 6 cyl, 3.6 L',
     },
 
     # http://www.vindecoder.net/?vin=1D7RB1CP8BS798034&submit=Decode
@@ -46,6 +46,18 @@ TEST_DATA = [
      'epa.id' : '30457', 'epa.co2TailpipeGpm': '555.4', 'epa.model' : 'Ram 1500 Pickup 2WD', 'epa.trim' : 'Auto 5-spd, 8 cyl, 5.7 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1FMCU59H48KB89898
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2008&make=Ford
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2008&make=Ford&model=Escape%20Hybrid%204WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/24113
+    {'VIN': '1FMCU59H48KB89898', 'WMI': '1FM', 'VDS': 'CU59H4', 'VIS': '8KB89898',
+     'MODEL': 'Escape', 'MAKE': 'Ford', 'YEAR': 2008, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': 'B89898', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '24113', 'epa.co2TailpipeGpm': '317.4', 'epa.model' : 'Escape Hybrid 4WD', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 2.3 L',
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/37047
     # Note: EPA has option package names like
     #  F150 5.0L 2WD FFV GVWR>7599 LBS PAYLOAD PACKAGE
@@ -58,14 +70,14 @@ TEST_DATA = [
     {'VIN': '1FTEW1EP7GKD77746', 'WMI': '1FT', 'VDS': 'EW1EP7', 'VIS': 'GKD77746',
      'MODEL': 'F-150', 'MAKE': 'Ford', 'YEAR': 2016, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': 'D77746', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '37047', 'epa.co2TailpipeGpm': '453.0', 'epa.model' : 'F150 Pickup 4WD', 'epa.trim' : 'Auto (S6), 6 cyl, 2.7 L, Turbo',
+     'epa.id' : '37047', 'epa.co2TailpipeGpm': '452.0', 'epa.model' : 'F150 Pickup 4WD', 'epa.trim' : 'Auto (S6), 6 cyl, 2.7 L, Turbo',
     },
 
     # http://www.fueleconomy.gov/ws/rest/vehicle/37040
     {'VIN': '1FTEW1C80GKD23989', 'WMI': '1FT', 'VDS': 'EW1C80', 'VIS': 'GKD23989',
      'MODEL': 'F-150', 'MAKE': 'Ford', 'YEAR': 2016, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': 'D23989', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '37040', 'epa.co2TailpipeGpm': '453.0', 'epa.model' : 'F150 Pickup 2WD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L, Turbo',
+     'epa.id' : '37040', 'epa.co2TailpipeGpm': '454.0', 'epa.model' : 'F150 Pickup 2WD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L, Turbo',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
@@ -80,7 +92,7 @@ TEST_DATA = [
      'MODEL': 'Silverado', 'MAKE': 'Chevrolet', 'YEAR': 2016, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '280783', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': '',
-     'epa.id' : '37007', 'epa.co2TailpipeGpm': '493.0', 'epa.model' : 'Silverado C15 2WD', 'epa.trim' : 'Auto 8-spd, 8 cyl, 5.3 L, SIDI',
+     'epa.id' : '37007', 'epa.co2TailpipeGpm': '492.0', 'epa.model' : 'Silverado C15 2WD', 'epa.trim' : 'Auto 8-spd, 8 cyl, 5.3 L, SIDI',
      #'epa.id' : '37006', 'epa.co2TailpipeGpm': '480.0', 'epa.model' : 'Silverado C15 2WD', 'epa.trim' : 'Auto 6-spd, 8 cyl, 5.3 L, SIDI',
      #'epa.id' : '37008', 'epa.co2TailpipeGpm': '527.0', 'epa.model' : 'Silverado C15 2WD', 'epa.trim' : 'Auto 8-spd, 8 cyl, 6.2 L, SIDI',
     },
@@ -106,7 +118,7 @@ TEST_DATA = [
      'MODEL': 'Traverse', 'MAKE': 'Chevrolet', 'YEAR': 2016, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '223195', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': '2LT',
-     'epa.id' : '36351', 'epa.co2TailpipeGpm': '508.0', 'epa.model' : 'Traverse FWD', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.6 L',
+     'epa.id' : '36351', 'epa.co2TailpipeGpm': '507.0', 'epa.model' : 'Traverse FWD', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.6 L',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
@@ -156,7 +168,7 @@ TEST_DATA = [
      'MODEL': 'Altima', 'MAKE': 'Nissan', 'YEAR': 2013, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '508203', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': '',
-     'epa.id' : '32612', 'epa.co2TailpipeGpm': '351.0', 'epa.model' : 'Altima', 'epa.trim' : 'Auto(AV-S6), 6 cyl, 3.5 L',
+     'epa.id' : '32612', 'epa.co2TailpipeGpm': '354.0', 'epa.model' : 'Altima', 'epa.trim' : 'Auto(AV-S6), 6 cyl, 3.5 L',
     },
 
     # http://www.vindecoder.net/?vin=19UUA65694A043249&submit=Decode
@@ -222,7 +234,7 @@ TEST_DATA = [
      'MODEL': 'Titan', 'MAKE': 'Nissan', 'YEAR': 2016, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '509474', 'FEWER_THAN_500_PER_YEAR': False,
      'yearoffset':'-1',
-     'epa.id' : '35975', 'epa.co2TailpipeGpm': '600.0', 'epa.model' : 'Titan 2WD', 'epa.trim' : 'Auto 5-spd, 8 cyl, 5.6 L, FFV',
+     'epa.id' : '35975', 'epa.co2TailpipeGpm': '588.0', 'epa.model' : 'Titan 2WD', 'epa.trim' : 'Auto 5-spd, 8 cyl, 5.6 L, FFV',
      #'epa.id' : '35974', 'epa.co2TailpipeGpm': '591.0', 'epa.model' : 'Titan 2WD', 'epa.trim' : 'Auto 5-spd, 8 cyl, 5.6 L',
     },
 
@@ -284,14 +296,26 @@ TEST_DATA = [
     {'VIN': '2C3CDYAGXDH825982', 'WMI': '2C3', 'VDS': 'CDYAGX', 'VIS': 'DH825982',
      'MODEL': 'Challenger', 'MAKE':  'Dodge', 'YEAR': 2013, 'COUNTRY': 'Canada',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '825982', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '32977', 'epa.co2TailpipeGpm': '425.0', 'epa.model' : 'Challenger', 'epa.trim' : 'Auto 5-spd, 6 cyl, 3.6 L',
+     'epa.id' : '32977', 'epa.co2TailpipeGpm': '426.0', 'epa.model' : 'Challenger', 'epa.trim' : 'Auto 5-spd, 6 cyl, 3.6 L',
      },
 
     # http://www.fueleconomy.gov/ws/rest/vehicle/35462
     {'VIN': '2C4RDGBG1FR710120', 'WMI': '2C4', 'VDS': 'RDGBG1', 'VIS': 'FR710120',
      'MODEL': 'Caravan/Grand Caravan', 'MAKE': 'Dodge', 'YEAR': 2015, 'COUNTRY': 'Canada',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '710120', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '35462', 'epa.co2TailpipeGpm': '444.0', 'epa.model' : 'Grand Caravan', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.6 L',
+     'epa.id' : '35462', 'epa.co2TailpipeGpm': '445.0', 'epa.model' : 'Grand Caravan', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.6 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2C4RC1BG8GR193643
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Chrysler
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Chrysler&model=Town%20and%20Country
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36488
+    {'VIN': '2C4RC1BG8GR193643', 'WMI': '2C4', 'VDS': 'RC1BG8', 'VIS': 'GR193643',
+     'MODEL': 'Town & Country', 'MAKE': 'Chrysler', 'YEAR': 2016, 'COUNTRY': 'Canada',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '193643', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Touring', 'nhtsa.series': 'RT',
+     'epa.id' : '36488', 'epa.co2TailpipeGpm': '445.0', 'epa.model' : 'Town and Country', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.6 L',
     },
 
     # http://www.vindecoder.net/?vin=2D4RN6DX5AR939562&submit=Decode
@@ -373,13 +397,13 @@ TEST_DATA = [
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2T2BGMCA0GC004299
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Lexus
-    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Lexus&model=RX%20350
-    # http://www.fueleconomy.gov/ws/rest/vehicle/37108
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Lexus&model=RX%20450h%20AWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37111
     {'VIN': '2T2BGMCA0GC004299', 'WMI': '2T2', 'VDS': 'BGMCA0', 'VIS': 'GC004299',
      'MODEL': 'RX', 'MAKE': 'Lexus', 'YEAR': 2016, 'COUNTRY': 'Canada',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '004299', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': 'G grade', 'nhtsa.series': 'GYL25L/GGL25L/GGL20L/GYL20L',
-     'epa.id' : '37108', 'epa.co2TailpipeGpm': '389.0', 'epa.model' : 'RX 350', 'epa.trim' : 'Auto (S8), 6 cyl, 3.5 L',
+     'epa.id' : '37111', 'epa.co2TailpipeGpm': '299.0', 'epa.model' : 'RX 450h AWD', 'epa.trim' : 'Auto(AV-S6), 6 cyl, 3.5 L',
     },
 
     # http://www.vin-decoder.org/details?vin=3C3CFFCR9FT528063
@@ -393,14 +417,14 @@ TEST_DATA = [
      'MODEL': '500', 'MAKE':  'Fiat', 'YEAR': 2015, 'COUNTRY': 'Mexico',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '528063', 'FEWER_THAN_500_PER_YEAR': False,
      #'epa.id' : '35154', 'epa.co2TailpipeGpm': '295.0', 'epa.model' : '500', 'epa.trim' : 'Auto 6-spd, 4 cyl, 1.4 L',
-     'epa.id' : '35156', 'epa.co2TailpipeGpm': '260.0', 'epa.model' : '500', 'epa.trim' : 'Man 5-spd, 4 cyl, 1.4 L',
+     'epa.id' : '35156', 'epa.co2TailpipeGpm': '265.0', 'epa.model' : '500', 'epa.trim' : 'Man 5-spd, 4 cyl, 1.4 L',
     },
 
     # http://www.fueleconomy.gov/ws/rest/vehicle/34122
     {'VIN': '3C4PDCBG3ET296933', 'WMI': '3C4', 'VDS': 'PDCBG3', 'VIS': 'ET296933',
      'MODEL': 'Journey', 'MAKE': 'Dodge', 'YEAR': 2014, 'COUNTRY': 'Mexico',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '296933', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '34122', 'epa.co2TailpipeGpm': '456.0', 'epa.model' : 'Journey FWD', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.6 L',
+     'epa.id' : '34122', 'epa.co2TailpipeGpm': '457.0', 'epa.model' : 'Journey FWD', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.6 L',
     },
 
     # http://www.vindecoder.net/?vin=3C6JD7CT4CG104778&submit=Decode
@@ -417,7 +441,7 @@ TEST_DATA = [
     {'VIN': '3CZRU5H35GM739695', 'WMI': '3CZ', 'VDS': 'RU5H35', 'VIS': 'GM739695',
      'MODEL': 'HR-V', 'MAKE': 'Honda', 'YEAR': 2016, 'COUNTRY': 'Mexico',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '739695', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '35999', 'epa.co2TailpipeGpm': '285.0', 'epa.model' : 'HR-V 2WD', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 1.8 L',
+     'epa.id' : '35999', 'epa.co2TailpipeGpm': '290.0', 'epa.model' : 'HR-V 2WD', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 1.8 L',
     },
 
     # http://www.vindecoder.net/?vin=3D4PH6FV5AT152960&submit=Decode
@@ -454,7 +478,20 @@ TEST_DATA = [
     {'VIN': '3FA6P0G76ER244757', 'WMI': '3FA', 'VDS': '6P0G76', 'VIS': 'ER244757',
      'MODEL': 'Fusion', 'MAKE': 'Ford', 'YEAR': 2014, 'COUNTRY': 'Mexico',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '244757', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '34088', 'epa.co2TailpipeGpm': '339.0', 'epa.model' : 'Fusion FWD', 'epa.trim' : 'Auto (S6), 4 cyl, 2.5 L',
+     'epa.id' : '34088', 'epa.co2TailpipeGpm': '342.0', 'epa.model' : 'Fusion FWD', 'epa.trim' : 'Auto (S6), 4 cyl, 2.5 L',
+    },
+
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3FA6P0PU0HR122230
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Ford
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Ford&model=Fusion%20Energi%20Plug-in%20Hybrid
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37470
+    {'VIN': '3FA6P0PU0HR122230', 'WMI': '3FA', 'VDS': '6P0PU0', 'VIS': 'HR122230',
+     'MODEL': 'Fusion', 'MAKE': 'Ford', 'YEAR': 2017, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '122230', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'SE PHEV',
+     'epa.id' : '37470', 'epa.co2TailpipeGpm': '112.0', 'epa.model' : 'Fusion Energi Plug-in Hybrid', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 2.0 L',
     },
 
     # A Fusion Titanium.  It's AWD, but NHTSA mistakenly identifies it as FWD,
@@ -486,7 +523,7 @@ TEST_DATA = [
      'MODEL': 'Captiva Sport', 'MAKE': 'Chevrolet', 'YEAR': 2014, 'COUNTRY': 'Mexico',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '582413', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': '2LS',
-     'epa.id' : '34120', 'epa.co2TailpipeGpm': '344.0', 'epa.model' : 'Captiva FWD', 'epa.trim' : 'Auto 6-spd, 4 cyl, 2.4 L',
+     'epa.id' : '34120', 'epa.co2TailpipeGpm': '347.0', 'epa.model' : 'Captiva FWD', 'epa.trim' : 'Auto 6-spd, 4 cyl, 2.4 L',
     },
 
     # http://www.fueleconomy.gov/ws/rest/vehicle/23047
@@ -519,8 +556,8 @@ TEST_DATA = [
     {'VIN': '3MZBM1K72GM303265', 'WMI': '3MZ', 'VDS': 'BM1K72', 'VIS': 'GM303265',
      'MODEL': 'Mazda3', 'MAKE': 'Mazda', 'YEAR': 2016, 'COUNTRY': 'Mexico',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '303265', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '36534', 'epa.co2TailpipeGpm': '269.0', 'epa.model' : '3 5-Door', 'epa.trim' : 'Man 6-spd, 4 cyl, 2.0 L, SIDI',
-     #'epa.id' : '36535', 'epa.co2TailpipeGpm': '265.0', 'epa.model' : '3 5-Door', 'epa.trim' : 'Auto (S6), 4 cyl, 2.0 L, SIDI',
+     'epa.id' : '36534', 'epa.co2TailpipeGpm': '275.0', 'epa.model' : '3 5-Door', 'epa.trim' : 'Man 6-spd, 4 cyl, 2.0 L, SIDI',
+     #'epa.id' : '36535', 'epa.co2TailpipeGpm': '270.0', 'epa.model' : '3 5-Door', 'epa.trim' : 'Auto (S6), 4 cyl, 2.0 L, SIDI',
     },
 
     # http://www.downtownnissan.com/inventory/New-2016-Nissan-Versa_Note-SR-3N1CE2CP0GL391251/ says this is a CVT
@@ -537,7 +574,7 @@ TEST_DATA = [
     {'VIN': '3N6CM0KN0GK696126', 'WMI': '3N6', 'VDS': 'CM0KN0', 'VIS': 'GK696126',
      'MODEL': 'NV200, City Express', 'MAKE': 'Nissan', 'YEAR': 2016, 'COUNTRY': 'Mexico',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '696126', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '37237', 'epa.co2TailpipeGpm': '363.0', 'epa.model' : 'NV200 NYC Taxi', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 2.0 L',
+     'epa.id' : '37237', 'epa.co2TailpipeGpm': '353.0', 'epa.model' : 'NV200 NYC Taxi', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 2.0 L',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
@@ -551,7 +588,7 @@ TEST_DATA = [
      'MODEL': 'Tacoma', 'MAKE': 'Toyota', 'YEAR': 2016, 'COUNTRY': 'Mexico',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '040551', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': 'SR5 Grade', 'nhtsa.series': 'GRN305L',
-     'epa.id' : '36925', 'epa.co2TailpipeGpm': '471.0', 'epa.model' : 'Tacoma 4WD', 'epa.trim' : 'Man 6-spd, 6 cyl, 3.5 L',
+     'epa.id' : '36925', 'epa.co2TailpipeGpm': '470.0', 'epa.model' : 'Tacoma 4WD', 'epa.trim' : 'Man 6-spd, 6 cyl, 3.5 L',
      #'epa.id' : '36924', 'epa.co2TailpipeGpm': '444.0', 'epa.model' : 'Tacoma 4WD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L',
     },
 
@@ -586,7 +623,7 @@ TEST_DATA = [
     {'VIN': '4S3BNAH62G3049699', 'WMI': '4S3', 'VDS': 'BNAH62', 'VIS': 'G3049699',
      'MODEL': 'Legacy', 'MAKE': 'Subaru', 'YEAR': 2016, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '049699', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '36406', 'epa.co2TailpipeGpm': '298.0', 'epa.model' : 'Legacy AWD', 'epa.trim' : 'Auto(AV-S6), 4 cyl, 2.5 L',
+     'epa.id' : '36406', 'epa.co2TailpipeGpm': '302.0', 'epa.model' : 'Legacy AWD', 'epa.trim' : 'Auto(AV-S6), 4 cyl, 2.5 L',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
@@ -598,7 +635,7 @@ TEST_DATA = [
      'MODEL': 'C-Class', 'MAKE': 'Mercedes-Benz', 'YEAR': 2016, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '104745', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': 'C300',
-     'epa.id' : '36739', 'epa.co2TailpipeGpm': '315.0', 'epa.model' : 'C300', 'epa.trim' : 'Auto 7-spd, 4 cyl, 2.0 L, Turbo',
+     'epa.id' : '36739', 'epa.co2TailpipeGpm': '318.0', 'epa.model' : 'C300', 'epa.trim' : 'Auto 7-spd, 4 cyl, 2.0 L, Turbo',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
@@ -610,7 +647,7 @@ TEST_DATA = [
      'MODEL': 'ES', 'MAKE': 'Lexus', 'YEAR': 2016, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '016219', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '350', 'nhtsa.series': 'GSV60L/AVV60L',
-     'epa.id' : '36750', 'epa.co2TailpipeGpm': '368.0', 'epa.model' : 'ES 350', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L',
+     'epa.id' : '36750', 'epa.co2TailpipeGpm': '363.0', 'epa.model' : 'ES 350', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L',
     },
 
     # http://www.vindecoder.net/?vin=5FRYD3H26GB020813&submit=Decode unchecked
@@ -621,7 +658,7 @@ TEST_DATA = [
     {'VIN': '5FRYD3H26GB020813', 'WMI': '5FR', 'VDS': 'YD3H26', 'VIS': 'GB020813',
      'MODEL': 'MDX', 'MAKE':  'Acura', 'YEAR': 2016, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '020813', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '36120', 'epa.co2TailpipeGpm': '403.0', 'epa.model' : 'MDX 2WD', 'epa.trim' : 'Auto (S9), 6 cyl, 3.5 L, SIDI',
+     'epa.id' : '36120', 'epa.co2TailpipeGpm': '406.0', 'epa.model' : 'MDX 2WD', 'epa.trim' : 'Auto (S9), 6 cyl, 3.5 L, SIDI',
     },
 
     # http://www.vindecoder.net/?vin=5GADS13S072592644&submit=Decode
@@ -712,14 +749,14 @@ TEST_DATA = [
     {'VIN': '5UXXW5C54F0791433', 'WMI': '5UX', 'VDS': 'XW5C54', 'VIS': 'F0791433',
      'MODEL': 'X4 xDrive35i', 'MAKE':  'BMW', 'YEAR': 2015, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '791433', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '35241', 'epa.co2TailpipeGpm': '413.0', 'epa.model' : 'X4 xDrive35i', 'epa.trim' : 'Auto (S8), 6 cyl, 3.0 L, Turbo',
+     'epa.id' : '35241', 'epa.co2TailpipeGpm': '415.0', 'epa.model' : 'X4 xDrive35i', 'epa.trim' : 'Auto (S8), 6 cyl, 3.0 L, Turbo',
     },
 
     # http://www.fueleconomy.gov/ws/rest/vehicle/34949
     {'VIN': '5XXGM4A7XFG459047', 'WMI': '5XX', 'VDS': 'GM4A7X', 'VIS': 'FG459047',
      'MODEL': 'Optima', 'MAKE': 'Kia', 'YEAR': 2015, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '459047', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '34949', 'epa.co2TailpipeGpm': '330.0', 'epa.model' : 'Optima', 'epa.trim' : 'Auto (S6), 4 cyl, 2.4 L',
+     'epa.id' : '34949', 'epa.co2TailpipeGpm': '334.0', 'epa.model' : 'Optima', 'epa.trim' : 'Auto (S6), 4 cyl, 2.4 L',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
@@ -731,14 +768,26 @@ TEST_DATA = [
      'MODEL': 'Sorento', 'MAKE': 'Kia', 'YEAR': 2016, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '169415', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': 'SX / SX Limited',
-     'epa.id' : '35987', 'epa.co2TailpipeGpm': '435.0', 'epa.model' : 'Sorento FWD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.3 L',
+     'epa.id' : '35987', 'epa.co2TailpipeGpm': '436.0', 'epa.model' : 'Sorento FWD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.3 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5XYZT3LB5GG318570
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Hyundai
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Hyundai&model=Santa%20Fe%20Sport%20FWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36208
+    {'VIN': '5XYZT3LB5GG318570', 'WMI': '5XY', 'VDS': 'ZT3LB5', 'VIS': 'GG318570',
+     'MODEL': 'Santa Fe', 'MAKE': 'Hyundai', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '318570', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Sport', 'nhtsa.series': '',
+     'epa.id' : '36208', 'epa.co2TailpipeGpm': '387.0', 'epa.model' : 'Santa Fe Sport FWD', 'epa.trim' : 'Auto (S6), 4 cyl, 2.4 L',
     },
 
     # http://www.fueleconomy.gov/ws/rest/vehicle/35500
     {'VIN': '5YFBURHE9FP280940', 'WMI': '5YF', 'VDS': 'BURHE9', 'VIS': 'FP280940',
      'MODEL': 'Corolla', 'MAKE':  'Toyota', 'YEAR': 2015, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '280940', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '35500', 'epa.co2TailpipeGpm': '280.0', 'epa.model' : 'Corolla', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.8 L',
+     'epa.id' : '35500', 'epa.co2TailpipeGpm': '285.0', 'epa.model' : 'Corolla', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.8 L',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
@@ -774,23 +823,48 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JF1ZCAB12G9604896
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Subaru
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Subaru&model=BRZ
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36150
+    {'VIN': 'JF1ZCAB12G9604896', 'WMI': 'JF1', 'VDS': 'ZCAB12', 'VIS': 'G9604896',
+     'MODEL': 'BRZ', 'MAKE': 'Subaru', 'YEAR': 2016, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '604896', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Base', 'nhtsa.series': '',
+     'epa.id' : '36150', 'epa.co2TailpipeGpm': '360.0', 'epa.model' : 'BRZ', 'epa.trim' : 'Man 6-spd, 4 cyl, 2.0 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JF1ZNAA19G8708660
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Scion
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Scion&model=FR-S
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36194
+    {'VIN': 'JF1ZNAA19G8708660', 'WMI': 'JF1', 'VDS': 'ZNAA19', 'VIS': 'G8708660',
+     'MODEL': 'Scion FR-S', 'MAKE': 'Scion', 'YEAR': 2016, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '708660', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'STD', 'nhtsa.series': '',
+     'epa.id' : '36194', 'epa.co2TailpipeGpm': '317.0', 'epa.model' : 'FR-S', 'epa.trim' : 'Auto (S6), 4 cyl, 2.0 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JF2SJGVC3GH555328
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Subaru
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Subaru&model=Forester%20AWD
-    # http://www.fueleconomy.gov/ws/rest/vehicle/36147
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36148
     {'VIN': 'JF2SJGVC3GH555328', 'WMI': 'JF2', 'VDS': 'SJGVC3', 'VIS': 'GH555328',
      'MODEL': 'Forester', 'MAKE': 'Subaru', 'YEAR': 2016, 'COUNTRY': 'Japan',
      'REGION': 'asia', 'SEQUENTIAL_NUMBER': '555328', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': 'Touring + MR + H/K Premium + KA', 'nhtsa.series': '',
-     'epa.id' : '36147', 'epa.co2TailpipeGpm': '328.0', 'epa.model' : 'Forester AWD', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 2.5 L',
+     'epa.id' : '36148', 'epa.co2TailpipeGpm': '357.0', 'epa.model' : 'Forester AWD', 'epa.trim' : 'Auto(AV-S8), 4 cyl, 2.0 L, Turbo',
     },
+
 
     # http://www.vindecoder.net/?vin=JH4CW2H53BC567925&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/34758
     {'VIN': 'JH4CW2H53BC567925', 'WMI': 'JH4', 'VDS': 'CW2H53', 'VIS': 'BC567925',
      'MODEL': 'TSX', 'MAKE':  'Acura', 'YEAR': 2011, 'COUNTRY': 'Japan',
      'REGION': 'asia', 'SEQUENTIAL_NUMBER': '567925', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '34758', 'epa.co2TailpipeGpm': '355.5', 'epa.model' : 'TSX Wagon', 'epa.trim' : 'Auto (S5), 4 cyl, 2.4 L',
+     'epa.id' : '34758', 'epa.co2TailpipeGpm': '370.3', 'epa.model' : 'TSX Wagon', 'epa.trim' : 'Auto (S5), 4 cyl, 2.4 L',
     },
 
     # ftp://safercar.gov/MfrMail/ORG7377.pdf "MY12 Nissan VIN Coding System"
@@ -931,7 +1005,7 @@ TEST_DATA = [
      'MODEL': 'Scion iM', 'MAKE': 'Scion', 'YEAR': 2016, 'COUNTRY': 'Japan',
      'REGION': 'asia', 'SEQUENTIAL_NUMBER': '522381', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': 'ZRE186L',
-     'epa.id' : '36902', 'epa.co2TailpipeGpm': '289.0', 'epa.model' : 'iM', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.8 L',
+     'epa.id' : '36902', 'epa.co2TailpipeGpm': '294.0', 'epa.model' : 'iM', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.8 L',
     },
 
     ## Breadcrumbs for how libvin/epa.py looks up the epa results:
@@ -970,7 +1044,7 @@ TEST_DATA = [
      'MODEL': 'Mazda2', 'MAKE': 'Mazda', 'YEAR': 2014, 'COUNTRY': 'Japan',
      'REGION': 'asia', 'SEQUENTIAL_NUMBER': '182845', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': 'Sport/GX', 'nhtsa.series': '',
-     'epa.id' : '34162', 'epa.co2TailpipeGpm': '281.0', 'epa.model' : '2', 'epa.trim' : 'Man 5-spd, 4 cyl, 1.5 L',
+     'epa.id' : '34162', 'epa.co2TailpipeGpm': '286.0', 'epa.model' : '2', 'epa.trim' : 'Man 5-spd, 4 cyl, 1.5 L',
     },
 
     # https://vpic.nhtsa.dot.gov/mid/home/displayfile/29702 "2016 Model Year Vin Coding" for cx-9 and cx-3
@@ -1008,7 +1082,7 @@ TEST_DATA = [
      'MODEL': 'Aveo', 'MAKE': 'Chevrolet', 'YEAR': 2011, 'COUNTRY': 'Korea (South)',
      'REGION': 'asia', 'SEQUENTIAL_NUMBER': '162132', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': '1LS/1LT',
-     'epa.id' : '30314', 'epa.co2TailpipeGpm': '296.2', 'epa.model' : 'Aveo', 'epa.trim' : 'Man 5-spd, 4 cyl, 1.6 L',
+     'epa.id' : '30314', 'epa.co2TailpipeGpm': '306.4', 'epa.model' : 'Aveo', 'epa.trim' : 'Man 5-spd, 4 cyl, 1.6 L',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
@@ -1119,7 +1193,7 @@ TEST_DATA = [
     {'VIN': 'VNKJTUD36FA838549', 'WMI': 'VNK', 'VDS': 'JTUD36', 'VIS': 'FA838549',
      'MODEL': 'Yaris', 'MAKE':  'Toyota', 'YEAR': 2015, 'COUNTRY': 'France',
      'REGION': 'europe', 'SEQUENTIAL_NUMBER': '838549', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '35298', 'epa.co2TailpipeGpm': '266.0', 'epa.model' : 'Yaris', 'epa.trim' : 'Man 5-spd, 4 cyl, 1.5 L',
+     'epa.id' : '35298', 'epa.co2TailpipeGpm': '271.0', 'epa.model' : 'Yaris', 'epa.trim' : 'Man 5-spd, 4 cyl, 1.5 L',
     },
 
     # http://www.vindecoder.net/?vin=W04GW5EV0B1603732&submit=Decode
@@ -1322,7 +1396,7 @@ TEST_DATA = [
      'MODEL': 'Cooper Hardtop', 'MAKE': 'MINI', 'YEAR': 2016, 'COUNTRY': 'Germany',
      'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'B76912', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': 'Cooper',
-     'epa.id' : '36790', 'epa.co2TailpipeGpm': '287.0', 'epa.model' : 'Cooper Hardtop 2 door', 'epa.trim' : 'Auto (S6), 4 cyl, 1.5 L, Turbo',
+     'epa.id' : '36790', 'epa.co2TailpipeGpm': '292.0', 'epa.model' : 'Cooper Hardtop 2 door', 'epa.trim' : 'Auto (S6), 4 cyl, 1.5 L, Turbo',
      #'epa.id' : '36843', 'epa.co2TailpipeGpm': '277.0', 'epa.model' : 'Cooper Hardtop 2 door', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.5 L, Turbo',
     },
 
@@ -1337,7 +1411,7 @@ TEST_DATA = [
      'MODEL': 'Cooper', 'MAKE': 'MINI', 'YEAR': 2016, 'COUNTRY': 'Germany',
      'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'E16676', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': 'Cooper',
-     'epa.id' : '36791', 'epa.co2TailpipeGpm': '287.0', 'epa.model' : 'Cooper Hardtop 4 door', 'epa.trim' : 'Auto (S6), 4 cyl, 1.5 L, Turbo',
+     'epa.id' : '36791', 'epa.co2TailpipeGpm': '292.0', 'epa.model' : 'Cooper Hardtop 4 door', 'epa.trim' : 'Auto (S6), 4 cyl, 1.5 L, Turbo',
      #'epa.id' : '36719', 'epa.co2TailpipeGpm': '272.0', 'epa.model' : 'Cooper Hardtop 4 door', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.5 L, Turbo',
     },
 
@@ -1484,4 +1558,15 @@ TEST_DATA = [
      'epa.id' : '36200', 'epa.co2TailpipeGpm': '350.0', 'epa.model' : '500 X', 'epa.trim' : 'Auto 9-spd, 4 cyl, 2.4 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/ZFBERFAT7F6978883
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2015&make=Ram
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2015&make=Ram&model=Promaster%20City
+    # http://www.fueleconomy.gov/ws/rest/vehicle/35911
+    {'VIN': 'ZFBERFAT7F6978883', 'WMI': 'ZFB', 'VDS': 'ERFAT7', 'VIS': 'F6978883',
+     'MODEL': 'Promaster City', 'MAKE': 'Ram', 'YEAR': 2015, 'COUNTRY': 'Italy',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '978883', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'ST', 'nhtsa.series': '',
+     'epa.id' : '35911', 'epa.co2TailpipeGpm': '372.0', 'epa.model' : 'Promaster City', 'epa.trim' : 'Auto 9-spd, 4 cyl, 2.4 L',
+    },
 ]

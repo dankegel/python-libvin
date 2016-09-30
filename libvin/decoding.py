@@ -183,6 +183,7 @@ class Vin(object):
            'Cars',
            'China',
            'France',
+           'Germany',
            'Hungary',
            'Mexico',
            'Motor Company',
@@ -197,7 +198,7 @@ class Vin(object):
                 man = man.replace(" %s" % suffix, "")
         if man == "General Motors":
             return "GMC"
-        if man == 'Chrysler' or man == 'FCA':
+        if man == 'Chrysler' or man == 'FCA' or man == 'Fiat':
             # 2012 and later: first 3 positions became overloaded, some 'make' aka brand info moved further in; see
             # https://en.wikibooks.org/wiki/Vehicle_Identification_Numbers_(VIN_codes)/Chrysler/VIN_Codes
             # http://www.allpar.com/mopar/vin-decoder.html
@@ -212,7 +213,16 @@ class Vin(object):
                     return 'Jeep'
                 if brandcode == 'R':
                     return 'Ram'
-        if man == "Fuji Heavy Industries (Subaru)":
+        if man == 'Kia':
+            # WTF?
+            if self.year > 2011:
+                brandcode = self.vin[3]
+                if brandcode == 'Z':
+                    return 'Hyundai'
+        if "FUJI HEAVY INDUSTRIES" in man.upper():
+            brandcode = self.vin[4]
+            if brandcode == 'N':
+                return 'Scion'
             return 'Subaru'
         if man == 'Nissan':
             # ftp://safercar.gov/MfrMail/ORG7377.pdf "MY12 Nissan VIN Coding System"
@@ -245,3 +255,15 @@ class Vin(object):
 def decode(vin):
     v = Vin(vin)
     return v.decode()
+
+import sys
+
+def main():
+    if sys.argv[1] == "squish":
+        for line in sys.stdin:
+            vin = line.strip()
+            v = Vin(vin)
+            print v.anonvin()
+
+if __name__ == "__main__":
+    main()
