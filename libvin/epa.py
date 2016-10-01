@@ -65,7 +65,7 @@ class EPAVin(Vin):
         1 - 0-6000 lbs
         2 - 6001-10000 lbs
         '''
-        if self.nhtsa['GVWR'].startswith('Class'):
+        if 'GVWR' in self.nhtsa and self.nhtsa['GVWR'].startswith('Class'):
              # 'Class 3: 10,001 - 14,000 lb (4,536 - 6,350 kg)'
              return self.nhtsa['GVWR'].split(':')[0].split()[1]
         return None
@@ -536,6 +536,10 @@ class EPAVin(Vin):
         '''
         Given a decoded vin and its nhtsa data, look up its epa model name
         '''
+        if self.nhtsaModel == "":
+            if self.verbosity > 0:
+                print "epa:__get_model: vin %s had no NHTSA model, giving up" % self.vin
+            return None
         # Get candidate modifier strings
         id2models = self.__get_possible_models()
         if id2models == None:
