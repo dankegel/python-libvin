@@ -498,6 +498,11 @@ class EPAVin(Vin):
                         chars_matched = len(attrib)
                     else:
                         chars_matched += len(attrib) + 1  # for space
+            # Kludge: give negative bonus for hybrid no-match
+            if "HYBRID" in uval and "Hybrid" not in attributes:
+                chars_matched -= 3
+                if self.verbosity > 1:
+                    print "Penalizing for hybrid in candidate but not in attributes"
 
             if self.verbosity > 1:
                 print "chars_matched %d, for %s" % (chars_matched, val)
