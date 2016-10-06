@@ -730,6 +730,18 @@ TEST_DATA = [
      'epa.id' : '37432', 'epa.co2TailpipeGpm': '307.0', 'epa.model' : 'Sonata', 'epa.trim' : 'Auto (S6), 4 cyl, 2.4 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5NPE24AF6GH269479
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Hyundai
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Hyundai&model=Sonata
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36477
+    {'VIN': '5NPE24AF6GH269479', 'WMI': '5NP', 'VDS': 'E24AF6', 'VIS': 'GH269479',
+     'MODEL': 'Sonata', 'MAKE': 'Hyundai', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '269479', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'SE / SE w/Popular Pkg / Eco / Eco w/Tech Pkg',
+     'epa.id' : '36477', 'epa.co2TailpipeGpm': '307.0', 'epa.model' : 'Sonata', 'epa.trim' : 'Auto (S6), 4 cyl, 2.4 L',
+    },
+
     # http://www.vindecoder.net/?vin=5UMDU93436L421092&submit=Decode
     # NOTE: confusion about model.  Fuzzy matching may need improvement, too.
     {'VIN': '5UMDU93436L421092', 'WMI': '5UM', 'VDS': 'DU9343', 'VIS': '6L421092',
