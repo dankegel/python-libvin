@@ -267,7 +267,9 @@ class EPAVin(Vin):
                     attributes.append('4 Door')
 
         if 'Series' in self.nhtsa and self.nhtsa['Series'] != "":
-            s = self.nhtsa['Series']
+          s = self.nhtsa['Series']
+          # Avoid Audi's bad habit of tossing in hybrid / nothybrid, e.g. WA1C2AFP1GA058862
+          if 'Hybrid' not in s or '/' not in s:
             if len(s) < 2:
                 attributes.append(" " + s)
             else:
@@ -290,15 +292,16 @@ class EPAVin(Vin):
                 # e.g. WDBTJ65JX5F126044: NHTSA calls it CLK320C, but EPA expects CLK320
                 if s.endswith('0C'):
                     attributes.append(s[:-1])
-            # sDrive 28i -> sDrive28i
-            attributes.append(self.nhtsa['Series'].replace(" ", ""))
-            # sDrive28i -> sDrive 28i
-            attributes.append(self.nhtsa['Series'].replace("sDrive", "sDrive "))
-            # gle550e-4M -> gle550e 4matic, kinda
-            words = self.nhtsa['Series'].replace("-", " ").split()
-            if len(words) > 1:
-                for word in words:
-                    attributes.append(word)
+                # gle550e-4M -> gle550e 4matic, kinda
+                words = self.nhtsa['Series'].replace("-", " ").split()
+                if len(words) > 1:
+                    for word in words:
+                        attributes.append(word)
+            if self.make == 'BMW':
+                # sDrive 28i -> sDrive28i
+                attributes.append(self.nhtsa['Series'].replace(" ", ""))
+                # sDrive28i -> sDrive 28i
+                attributes.append(self.nhtsa['Series'].replace("sDrive", "sDrive "))
 
         if 'Series2' in self.nhtsa and self.nhtsa['Series2'] != "":
             attributes.append(self.nhtsa['Series2'])
@@ -322,27 +325,6 @@ class EPAVin(Vin):
         if 'EngineCylinders' in self.nhtsa and self.nhtsa['EngineCylinders'] != '':
             attributes.append('%s cyl' % self.nhtsa['EngineCylinders'])
 
-        if 'FuelTypePrimary' in self.nhtsa:
-            f1 = self.nhtsa['FuelTypePrimary']
-            if 'FFV' in f1 or 'E85' in f1:
-                attributes.append('FFV')
-            f2 = self.nhtsa['FuelTypeSecondary']
-            if f1 == 'Electric':
-               if f2 == '':
-                   attributes.append('BEV')
-                   attributes.append('Electric')
-               else:
-                   attributes.append('PHEV')
-                   attributes.append('Hybrid')
-                   attributes.append('Plug-in')
-                   if self.make == 'Ford':
-                       # awful kludge
-                       attributes.append('Energi')
-            else:
-               if f2 == 'Electric':
-                   attributes.append('HEV')
-                   attributes.append('Hybrid')
-
         if 'OtherEngineInfo' in self.nhtsa:
            oei = self.nhtsa['OtherEngineInfo'].upper()
            # Lexus 450h, Ford Escape Hybrid
@@ -365,6 +347,32 @@ class EPAVin(Vin):
         # Twin turbo is "Yes, Yes"!
         if 'Turbo' in self.nhtsa and 'Yes' in self.nhtsa['Turbo']:
             attributes.append('Turbo')
+
+        if 'FuelTypePrimary' in self.nhtsa:
+            f1 = self.nhtsa['FuelTypePrimary']
+            if 'FFV' in f1 or 'E85' in f1:
+                attributes.append('FFV')
+            f2 = self.nhtsa['FuelTypeSecondary']
+            if f1 == 'Electric':
+               if f2 == '':
+                   attributes.append('BEV')
+                   attributes.append('Electric')
+               else:
+                   attributes.append('PHEV')
+                   attributes.append('Hybrid')
+                   attributes.append('Plug-in')
+                   if self.make == 'Ford':
+                       # awful kludge
+                       attributes.append('Energi')
+            else:
+               if f2 == 'Electric':
+                   attributes.append('HEV')
+                   attributes.append('Hybrid')
+               elif f2 != '':
+                   # It's not a hybrid, so remove any stray hybrid attribute that snuck in via Series etc.
+                   # (Good thing we can trust the fuel type attributes, eh?)
+                   while 'Hybrid' in attributes:
+                       attributes.remove(u'Hybrid')
 
         return attributes
 

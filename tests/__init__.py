@@ -1219,6 +1219,18 @@ TEST_DATA = [
      'epa.id' : '31009', 'epa.co2TailpipeGpm': '370.3', 'epa.model' : 'Regal', 'epa.trim' : 'Man 6-spd, 4 cyl, 2.0 L, Turbo',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WA1C2AFP1GA058862
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Audi
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Audi&model=Q5
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36421
+    {'VIN': 'WA1C2AFP1GA058862', 'WMI': 'WA1', 'VDS': 'C2AFP1', 'VIS': 'GA058862',
+     'MODEL': 'Q5', 'MAKE': 'Audi', 'YEAR': 2016, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '058862', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'quattro', 'nhtsa.series': '2.0T Premium / Hybrid Prestige / TDI Premium Plus / SQ5 Premium Plus',
+     'epa.id' : '36421', 'epa.co2TailpipeGpm': '395.0', 'epa.model' : 'Q5', 'epa.trim' : 'Auto (S8), 4 cyl, 2.0 L, Turbo',
+    },
+
     # http://www.vindecoder.net/?vin=WA1EY74LX9D205644&submit=Decode
     # https://vindecoder.eu/check-vin/WA1EY74LX9D205644
     # NOTE: NHTSA has 3.596000 L, EPA has 3.6 L
@@ -1454,6 +1466,18 @@ TEST_DATA = [
      'MODEL': 'Tiguan', 'MAKE':  'Volkswagen', 'YEAR': 2011, 'COUNTRY': 'Germany',
      'REGION': 'europe', 'SEQUENTIAL_NUMBER': '549850', 'FEWER_THAN_500_PER_YEAR': False,
      'epa.id' : '30536', 'epa.co2TailpipeGpm': '404.0', 'epa.model' : 'Tiguan', 'epa.trim' : 'Auto (S6), 4 cyl, 2.0 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WVGEP9BP7FD004530
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2015&make=Volkswagen
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2015&make=Volkswagen&model=Touareg
+    # http://www.fueleconomy.gov/ws/rest/vehicle/35484
+    {'VIN': 'WVGEP9BP7FD004530', 'WMI': 'WVG', 'VDS': 'EP9BP7', 'VIS': 'FD004530',
+     'MODEL': 'Touareg', 'MAKE': 'Volkswagen', 'YEAR': 2015, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '004530', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'V6 FSI / TDI / Hybrid',
+     'epa.id' : '35484', 'epa.co2TailpipeGpm': '462.0', 'epa.model' : 'Touareg', 'epa.trim' : 'Auto (S8), 6 cyl, 3.6 L',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
