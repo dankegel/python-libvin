@@ -269,7 +269,8 @@ class EPAVin(Vin):
         if 'Series' in self.nhtsa and self.nhtsa['Series'] != "":
           s = self.nhtsa['Series']
           # Avoid Audi's bad habit of tossing in hybrid / nothybrid, e.g. WA1C2AFP1GA058862
-          if 'Hybrid' not in s or '/' not in s:
+          # but don't ignore "1/2 Ton Denali Hybrid"
+          if 'Hybrid' not in s or '/' not in s or '/2' in s:
             if len(s) < 2:
                 attributes.append(" " + s)
             else:
@@ -348,6 +349,12 @@ class EPAVin(Vin):
         if 'Turbo' in self.nhtsa and 'Yes' in self.nhtsa['Turbo']:
             attributes.append('Turbo')
 
+        if 'ElectrificationLevel' in self.nhtsa:
+            if 'Mild Hybrid' in self.nhtsa['ElectrificationLevel']:
+                attributes.append('eAssist')
+            if 'Strong Hybrid' in self.nhtsa['ElectrificationLevel']:
+                attributes.append('Hybrid')
+
         if 'FuelTypePrimary' in self.nhtsa:
             f1 = self.nhtsa['FuelTypePrimary']
             if 'FFV' in f1 or 'E85' in f1:
@@ -368,11 +375,11 @@ class EPAVin(Vin):
                if f2 == 'Electric':
                    attributes.append('HEV')
                    attributes.append('Hybrid')
-               elif f2 != '':
-                   # It's not a hybrid, so remove any stray hybrid attribute that snuck in via Series etc.
-                   # (Good thing we can trust the fuel type attributes, eh?)
-                   while 'Hybrid' in attributes:
-                       attributes.remove(u'Hybrid')
+               #elif f2 != '' and 'Hybrid' not in self.nhtsa['ElectrificationLevel']:
+               #    # It's not a hybrid, so remove any stray hybrid attribute that snuck in via Series etc.
+               #    # (Good thing we can trust the fuel type attributes, eh?)
+               #    while 'Hybrid' in attributes:
+               #        attributes.remove(u'Hybrid')
 
         return attributes
 
@@ -508,7 +515,7 @@ class EPAVin(Vin):
                         chars_matched += len(attrib) + 1  # for space
             # Kludge: give negative bonus for hybrid no-match
             if "HYBRID" in uval and "Hybrid" not in attributes:
-                chars_matched -= 6
+                chars_matched -= 16
                 if self.verbosity > 1:
                     print "Penalizing for hybrid in candidate but not in attributes"
 

@@ -98,6 +98,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1G11D5RR7DF107260
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Chevrolet&model=Malibu%20eAssist
+    # http://www.fueleconomy.gov/ws/rest/vehicle/32208
+    {'VIN': '1G11D5RR7DF107260', 'WMI': '1G1', 'VDS': '1D5RR7', 'VIS': 'DF107260',
+     'MODEL': 'Malibu', 'MAKE': 'Chevrolet', 'YEAR': 2013, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '107260', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '1LT Eco',
+     'epa.id' : '32208', 'epa.co2TailpipeGpm': '310.0', 'epa.model' : 'Malibu eAssist', 'epa.trim' : 'Auto (S6), 4 cyl, 2.4 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1GCEK19B45E223906
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2005&make=Chevrolet
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2005&make=Chevrolet&model=Silverado%201500%204WD
@@ -207,6 +219,18 @@ TEST_DATA = [
      'MODEL': 'Acadia', 'MAKE':  'GMC', 'YEAR': 2008, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '123735', 'FEWER_THAN_500_PER_YEAR': False,
      'epa.id' : '24114', 'epa.co2TailpipeGpm': '493.7', 'epa.model' : 'Acadia AWD', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.6 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1GKS1GEJXDR155600
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=GMC
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=GMC&model=Yukon%20Denali%201500%20Hybrid%204WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/32652
+    {'VIN': '1GKS1GEJXDR155600', 'WMI': '1GK', 'VDS': 'S1GEJX', 'VIS': 'DR155600',
+     'MODEL': 'Yukon', 'MAKE': 'GMC', 'YEAR': 2013, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '155600', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '1/2 Ton Denali Hybrid',
+     'epa.id' : '32652', 'epa.co2TailpipeGpm': '416.0', 'epa.model' : 'Yukon Denali 1500 Hybrid 4WD', 'epa.trim' : 'Auto (variable gear ratios), 8 cyl, 6.0 L',
     },
 
     # http://www.vindecoder.net/?vin=1GT020CG4EF828544&submit=Decode doesn't have model
@@ -740,6 +764,18 @@ TEST_DATA = [
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '269479', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': 'SE / SE w/Popular Pkg / Eco / Eco w/Tech Pkg',
      'epa.id' : '36477', 'epa.co2TailpipeGpm': '307.0', 'epa.model' : 'Sonata', 'epa.trim' : 'Auto (S6), 4 cyl, 2.4 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5NPEC4AB5DH717264
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Hyundai
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Hyundai&model=Sonata
+    # http://www.fueleconomy.gov/ws/rest/vehicle/32340
+    {'VIN': '5NPEC4AB5DH717264', 'WMI': '5NP', 'VDS': 'EC4AB5', 'VIS': 'DH717264',
+     'MODEL': 'Sonata', 'MAKE': 'Hyundai', 'YEAR': 2013, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '717264', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'SE / SE NAVI / Limited / Limited NAVI',
+     'epa.id' : '32340', 'epa.co2TailpipeGpm': '342.0', 'epa.model' : 'Sonata', 'epa.trim' : 'Auto 6-spd, 4 cyl, 2.0 L, Turbo',
     },
 
     # http://www.vindecoder.net/?vin=5UMDU93436L421092&submit=Decode
