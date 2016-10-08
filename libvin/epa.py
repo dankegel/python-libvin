@@ -218,6 +218,8 @@ class EPAVin(Vin):
         elif '4WD' in driveType or '4x4' in driveType:
             attributes.append("4WD")
             attributes.append("AWD")
+            if self.make == 'BMW':
+                attributes.append("xDrive")
         elif 'Front' in driveType or 'FWD' in driveType:
             attributes.append("FWD")
             attributes.append("2WD")
@@ -226,6 +228,8 @@ class EPAVin(Vin):
             attributes.append("2WD")
         elif '4x2' in driveType or '2WD' in driveType:
             attributes.append("2WD")
+            if self.make == 'BMW':
+                attributes.append("sDrive")
         else:
             # 3FA6P0G76ER244757 has no drivetype listed at all, but is FWD.
             # FIXME: make this special case more specific somehow?

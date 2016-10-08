@@ -785,6 +785,18 @@ TEST_DATA = [
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '421092', 'FEWER_THAN_500_PER_YEAR': False,
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5UXKR0C52H0U50460
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=BMW
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=BMW&model=X5%20xDrive35i
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37795
+    {'VIN': '5UXKR0C52H0U50460', 'WMI': '5UX', 'VDS': 'KR0C52', 'VIS': 'H0U50460',
+     'MODEL': 'X5', 'MAKE': 'BMW', 'YEAR': 2017, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': 'U50460', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'SAV', 'nhtsa.series': '35i',
+     'epa.id' : '37795', 'epa.co2TailpipeGpm': '434.0', 'epa.model' : 'X5 xDrive35i', 'epa.trim' : 'Auto (S8), 6 cyl, 3.0 L, Turbo',
+    },
+
     # BMW 2010-2015
     # Cover letter: "Update - Vehicle Identification Number (VIN) Decipherments for 2010, 2011, 2012, 2013, 2014 & 2015 Model Year BMW Vehicles"
     # Table: "BMW Model Year 2015 Decipherment of VINs in Accordance with Part 565"
