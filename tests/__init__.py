@@ -192,6 +192,18 @@ TEST_DATA = [
      'epa.id' : '19711', 'epa.co2TailpipeGpm': '423.2', 'epa.model' : 'TL', 'epa.trim' : 'Man 6-spd, 6 cyl, 3.2 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/19UUA9F53EA002754
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Acura
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Acura&model=TL%204WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34342
+    {'VIN': '19UUA9F53EA002754', 'WMI': '19U', 'VDS': 'UA9F53', 'VIS': 'EA002754',
+     'MODEL': 'TL', 'MAKE': 'Acura', 'YEAR': 2014, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '002754', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'SH-AWD TECH',
+     'epa.id' : '34342', 'epa.co2TailpipeGpm': '421.0', 'epa.model' : 'TL 4WD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.7 L',
+    },
+
     # http://www.vindecoder.net/?vin=19XFB4F24DE547421&submit=Decode says unknown
     # http://www.civicx.com/threads/2016-civic-vin-translator-decoder-guide.889/
     # http://honda-tech.com/forums/vindecoder.php?vin=19XFB4F24DE547421

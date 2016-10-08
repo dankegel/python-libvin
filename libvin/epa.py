@@ -217,6 +217,9 @@ class EPAVin(Vin):
             attributes.append("AWD")
             if self.make == 'BMW':
                 attributes.append("xDrive")
+            elif self.make == 'Acura':
+                # 19UUA9F53EA002754
+                attributes.append("4WD")
         elif '4WD' in driveType or '4x4' in driveType:
             attributes.append("4WD")
             attributes.append("AWD")
