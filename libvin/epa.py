@@ -176,7 +176,7 @@ class EPAVin(Vin):
                 # Rest of model name is in nhtsa['Series'], kind of
                 return m.replace('-Class', '')
         elif self.make == 'MINI':
-            if m.endswith('Hardtop') and (self.year >= 2013 and self.year <= 2014):
+            if m.endswith('Hardtop') and (self.year >= 2013):
                 return m.replace(' Hardtop', '')
         elif self.make == 'Nissan':
             if m == 'Versa Note':

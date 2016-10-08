@@ -1467,6 +1467,21 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WMWXM5C52F3A57895
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2015&make=MINI
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2015&make=MINI&model=Cooper%20(3-doors)
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/35794
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/35793
+    {'VIN': 'WMWXM5C52F3A57895', 'WMI': 'WMW', 'VDS': 'XM5C52', 'VIS': 'F3A57895',
+     'MODEL': 'Cooper Hardtop', 'MAKE': 'MINI', 'YEAR': 2015, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'A57895', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Cooper',
+     'epa.id' : '35794', 'epa.co2TailpipeGpm': '272.0', 'epa.model' : 'Cooper (3-doors)', 'epa.trim' : 'Man 6-spd, 3 cyl, 1.5 L, Turbo',
+     #'epa.id' : '35793', 'epa.co2TailpipeGpm': '287.0', 'epa.model' : 'Cooper (3-doors)', 'epa.trim' : 'Auto (S6), 3 cyl, 1.5 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WMWXM7C58ET986724
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=MINI
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=MINI&model=Cooper%20S%20(3-doors)
