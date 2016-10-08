@@ -215,6 +215,8 @@ class EPAVin(Vin):
         driveType = self.nhtsa['DriveType']
         if 'AWD' in driveType:
             attributes.append("AWD")
+            if self.make == 'BMW':
+                attributes.append("xDrive")
         elif '4WD' in driveType or '4x4' in driveType:
             attributes.append("4WD")
             attributes.append("AWD")
