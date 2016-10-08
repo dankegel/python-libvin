@@ -577,6 +577,21 @@ TEST_DATA = [
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '416315', 'FEWER_THAN_500_PER_YEAR': False,
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3KPFL4A8XHE050680
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Kia
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Kia&model=Forte
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37555
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/37556
+    {'VIN': '3KPFL4A8XHE050680', 'WMI': '3KP', 'VDS': 'FL4A8X', 'VIS': 'HE050680',
+     'MODEL': 'Forte', 'MAKE': 'Kia', 'YEAR': 2017, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '050680', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'SX, EX',
+     'epa.id' : '37555', 'epa.co2TailpipeGpm': '301.0', 'epa.model' : 'Forte', 'epa.trim' : 'Auto (S6), 4 cyl, 2.0 L',
+     #'epa.id' : '37556', 'epa.co2TailpipeGpm': '314.0', 'epa.model' : 'Forte', 'epa.trim' : 'Man 6-spd, 4 cyl, 2.0 L',
+    },
+
     # http://www.vindecoder.net/?vin=3LNHL2GC1BR262548&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/30367
     {'VIN': '3LNHL2GC1BR262548', 'WMI': '3LN', 'VDS': 'HL2GC1', 'VIS': 'BR262548',
