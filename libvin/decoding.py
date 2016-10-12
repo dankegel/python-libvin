@@ -52,17 +52,24 @@ class Vin(object):
             check_digit = 'X'
         return str(check_digit)
 
+    def seqnumlen(self):
+        """
+        Return length of the sequential number field for this vendor
+        """
+        if self.less_than_500_built_per_year:
+            return 3
+        elif self.wmi == "SCF" or self.wmi == "SAJ":
+            # SCF Aston-Martin https://vpic.nhtsa.dot.gov/mid/home/displayfile/1742
+            # SAJ Jaguar https://vpic.nhtsa.dot.gov/mid/home/displayfile/28722
+            return 5
+        else:
+            return 6
+
     def anonvin(self):
         """
         Return an anonymized VIN, where the sequential number has been replaced with zeroes.
         """
-        v = self.vin
-        if self.less_than_500_built_per_year:
-            v = v[0:14] + "000"
-        elif self.make == "Jaguar":
-            v = v[0:13] + "0000"
-        else:
-            v = v[0:11] + "000000"
+        v = self.vin[0:17 - self.seqnumlen()] + '0' * self.seqnumlen()
         return v[0:8]+ self.calculate_checkdigit(v) + v[9:17]
 
     def __is_valid(self, v):
@@ -147,10 +154,7 @@ class Vin(object):
         """
         Returns the Vehicle Sequential Number
         """
-        if self.less_than_500_built_per_year:
-            return self.vin[-3:]
-        else:
-            return self.vin[-6:]
+        return self.vin[-self.seqnumlen():]
 
     @property
     def wmi(self):

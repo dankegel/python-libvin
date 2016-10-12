@@ -1244,7 +1244,7 @@ TEST_DATA = [
     # http://www.fueleconomy.gov/ws/rest/vehicle/34948
     {'VIN': 'SAJWA0HP7FMU61983', 'WMI': 'SAJ', 'VDS': 'WA0HP7', 'VIS': 'FMU61983',
      'MODEL': 'XF', 'MAKE': 'Jaguar', 'YEAR': 2015, 'COUNTRY': 'United Kingdom',
-     'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'U61983', 'FEWER_THAN_500_PER_YEAR': False,
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '61983', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': 'Supercharged', 'nhtsa.series': '',
      'epa.id' : '34948', 'epa.co2TailpipeGpm': '500.0', 'epa.model' : 'XF FFV', 'epa.trim' : 'Auto (S8), 8 cyl, 5.0 L, Sup Charg',
     },
@@ -1256,7 +1256,7 @@ TEST_DATA = [
     # http://www.fueleconomy.gov/ws/rest/vehicle/37312
     {'VIN': 'SAJWJ6HL9HMK36791', 'WMI': 'SAJ', 'VDS': 'WJ6HL9', 'VIS': 'HMK36791',
      'MODEL': 'F-Type', 'MAKE': 'Jaguar', 'YEAR': 2017, 'COUNTRY': 'United Kingdom',
-     'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'K36791', 'FEWER_THAN_500_PER_YEAR': False,
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '36791', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': 'R',
      'epa.id' : '37312', 'epa.co2TailpipeGpm': '500.0', 'epa.model' : 'F-Type R AWD Convertible', 'epa.trim' : 'Auto (S8), 8 cyl, 5.0 L, Sup Charg',
     },
@@ -1275,7 +1275,21 @@ TEST_DATA = [
     # 'ErrorCode': u'8 - No detailed data available currently',
     {'VIN': 'SCFAD01A65G199359', 'WMI': 'SCF', 'VDS': 'AD01A6', 'VIS': '5G199359',
      'MODEL': 'DB9', 'MAKE':  'Aston Martin', 'YEAR': 2005, 'COUNTRY': 'United Kingdom',
-     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '199359', 'FEWER_THAN_500_PER_YEAR': False,
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '99359', 'FEWER_THAN_500_PER_YEAR': False,
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/SCFBF04B38GD08385
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2008&make=Aston%20Martin
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2008&make=Aston%20Martin&model=V8%20Vantage
+    # http://www.fueleconomy.gov/ws/rest/vehicle/24742
+    # Note short SEQUENTIAL_NUMBER!
+
+    {'VIN': 'SCFBF04B38GD08385', 'WMI': 'SCF', 'VDS': 'BF04B3', 'VIS': '8GD08385',
+     'MODEL': 'V8 Vantage', 'MAKE': 'Aston Martin', 'YEAR': 2008, 'COUNTRY': 'United Kingdom',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '08385', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '24742', 'epa.co2TailpipeGpm': '592.5', 'epa.model' : 'V8 Vantage', 'epa.trim' : 'Man 6-spd, 8 cyl, 4.3 L',
     },
 
     # http://www.vindecoder.net/?vin=TRUSC28N711268458&submit=Decode
