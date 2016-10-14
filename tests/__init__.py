@@ -1270,6 +1270,25 @@ TEST_DATA = [
      'REGION': 'europe', 'SEQUENTIAL_NUMBER': '225243', 'FEWER_THAN_500_PER_YEAR': False,
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/SCCLMDTU9DHA10803
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Lotus
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Lotus&model=Evora
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/33309
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/33312
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/33311
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/33310
+    {'VIN': 'SCCLMDTU9DHA10803', 'WMI': 'SCC', 'VDS': 'LMDTU9', 'VIS': 'DHA10803',
+     'MODEL': 'Evora', 'MAKE': 'Lotus', 'YEAR': 2013, 'COUNTRY': 'United Kingdom',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '10803', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '33309', 'epa.co2TailpipeGpm': '420.0', 'epa.model' : 'Evora', 'epa.trim' : 'Man 6-spd, 6 cyl, 3.5 L',
+     #'epa.id' : '33312', 'epa.co2TailpipeGpm': '402.0', 'epa.model' : 'Evora', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L, Sup Charg',
+     #'epa.id' : '33311', 'epa.co2TailpipeGpm': '390.0', 'epa.model' : 'Evora', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L',
+     #'epa.id' : '33310', 'epa.co2TailpipeGpm': '433.0', 'epa.model' : 'Evora', 'epa.trim' : 'Man 6-spd, 6 cyl, 3.5 L, Sup Charg',
+    },
+
     # http://www.vindecoder.net/?vin=SCFAD01A65G199359&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2005&make=Aston%20Martin verifies spelling
     # 'ErrorCode': u'8 - No detailed data available currently',

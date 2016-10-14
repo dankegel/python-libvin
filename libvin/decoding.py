@@ -58,6 +58,10 @@ class Vin(object):
         """
         if self.less_than_500_built_per_year:
             return 3
+        elif self.wmi == 'SCC':
+            # SCC Lotus https://vpic.nhtsa.dot.gov/mid/home/displayfile/32155
+            # SCC Lotus 2008 ftp://ftp.nhtsa.dot.gov/mfrmail/ORG3319.pdf
+            return 4
         elif self.wmi == "SCF" or self.wmi == "SAJ":
             # SCF Aston-Martin https://vpic.nhtsa.dot.gov/mid/home/displayfile/1742
             # SAJ Jaguar https://vpic.nhtsa.dot.gov/mid/home/displayfile/28722
