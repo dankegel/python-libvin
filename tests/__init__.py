@@ -984,6 +984,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JC1NFAEK5H0103072
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Fiat
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Fiat&model=124%20Spider
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37528
+    {'VIN': 'JC1NFAEK5H0103072', 'WMI': 'JC1', 'VDS': 'NFAEK5', 'VIS': 'H0103072',
+     'MODEL': '124 Spider', 'MAKE': 'Fiat', 'YEAR': 2017, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '103072', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '37528', 'epa.co2TailpipeGpm': '298.0', 'epa.model' : '124 Spider', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.4 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JF1VA2Y63G9804991
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Subaru
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Subaru&model=WRX
