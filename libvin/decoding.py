@@ -205,6 +205,11 @@ class Vin(object):
            ]:
              if man.endswith(suffix):
                 man = man.replace(" %s" % suffix, "")
+
+        if self.vin[0:5] == '3MYDL':
+            # Mazda builds Yaris for Toyota, see https://vpic.nhtsa.dot.gov/mid/home/displayfile/32354
+            return 'Toyota'
+
         if man == "General Motors":
             return "GMC"
         if man == 'Chrysler' or man == 'FCA' or man == 'Fiat':

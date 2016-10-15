@@ -636,6 +636,20 @@ TEST_DATA = [
      'epa.id' : '30367', 'epa.co2TailpipeGpm': '423.2', 'epa.model' : 'MKZ FWD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3MYDLBYV0HY148317
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Toyota
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Toyota&model=Yaris
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37971
+    # FIXME: can't tell Yaris from Yaris iA, can't tell auto from manual.
+    # Choosing one at random (sort of).
+    {'VIN': '3MYDLBYV0HY148317', 'WMI': '3MY', 'VDS': 'DLBYV0', 'VIS': 'HY148317',
+     'MODEL': 'Yaris', 'MAKE': 'Toyota', 'YEAR': 2017, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '148317', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '37971', 'epa.co2TailpipeGpm': '271.0', 'epa.model' : 'Yaris', 'epa.trim' : 'Man 5-spd, 4 cyl, 1.5 L',
+    },
+
     # Can't tell transmission from vin, so pick one at random :-(
     # https://vpic.nhtsa.dot.gov/mid/home/displayfile/6089
     # http://www.fueleconomy.gov/ws/rest/vehicle/36534
