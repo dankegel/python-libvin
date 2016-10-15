@@ -235,6 +235,7 @@ WMI_MAP = {
     'LDY': 'Zhongtong Coach, China',
     'LGH': 'Dong Feng (DFM), China',
     'LKL': 'Suzhou King Long, China',
+    'LRB': 'Buick China',
     'LSY': 'Brilliance Zhonghua',
     'LTV': 'Toyota Tian Jin',
     'LVS': 'Ford Chang An',

@@ -1288,6 +1288,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/LRBFXBSA5HD005141
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Buick
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Buick&model=Envision%20FWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37784
+    {'VIN': 'LRBFXBSA5HD005141', 'WMI': 'LRB', 'VDS': 'FXBSA5', 'VIS': 'HD005141',
+     'MODEL': 'Envision', 'MAKE': 'Buick', 'YEAR': 2017, 'COUNTRY': 'China',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '005141', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Essence',
+     'epa.id' : '37784', 'epa.co2TailpipeGpm': '356.0', 'epa.model' : 'Envision FWD', 'epa.trim' : 'Auto 6-spd, 4 cyl, 2.5 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/LYV402FK0GB112042
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Volvo
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Volvo&model=S60%20FWD
