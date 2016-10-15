@@ -1397,6 +1397,18 @@ TEST_DATA = [
      'epa.id' : '38256', 'epa.co2TailpipeGpm': '260.0', 'epa.model' : 'Civic 5Dr', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 1.5 L, Turbo',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/SJKCH5CPXHA016639
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Infiniti
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Infiniti&model=QX30
+    # http://www.fueleconomy.gov/ws/rest/vehicle/38053
+    {'VIN': 'SJKCH5CPXHA016639', 'WMI': 'SJK', 'VDS': 'CH5CPX', 'VIS': 'HA016639',
+     'MODEL': 'QX30', 'MAKE': 'Infiniti', 'YEAR': 2017, 'COUNTRY': 'United Kingdom',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '016639', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '38053', 'epa.co2TailpipeGpm': '324.0', 'epa.model' : 'QX30', 'epa.trim' : 'Auto(AM7), 4 cyl, 2.0 L, Turbo',
+    },
+
     # http://www.vindecoder.net/?vin=TRUSC28N711268458&submit=Decode
     # NOTE: displacement is 1781cc, but EPA only has 1.8L, hard to match.
     {'VIN': 'TRUSC28N711268458', 'WMI': 'TRU', 'VDS': 'SC28N7', 'VIS': '11268458',

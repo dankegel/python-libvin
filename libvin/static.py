@@ -280,6 +280,7 @@ WMI_MAP = {
     'SFD': 'Alexander Dennis UK',
     'SHH': 'Honda UK',
     'SHS': 'Honda UK',
+    'SJK': 'Infiniti UK',
     'SJN': 'Nissan UK',
     'SU9': 'Solaris Bus & Coach (Poland)',
     'TK9': 'SOR (Czech Republic)',
