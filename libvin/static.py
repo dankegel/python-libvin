@@ -435,6 +435,7 @@ WMI_MAP = {
     '2G4': 'Buick Canada',
     '2G6': 'Cadillac',
     '2HG': 'Honda Canada',
+    '2HJ': 'Honda Canada',
     '2HK': 'Honda Canada',
     '2HM': 'Hyundai Canada',
     '2HN': 'Acura',

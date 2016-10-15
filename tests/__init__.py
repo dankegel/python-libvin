@@ -414,6 +414,18 @@ TEST_DATA = [
      'epa.id' : '33852', 'epa.co2TailpipeGpm': '475.0', 'epa.model' : 'XTS AWD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.6 L, Turbo',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2HJYK16566H509774
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2006&make=Honda
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2006&make=Honda&model=Ridgeline%20Truck%204WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/22281
+    {'VIN': '2HJYK16566H509774', 'WMI': '2HJ', 'VDS': 'YK1656', 'VIS': '6H509774',
+     'MODEL': 'Ridgeline', 'MAKE': 'Honda', 'YEAR': 2006, 'COUNTRY': 'Canada',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '509774', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'RTL',
+     'epa.id' : '22281', 'epa.co2TailpipeGpm': '522.8', 'epa.model' : 'Ridgeline Truck 4WD', 'epa.trim' : 'Auto 5-spd, 6 cyl, 3.5 L',
+    },
+
     # http://www.vindecoder.net/?vin=2HNYD18975H033218&submit=Decode
     # http://acurazine.com/forums/vindecoder.php?vin=2HNYD18975H033218
     # http://www.fueleconomy.gov/ws/rest/vehicle/21351
