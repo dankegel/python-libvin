@@ -198,6 +198,7 @@ class Vin(object):
            'Thailand',
            'Truck USA',
            'Turkey',
+           'UK',
            'USA',
            'USA - trucks',
            'USA (AutoAlliance International)',

@@ -1311,6 +1311,18 @@ TEST_DATA = [
      'epa.id' : '24742', 'epa.co2TailpipeGpm': '592.5', 'epa.model' : 'V8 Vantage', 'epa.trim' : 'Man 6-spd, 8 cyl, 4.3 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/SHHFK7H56HU400265
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Honda
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Honda&model=Civic%205Dr
+    # http://www.fueleconomy.gov/ws/rest/vehicle/38256
+    {'VIN': 'SHHFK7H56HU400265', 'WMI': 'SHH', 'VDS': 'FK7H56', 'VIS': 'HU400265',
+     'MODEL': 'Civic', 'MAKE': 'Honda', 'YEAR': 2017, 'COUNTRY': 'United Kingdom',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '400265', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'EX',
+     'epa.id' : '38256', 'epa.co2TailpipeGpm': '260.0', 'epa.model' : 'Civic 5Dr', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 1.5 L, Turbo',
+    },
+
     # http://www.vindecoder.net/?vin=TRUSC28N711268458&submit=Decode
     # NOTE: displacement is 1781cc, but EPA only has 1.8L, hard to match.
     {'VIN': 'TRUSC28N711268458', 'WMI': 'TRU', 'VDS': 'SC28N7', 'VIS': '11268458',

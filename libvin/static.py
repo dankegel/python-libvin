@@ -278,6 +278,7 @@ WMI_MAP = {
     'SCF': 'Aston Martin',
     'SDB': 'Peugeot UK',
     'SFD': 'Alexander Dennis UK',
+    'SHH': 'Honda UK',
     'SHS': 'Honda UK',
     'SJN': 'Nissan UK',
     'SU9': 'Solaris Bus & Coach (Poland)',
