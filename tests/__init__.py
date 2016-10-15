@@ -466,6 +466,18 @@ TEST_DATA = [
      'epa.id' : '37111', 'epa.co2TailpipeGpm': '299.0', 'epa.model' : 'RX 450h AWD', 'epa.trim' : 'Auto(AV-S6), 6 cyl, 3.5 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3A8FY68818T213031
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2008&make=Chrysler
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2008&make=Chrysler&model=PT%20Cruiser
+    # http://www.fueleconomy.gov/ws/rest/vehicle/24590
+    {'VIN': '3A8FY68818T213031', 'WMI': '3A8', 'VDS': 'FY6881', 'VIS': '8T213031',
+     'MODEL': 'PT Cruiser', 'MAKE': 'Chrysler', 'YEAR': 2008, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '213031', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Limited', 'nhtsa.series': 'PT',
+     'epa.id' : '24590', 'epa.co2TailpipeGpm': '404.0', 'epa.model' : 'PT Cruiser', 'epa.trim' : 'Man 5-spd, 4 cyl, 2.4 L, Turbo',
+    },
+
     # http://www.vin-decoder.org/details?vin=3C3CFFCR9FT528063
     # http://www.fiat500usa.com/2013/08/decoding-fiat-500-vin.html
     # Chrysler Passenger Car Vehicle Identification Number Code Guide
