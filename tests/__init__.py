@@ -801,6 +801,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5NMZT3LB2HH016192
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Hyundai
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Hyundai&model=Santa%20Fe%20FWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37228
+    {'VIN': '5NMZT3LB2HH016192', 'WMI': '5NM', 'VDS': 'ZT3LB2', 'VIS': 'HH016192',
+     'MODEL': 'Santa Fe', 'MAKE': 'Hyundai', 'YEAR': 2017, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '016192', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Base',
+     'epa.id' : '37228', 'epa.co2TailpipeGpm': '427.0', 'epa.model' : 'Santa Fe FWD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.3 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5N1AL0MM1DC339116
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Infiniti
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Infiniti&model=JX35%20FWD
