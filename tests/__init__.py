@@ -806,6 +806,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5N3AA08C68N906008
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2008&make=Infiniti
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2008&make=Infiniti&model=QX56%204WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/24115
+    {'VIN': '5N3AA08C68N906008', 'WMI': '5N3', 'VDS': 'AA08C6', 'VIS': '8N906008',
+     'MODEL': 'QX56', 'MAKE': 'Infiniti', 'YEAR': 2008, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '906008', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '24115', 'epa.co2TailpipeGpm': '634.8', 'epa.model' : 'QX56 4WD', 'epa.trim' : 'Auto 5-spd, 8 cyl, 5.6 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5NPE24AF8HH000000
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Hyundai
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Hyundai&model=Sonata
