@@ -164,6 +164,18 @@ TEST_DATA = [
      'epa.id' : '35571', 'epa.co2TailpipeGpm': '478.0', 'epa.model' : 'Sierra C15 2WD', 'epa.trim' : 'Auto 6-spd, 8 cyl, 5.3 L, SIDI',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1J8HR68T89C533504
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2009&make=Jeep
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2009&make=Jeep&model=Grand%20Cherokee%20SRT8%20AWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/26181
+    {'VIN': '1J8HR68T89C533504', 'WMI': '1J8', 'VDS': 'HR68T8', 'VIS': '9C533504',
+     'MODEL': 'Grand Cherokee', 'MAKE': 'Jeep', 'YEAR': 2009, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '533504', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Overland', 'nhtsa.series': 'WK',
+     'epa.id' : '26181', 'epa.co2TailpipeGpm': '740.6', 'epa.model' : 'Grand Cherokee SRT8 AWD', 'epa.trim' : 'Auto 5-spd, 8 cyl, 6.1 L',
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/37066
     {'VIN': '1N4AZ0CP6GC304290', 'WMI': '1N4', 'VDS': 'AZ0CP6', 'VIS': 'GC304290',
      'MODEL': 'Leaf', 'MAKE': 'Nissan', 'YEAR': 2016, 'COUNTRY': 'United States',
@@ -1281,7 +1293,7 @@ TEST_DATA = [
     ## http://www.fueleconomy.gov/ws/rest/vehicle/33310
     {'VIN': 'SCCLMDTU9DHA10803', 'WMI': 'SCC', 'VDS': 'LMDTU9', 'VIS': 'DHA10803',
      'MODEL': 'Evora', 'MAKE': 'Lotus', 'YEAR': 2013, 'COUNTRY': 'United Kingdom',
-     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '10803', 'FEWER_THAN_500_PER_YEAR': False,
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '0803', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': '',
      'epa.id' : '33309', 'epa.co2TailpipeGpm': '420.0', 'epa.model' : 'Evora', 'epa.trim' : 'Man 6-spd, 6 cyl, 3.5 L',
      #'epa.id' : '33312', 'epa.co2TailpipeGpm': '402.0', 'epa.model' : 'Evora', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L, Sup Charg',

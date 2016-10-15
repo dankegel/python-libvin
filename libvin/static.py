@@ -391,6 +391,7 @@ WMI_MAP = {
     '1H': 'Honda USA',
     '1HD': 'Harley-Davidson',
     '1J4': 'Jeep',
+    '1J8': 'Jeep',
     '1L': 'Lincoln USA',
     '1ME': 'Mercury USA',
     '1M1': 'Mack Truck USA',
