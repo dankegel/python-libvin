@@ -262,7 +262,7 @@ class EPAVin(Vin):
                     for word in self.nhtsa['Trim'].split('-'):
                         attributes.append(word)
             # Special cases
-            s = self.nhtsa['Trim']
+            s = self.nhtsa['Trim'].lower()
             # Chevrolet: 1500=1/2ton, 2500=3/4ton, 3500=1 ton?
             if self.make == 'Chevrolet':
                 if "1/2 ton" in s:
@@ -271,6 +271,10 @@ class EPAVin(Vin):
                     attributes.append('2500')
                 if "1 ton" in s:
                     attributes.append('3500')
+            if self.make == 'Mercedes-Benz':
+                if s == 'base-4m':
+                    # WDC0G4KB8GF033296
+                    attributes.append('4matic')
         if 'BodyClass' in self.nhtsa and self.nhtsa['BodyClass'] != "":
             for word in self.nhtsa['BodyClass'].split("/"):
                 attributes.append(word)

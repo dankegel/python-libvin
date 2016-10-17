@@ -1661,6 +1661,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WDC0G4KB8GF033296
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Mercedes-Benz
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Mercedes-Benz&model=GLC300%204matic
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37160
+    {'VIN': 'WDC0G4KB8GF033296', 'WMI': 'WDC', 'VDS': '0G4KB8', 'VIS': 'GF033296',
+     'MODEL': 'GLC', 'MAKE': 'Mercedes-Benz', 'YEAR': 2016, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '033296', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Base-4M', 'nhtsa.series': 'GLC300',
+     'epa.id' : '37160', 'epa.co2TailpipeGpm': '377.0', 'epa.model' : 'GLC300 4matic', 'epa.trim' : 'Auto 9-spd, 4 cyl, 2.0 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WDDGF4HB6DA760028
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Mercedes-Benz
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Mercedes-Benz&model=C250
