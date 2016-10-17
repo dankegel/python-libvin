@@ -614,6 +614,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3G1BE6SM1HS511968
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Chevrolet&model=Cruze%20Hatchback
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37909
+    {'VIN': '3G1BE6SM1HS511968', 'WMI': '3G1', 'VDS': 'BE6SM1', 'VIS': 'HS511968',
+     'MODEL': 'Cruze', 'MAKE': 'Chevrolet', 'YEAR': 2017, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '511968', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'LT',
+     'epa.id' : '37909', 'epa.co2TailpipeGpm': '278.0', 'epa.model' : 'Cruze Hatchback', 'epa.trim' : 'Auto (S6), 4 cyl, 1.4 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3KPFL4A8XHE050680
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Kia
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Kia&model=Forte
