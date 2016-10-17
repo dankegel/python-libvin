@@ -1020,6 +1020,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JF1GPAY67G8331894
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Subaru
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Subaru&model=Impreza%20Wagon%20AWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36827
+    {'VIN': 'JF1GPAY67G8331894', 'WMI': 'JF1', 'VDS': 'GPAY67', 'VIS': 'G8331894',
+     'MODEL': 'Impreza', 'MAKE': 'Subaru', 'YEAR': 2016, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '331894', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Sport-Ltd + NAVI + EyeSight', 'nhtsa.series': '',
+     'epa.id' : '36827', 'epa.co2TailpipeGpm': '318.0', 'epa.model' : 'Impreza Wagon AWD', 'epa.trim' : 'Man 5-spd, 4 cyl, 2.0 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JF1VA2Y63G9804991
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Subaru
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Subaru&model=WRX
