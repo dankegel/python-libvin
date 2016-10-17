@@ -185,6 +185,10 @@ class EPAVin(Vin):
             elif m == 'NV200, City Express':
                 # NHTSA's Make for this is 'Nissan, Chevrolet'!
                 return 'NV200'
+        elif self.make == 'Ram':
+            if m == 'Ram':
+               if 'Trim' in self.nhtsa and '-' in self.nhtsa['Trim']:
+                   return self.nhtsa['Trim'].split('-')[0]
         elif self.make == 'Scion':
             if m.upper().startswith("SCION "):
                 return m[6:]
@@ -253,6 +257,10 @@ class EPAVin(Vin):
         if 'Trim' in self.nhtsa and self.nhtsa['Trim'] != "":
             for word in self.nhtsa['Trim'].split():
                 attributes.append(word)
+            if self.make == 'Ram':
+                if '-' in self.nhtsa['Trim']:
+                    for word in self.nhtsa['Trim'].split('-'):
+                        attributes.append(word)
             # Special cases
             s = self.nhtsa['Trim']
             # Chevrolet: 1500=1/2ton, 2500=3/4ton, 3500=1 ton?

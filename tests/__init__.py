@@ -30,6 +30,18 @@ TEST_DATA = [
      'epa.id' : '33496', 'epa.co2TailpipeGpm': '444.0', 'epa.model' : 'Grand Cherokee 2WD', 'epa.trim' : 'Auto 8-spd, 6 cyl, 3.6 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1C6RR6GG1FS674987
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2015&make=Ram
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2015&make=Ram&model=1500%202WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/35741
+    {'VIN': '1C6RR6GG1FS674987', 'WMI': '1C6', 'VDS': 'RR6GG1', 'VIS': 'FS674987',
+     'MODEL': 'Ram', 'MAKE': 'Ram', 'YEAR': 2015, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '674987', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '1500-SLT', 'nhtsa.series': '',
+     'epa.id' : '35741', 'epa.co2TailpipeGpm': '451.0', 'epa.model' : '1500 2WD', 'epa.trim' : 'Auto 8-spd, 6 cyl, 3.6 L',
+    },
+
     # http://www.vindecoder.net/?vin=1D7RB1CP8BS798034&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/30456
     {'VIN': '1D7RB1CP8BS798034', 'WMI': '1D7', 'VDS': 'RB1CP8', 'VIS': 'BS798034',
@@ -1623,6 +1635,18 @@ TEST_DATA = [
      'MODEL': 'CLK-Class', 'MAKE': 'Mercedes-Benz', 'YEAR': 2005, 'COUNTRY': 'Germany',
      'REGION': 'europe', 'SEQUENTIAL_NUMBER': '126044', 'FEWER_THAN_500_PER_YEAR': False,
      'epa.id' : '20623', 'epa.co2TailpipeGpm': '423.2', 'epa.model' : 'CLK320', 'epa.trim' : 'Auto 5-spd, 6 cyl, 3.2 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WDCYC3HF7EX225710
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Mercedes-Benz
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Mercedes-Benz&model=G550
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34514
+    {'VIN': 'WDCYC3HF7EX225710', 'WMI': 'WDC', 'VDS': 'YC3HF7', 'VIS': 'EX225710',
+     'MODEL': 'G-Class', 'MAKE': 'Mercedes-Benz', 'YEAR': 2014, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '225710', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '4-MATIC', 'nhtsa.series': 'G550',
+     'epa.id' : '34514', 'epa.co2TailpipeGpm': '680.0', 'epa.model' : 'G550', 'epa.trim' : 'Auto 7-spd, 8 cyl, 5.5 L',
     },
 
     # http://www.vindecoder.net/?vin=WDCYC7DF3FX109287&submit=Decode
