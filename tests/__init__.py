@@ -1696,6 +1696,19 @@ TEST_DATA = [
      'epa.id' : '32780', 'epa.co2TailpipeGpm': '352.0', 'epa.model' : 'C250', 'epa.trim' : 'Auto 7-spd, 4 cyl, 1.8 L, Turbo',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WDDLJ7GB9EA113284
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Mercedes-Benz
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Mercedes-Benz&model=CLS63%20AMG%204matic
+    # http://www.fueleconomy.gov/ws/rest/vehicle/33815
+    # Oh, well.  Can't handle this yet.
+    #{'VIN': 'WDDLJ7GB9EA113284', 'WMI': 'WDD', 'VDS': 'LJ7GB9', 'VIS': 'EA113284',
+    # 'MODEL': 'CLS-Class', 'MAKE': 'Mercedes-Benz', 'YEAR': 2014, 'COUNTRY': 'Germany',
+    # 'REGION': 'europe', 'SEQUENTIAL_NUMBER': '113284', 'FEWER_THAN_500_PER_YEAR': False,
+    # 'nhtsa.trim': '4-Matic', 'nhtsa.series': 'CLS63 AMG-S',
+    # 'epa.id' : '33815', 'epa.co2TailpipeGpm': '495.0', 'epa.model' : 'CLS63 AMG 4matic', 'epa.trim' : 'Auto 7-spd, 8 cyl, 5.5 L, Turbo',
+    #},
+
     # http://www.vindecoder.net/?vin=WDDNG7BB4AA522219&submit=Decode
     # ftp://safercar.gov/MfrMail/ORG4488.pdf
     # http://www.fueleconomy.gov/ws/rest/vehicle/29413

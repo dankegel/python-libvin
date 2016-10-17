@@ -272,8 +272,10 @@ class EPAVin(Vin):
                 if "1 ton" in s:
                     attributes.append('3500')
             if self.make == 'Mercedes-Benz':
-                if s == 'base-4m':
-                    # WDC0G4KB8GF033296
+                if s == 'base-4m': # or s == '4-matic':
+                    # WDC0G4KB8GF033296 base-4m
+                    # WDDLJ7GB9EA113284 4-matic
+                    # but 1GCEK19B45E223906 gets confused if 4-matic recognized, so oh well for now
                     attributes.append('4matic')
         if 'BodyClass' in self.nhtsa and self.nhtsa['BodyClass'] != "":
             for word in self.nhtsa['BodyClass'].split("/"):
