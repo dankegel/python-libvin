@@ -220,6 +220,7 @@ WMI_MAP = {
     'JTN': 'Scion',
     'KL': 'Daewoo General Motors South Korea',
     'KL1': 'Chevrolet',
+    'KL4': 'Buick',
     'KL7': 'Chevrolet',    # See page 8, https://vpic.nhtsa.dot.gov/mid/home/displayfile/32014
     'KL8': 'Chevrolet',    # See page 8, https://vpic.nhtsa.dot.gov/mid/home/displayfile/32014
     'KM8': 'Hyundai',

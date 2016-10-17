@@ -1283,6 +1283,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/KL4CJASB9GB686238
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Buick
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Buick&model=Encore
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36490
+    {'VIN': 'KL4CJASB9GB686238', 'WMI': 'KL4', 'VDS': 'CJASB9', 'VIS': 'GB686238',
+     'MODEL': 'Encore', 'MAKE': 'Buick', 'YEAR': 2016, 'COUNTRY': 'Korea (South)',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '686238', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '36490', 'epa.co2TailpipeGpm': '320.0', 'epa.model' : 'Encore', 'epa.trim' : 'Auto (S6), 4 cyl, 1.4 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/KL7CJPSB2GB657170
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Chevrolet
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Chevrolet&model=Trax%20AWD
