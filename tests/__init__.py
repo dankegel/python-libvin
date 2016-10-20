@@ -988,6 +988,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5YJSA1AG1DFP08689
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Tesla
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Tesla&model=Model%20S%20(60%20kW-hr%20battery%20pack)
+    # http://www.fueleconomy.gov/ws/rest/vehicle/33367
+    {'VIN': '5YJSA1AG1DFP08689', 'WMI': '5YJ', 'VDS': 'SA1AG1', 'VIS': 'DFP08689',
+     'MODEL': 'Model S', 'MAKE': 'Tesla', 'YEAR': 2013, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': 'P08689', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '33367', 'epa.co2TailpipeGpm': '0.0', 'epa.model' : 'Model S (60 kW-hr battery pack)', 'epa.trim' : 'Auto (A1)',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5YMKT6C52G0R79418
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=BMW
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=BMW&model=X5%20M

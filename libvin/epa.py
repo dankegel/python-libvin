@@ -359,6 +359,8 @@ class EPAVin(Vin):
 
         if 'BatteryKWh' in self.nhtsa and self.nhtsa['BatteryKWh'] != '':
             attributes.append('%s kW-hr' % self.nhtsa['BatteryKWh'])
+        if 'BatteryKWh_to' in self.nhtsa and self.nhtsa['BatteryKWh_to'] != '':
+            attributes.append('%s kW-hr' % self.nhtsa['BatteryKWh_to'])
 
         if 'Manual' in self.nhtsa['TransmissionStyle']:
             attributes.append('MAN')
