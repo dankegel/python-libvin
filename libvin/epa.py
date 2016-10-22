@@ -281,8 +281,13 @@ class EPAVin(Vin):
                     # but 1GCEK19B45E223906 gets confused if 4-matic recognized, so oh well for now
                     attributes.append('4matic')
         if 'BodyClass' in self.nhtsa and self.nhtsa['BodyClass'] != "":
-            for word in self.nhtsa['BodyClass'].split("/"):
-                attributes.append(word)
+            if self.make == 'Subaru' and self.nhtsa['Model'] == 'Impreza':
+                # clash between Wagon as body type and Wagon as part of model name
+                # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JF1GPAP64G8348878
+                pass
+            else:
+                for word in self.nhtsa['BodyClass'].split("/"):
+                    attributes.append(word)
         if 'Doors' in self.nhtsa and self.nhtsa['Doors'] != "":
             attributes.append(self.nhtsa['Doors']+'Dr')
             attributes.append(self.nhtsa['Doors']+'-Door')
