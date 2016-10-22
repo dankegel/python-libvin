@@ -1702,6 +1702,18 @@ TEST_DATA = [
      'epa.id' : '37222', 'epa.co2TailpipeGpm': '37.0', 'epa.model' : 'i3 REX', 'epa.trim' : 'Auto (A1), 2 cyl, 0.6 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WD4PG2EE1G3111116
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Mercedes-Benz
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Mercedes-Benz&model=Metris%20(Cargo%20Van)
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36991
+    {'VIN': 'WD4PG2EE1G3111116', 'WMI': 'WD4', 'VDS': 'PG2EE1', 'VIS': 'G3111116',
+     'MODEL': 'METRIS', 'MAKE': 'Mercedes-Benz', 'YEAR': 2016, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '111116', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '36991', 'epa.co2TailpipeGpm': '396.0', 'epa.model' : 'Metris (Cargo Van)', 'epa.trim' : 'Auto 7-spd, 4 cyl, 2.0 L, Turbo',
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/20623
     {'VIN': 'WDBTJ65JX5F126044', 'WMI': 'WDB', 'VDS': 'TJ65JX', 'VIS': '5F126044',
      'MODEL': 'CLK-Class', 'MAKE': 'Mercedes-Benz', 'YEAR': 2005, 'COUNTRY': 'Germany',

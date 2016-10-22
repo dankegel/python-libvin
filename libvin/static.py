@@ -327,6 +327,7 @@ WMI_MAP = {
     'WDC': 'Mercedes-Benz',
     'WDD': 'Mercedes-Benz',
     'WD3': 'Mercedes-Benz',
+    'WD4': 'Mercedes-Benz',
     'WEB': 'Evobus GmbH (Mercedes-Bus)',
     'WF0': 'Ford Germany',
     'WMA': 'MAN Germany',
