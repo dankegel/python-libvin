@@ -239,6 +239,12 @@ class Vin(object):
             if brandcode == 'N':
                 return 'Scion'
             return 'Subaru'
+        if man == 'Toyota':
+            if self.year == 2016:
+                # JTNKARJEXGJ522381 is 2016 Scion iM still, as far as EPA is concerned
+                if self.vin.startswith('JTNKARJE'):
+                   return 'Scion'
+
         if man == 'Nissan':
             # ftp://safercar.gov/MfrMail/ORG7377.pdf "MY12 Nissan VIN Coding System"
             # https://vpic.nhtsa.dot.gov/mid/home/displayfile/29173 "MY16 Nissan VIN Coding System"

@@ -1398,6 +1398,23 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JTNBF3EKXB3012138
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2011&make=Toyota
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2011&make=Toyota&model=Camry
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/30086
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/30087
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/30088
+    {'VIN': 'JTNBF3EKXB3012138', 'WMI': 'JTN', 'VDS': 'BF3EKX', 'VIS': 'B3012138',
+     'MODEL': 'Camry', 'MAKE': 'Toyota', 'YEAR': 2011, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '012138', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'ASV40L/GSV40L/AHV40L',
+     'epa.id' : '30086', 'epa.co2TailpipeGpm': '341.8', 'epa.model' : 'Camry', 'epa.trim' : 'Man 6-spd, 4 cyl, 2.5 L',
+     #'epa.id' : '30087', 'epa.co2TailpipeGpm': '355.5', 'epa.model' : 'Camry', 'epa.trim' : 'Auto (S6), 4 cyl, 2.5 L',
+     #'epa.id' : '30088', 'epa.co2TailpipeGpm': '386.4', 'epa.model' : 'Camry', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JTNKARJEXGJ522381
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Scion
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Scion&model=iM
