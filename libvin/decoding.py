@@ -209,6 +209,9 @@ class Vin(object):
 
         if self.vin[0:5] == '3MYDL':
             # Mazda builds Yaris for Toyota, see https://vpic.nhtsa.dot.gov/mid/home/displayfile/32354
+            # 3MYDLBZV4GY112482 is 2016 Scion still
+            if self.vin.startswith('3MYDLBZV'):
+               return 'Scion'
             return 'Toyota'
 
         if man == "General Motors":

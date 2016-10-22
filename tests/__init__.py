@@ -746,6 +746,21 @@ TEST_DATA = [
      'epa.id' : '37971', 'epa.co2TailpipeGpm': '271.0', 'epa.model' : 'Yaris', 'epa.trim' : 'Man 5-spd, 4 cyl, 1.5 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3MYDLBZV4GY112482
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Scion
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Scion&model=iA
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36339
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/36340
+    {'VIN': '3MYDLBZV4GY112482', 'WMI': '3MY', 'VDS': 'DLBZV4', 'VIS': 'GY112482',
+     'MODEL': 'Scion iA', 'MAKE': 'Scion', 'YEAR': 2016, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '112482', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '36339', 'epa.co2TailpipeGpm': '258.0', 'epa.model' : 'iA', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.5 L',
+     #'epa.id' : '36340', 'epa.co2TailpipeGpm': '249.0', 'epa.model' : 'iA', 'epa.trim' : 'Auto (S6), 4 cyl, 1.5 L',
+    },
+
     # Can't tell transmission from vin, so pick one at random :-(
     # https://vpic.nhtsa.dot.gov/mid/home/displayfile/6089
     # http://www.fueleconomy.gov/ws/rest/vehicle/36534
