@@ -1000,6 +1000,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5Y2SP67069Z433697
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2009&make=Pontiac
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2009&make=Pontiac&model=Vibe
+    # http://www.fueleconomy.gov/ws/rest/vehicle/25302
+    {'VIN': '5Y2SP67069Z433697', 'WMI': '5Y2', 'VDS': 'SP6706', 'VIS': '9Z433697',
+     'MODEL': 'Vibe', 'MAKE': 'Pontiac', 'YEAR': 2009, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '433697', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '25302', 'epa.co2TailpipeGpm': '370.3', 'epa.model' : 'Vibe', 'epa.trim' : 'Auto (S5), 4 cyl, 2.4 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5YJSA1AG1DFP08689
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Tesla
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Tesla&model=Model%20S%20(60%20kW-hr%20battery%20pack)
