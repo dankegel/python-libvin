@@ -944,6 +944,18 @@ TEST_DATA = [
      'epa.id' : '32314', 'epa.co2TailpipeGpm': '432.0', 'epa.model' : 'JX35 FWD', 'epa.trim' : 'Auto(AV-S6), 6 cyl, 3.5 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5N1AZ2MG1GN146218
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Nissan
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Nissan&model=Murano%20FWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37198
+    {'VIN': '5N1AZ2MG1GN146218', 'WMI': '5N1', 'VDS': 'AZ2MG1', 'VIS': 'GN146218',
+     'MODEL': 'Murano', 'MAKE': 'Nissan', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '146218', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '37198', 'epa.co2TailpipeGpm': '375.0', 'epa.model' : 'Murano FWD', 'epa.trim' : 'Auto(AV-S7), 6 cyl, 3.5 L',
+    },
+
     # http://www.vindecoder.net/?vin=5N1CR2MN6EC875492&submit=Decode
     # NOTE: Disagreement between NHTSA and EPA about engine size, so skipping
     {'VIN': '5N1CR2MN6EC875492', 'WMI': '5N1', 'VDS': 'CR2MN6', 'VIS': 'EC875492',
