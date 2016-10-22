@@ -777,6 +777,18 @@ TEST_DATA = [
      #'epa.id' : '36924', 'epa.co2TailpipeGpm': '444.0', 'epa.model' : 'Tacoma 4WD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3VW547AU7GM058227
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Volkswagen
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Volkswagen&model=GTI
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36574
+    {'VIN': '3VW547AU7GM058227', 'WMI': '3VW', 'VDS': '547AU7', 'VIS': 'GM058227',
+     'MODEL': 'Golf GTI', 'MAKE': 'Volkswagen', 'YEAR': 2016, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '058227', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '2.0T Base/ Performace Pkg. S, SE, Autobahn',
+     'epa.id' : '36574', 'epa.co2TailpipeGpm': '311.0', 'epa.model' : 'GTI', 'epa.trim' : 'Man 6-spd, 4 cyl, 2.0 L, Turbo',
+    },
+
     # http://www.fueleconomy.gov/ws/rest/vehicle/31173
     {'VIN': '3VWVA7AT5CM635721', 'WMI': '3VW', 'VDS': 'VA7AT5', 'VIS': 'CM635721',
      'MODEL': 'New Beetle', 'MAKE': 'Volkswagen', 'YEAR': 2012, 'COUNTRY': 'Mexico',

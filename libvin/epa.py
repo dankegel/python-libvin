@@ -205,6 +205,9 @@ class EPAVin(Vin):
             if m == 'New Beetle':
                 # EPA has just 'Beetle' for some years
                 return 'Beetle'
+            if m == 'Golf GTI':
+                # EPA has just 'GTI'
+                return 'GTI'
         elif self.make == 'Volvo':
             if m.endswith("0CC"):
                 return m.replace("0CC", "0 CC")
