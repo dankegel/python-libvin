@@ -54,6 +54,18 @@ TEST_DATA = [
      'epa.id' : '35741', 'epa.co2TailpipeGpm': '451.0', 'epa.model' : '1500 2WD', 'epa.trim' : 'Auto 8-spd, 6 cyl, 3.6 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1D4PT5GK4BW541677
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2011&make=Dodge
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2011&make=Dodge&model=Nitro%202WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/30495
+    {'VIN': '1D4PT5GK4BW541677', 'WMI': '1D4', 'VDS': 'PT5GK4', 'VIS': 'BW541677',
+     'MODEL': 'Nitro', 'MAKE': 'Dodge', 'YEAR': 2011, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '541677', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'SXT', 'nhtsa.series': 'KA',
+     'epa.id' : '30495', 'epa.co2TailpipeGpm': '493.7', 'epa.model' : 'Nitro 2WD', 'epa.trim' : 'Auto 4-spd, 6 cyl, 3.7 L',
+    },
+
     # http://www.vindecoder.net/?vin=1D7RB1CP8BS798034&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/30456
     {'VIN': '1D7RB1CP8BS798034', 'WMI': '1D7', 'VDS': 'RB1CP8', 'VIS': 'BS798034',
