@@ -390,6 +390,18 @@ TEST_DATA = [
      'epa.id' : '36488', 'epa.co2TailpipeGpm': '445.0', 'epa.model' : 'Town and Country', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.6 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2CTALFEW5A6400922
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2010&make=GMC
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2010&make=GMC&model=Terrain%20FWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/26469
+    {'VIN': '2CTALFEW5A6400922', 'WMI': '2CT', 'VDS': 'ALFEW5', 'VIS': 'A6400922',
+     'MODEL': 'Terrain', 'MAKE': 'GMC', 'YEAR': 2010, 'COUNTRY': 'Canada',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '400922', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'SLT1',
+     'epa.id' : '26469', 'epa.co2TailpipeGpm': '341.8', 'epa.model' : 'Terrain FWD', 'epa.trim' : 'Auto 6-spd, 4 cyl, 2.4 L',
+    },
+
     # http://www.vindecoder.net/?vin=2D4RN6DX5AR939562&submit=Decode
     # https://vpic.nhtsa.dot.gov/decoder/ gives this as Caravan/Grand Caravan, 4 L, 6 cyl,
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2010&make=Dodge was tough for my fuzzy match, at first it liked Nitro 2WD better
