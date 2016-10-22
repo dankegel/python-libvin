@@ -367,6 +367,7 @@ WMI_MAP = {
     'ZHW': 'Lamborghini',
     'ZLA': 'Lancia',
     'ZOM': 'OM',
+    '1B3': 'Dodge',
     '1C3': 'Chrysler',
     '1C4': 'Chrysler',
     '1C6': 'Chrysler',

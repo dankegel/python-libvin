@@ -22,6 +22,18 @@ TEST_DATA = [
      'epa.id' : '37075', 'epa.co2TailpipeGpm': '252.0', 'epa.model' : 'Civic 4Dr', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 1.5 L, Turbo',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1B3HB28C18D535223
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2008&make=Dodge
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2008&make=Dodge&model=Caliber
+    # http://www.fueleconomy.gov/ws/rest/vehicle/24818
+    {'VIN': '1B3HB28C18D535223', 'WMI': '1B3', 'VDS': 'HB28C1', 'VIS': '8D535223',
+     'MODEL': 'Caliber', 'MAKE': 'Dodge', 'YEAR': 2008, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '535223', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'SE', 'nhtsa.series': 'PM',
+     'epa.id' : '24818', 'epa.co2TailpipeGpm': '341.8', 'epa.model' : 'Caliber', 'epa.trim' : 'Man 5-spd, 4 cyl, 1.8 L',
+    },
+
     # http://www.vindecoder.net/?vin=1C4RJEAG2EC476429&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/33496
     {'VIN': '1C4RJEAG2EC476429', 'WMI': '1C4', 'VDS': 'RJEAG2', 'VIS': 'EC476429',
