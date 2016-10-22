@@ -525,6 +525,7 @@ WMI_MAP = {
     '6FP': 'Ford Motor Company Australia',
     '6G1': 'General Motors-Holden (post Nov 2002)',
     '6G2': 'Pontiac Australia (GTO & G8)',
+    '6G3': 'Chevrolet Australia',
     '6H8': 'General Motors-Holden (pre Nov 2002)',
     '6MM': 'Mitsubishi Motors Australia',
     '6T1': 'Toyota Motor Corporation Australia',

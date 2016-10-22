@@ -1035,6 +1035,18 @@ TEST_DATA = [
      'epa.id' : '36774', 'epa.co2TailpipeGpm': '551.0', 'epa.model' : 'X5 M', 'epa.trim' : 'Auto (S8), 8 cyl, 4.4 L, Turbo',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/6G3F15RW2GL210784
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Chevrolet&model=Colorado%20Cab%20Chassis%202WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36599
+    {'VIN': '6G3F15RW2GL210784', 'WMI': '6G3', 'VDS': 'F15RW2', 'VIS': 'GL210784',
+     'MODEL': 'SS', 'MAKE': 'Chevrolet', 'YEAR': 2016, 'COUNTRY': 'Australia',
+     'REGION': 'oceania', 'SEQUENTIAL_NUMBER': '210784', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '36599', 'epa.co2TailpipeGpm': '555.0', 'epa.model' : 'Colorado Cab Chassis 2WD', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.6 L',
+    },
+
     # http://www.vindecoder.net/?vin=JA4AD2A3XEZ426420&submit=Decode didn't have model
     # https://www.mitsubishicars.com/owners/support/vin-information
     # NHTSA complains  u'ErrorCode': u'4 - VIN corrected, error in one position only (indicated by ! in Suggested VIN), multiple matches found.',
