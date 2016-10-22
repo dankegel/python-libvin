@@ -433,6 +433,7 @@ WMI_MAP = {
     '2FA': 'Ford Motor Company Canada',
     '2FB': 'Ford Motor Company Canada',
     '2FC': 'Ford Motor Company Canada',
+    '2FD': 'Ford Motor Company Canada',
     '2FM': 'Ford Motor Company Canada',
     '2FT': 'Ford Motor Company Canada',
     '2FU': 'Freightliner',
