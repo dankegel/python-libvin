@@ -1290,6 +1290,18 @@ TEST_DATA = [
      #'epa.id' : '26323', 'epa.co2TailpipeGpm': '423.2', 'epa.model' : '370z', 'epa.trim' : 'Auto (S7), 6 cyl, 3.7 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN8AZ2NE0D9060764
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Infiniti
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Infiniti&model=QX56%204WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/33304
+    {'VIN': 'JN8AZ2NE0D9060764', 'WMI': 'JN8', 'VDS': 'AZ2NE0', 'VIS': 'D9060764',
+     'MODEL': 'QX56', 'MAKE': 'Infiniti', 'YEAR': 2013, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '060764', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '33304', 'epa.co2TailpipeGpm': '564.0', 'epa.model' : 'QX56 4WD', 'epa.trim' : 'Auto (S7), 8 cyl, 5.6 L',
+    },
+
     # http://www.vindecoder.net/?vin=JN8BS1MW7EM920252&submit=Decode
     # NHTSA has 4WD, EPA and world have AWD
     # http://www.fueleconomy.gov/ws/rest/vehicle/33883

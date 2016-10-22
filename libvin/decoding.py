@@ -247,7 +247,10 @@ class Vin(object):
             # says that plus Infiniti if offset 4 + 5 are S1.  (Nissan Rogue is S5.)
             # ftp://ftp.nhtsa.dot.gov/mfrmail/ORG7846.pdf "MY13 Nissan VIN Coding System"
             # says that plus Infiniti if offset 4 + 5 are L0.
-            if self.vin[4] in "JVY" or self.vin[4:6] == 'S1' or self.vin[4:6] == 'L0':
+            # JN8AZ2NE0D9060764 is 2013 infiniti qx56
+            # 1N4AZ0CP3EC336448 is 2014 nissan leaf
+            v46 = self.vin[4:6]
+            if self.vin[4] in "JVY" or v46 == 'S1' or v46 == 'L0' or v46 == 'Z2':
                 return 'Infiniti'
         if man == 'Renault Samsung':
             # FIXME: they build other makes, too
