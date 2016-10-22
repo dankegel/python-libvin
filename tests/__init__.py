@@ -338,6 +338,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1Z7HC28K49S729510
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2009&make=Mitsubishi
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2009&make=Mitsubishi&model=Raider%20Pickup%202WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/26075
+    {'VIN': '1Z7HC28K49S729510', 'WMI': '1Z7', 'VDS': 'HC28K4', 'VIS': '9S729510',
+     'MODEL': 'Raider', 'MAKE': 'Mitsubishi', 'YEAR': 2009, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '729510', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'LS', 'nhtsa.series': 'NM',
+     'epa.id' : '26075', 'epa.co2TailpipeGpm': '493.7', 'epa.model' : 'Raider Pickup 2WD', 'epa.trim' : 'Man 6-spd, 6 cyl, 3.7 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1ZVBP8CF4E5242560
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Ford
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Ford&model=Mustang

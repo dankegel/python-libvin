@@ -419,6 +419,7 @@ WMI_MAP = {
     '1XP': 'Peterbilt USA',
     '1YV': 'Mazda USA (AutoAlliance International)',
     '1ZV': 'Ford Motor Company',
+    '1Z7': 'Mitsubishi',
     '137': 'Hummer',
     '19U': 'Acura',
     '19V': 'Acura',
