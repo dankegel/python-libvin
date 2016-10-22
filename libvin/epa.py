@@ -263,6 +263,8 @@ class EPAVin(Vin):
         if 'Trim' in self.nhtsa and self.nhtsa['Trim'] != "":
             for word in self.nhtsa['Trim'].split():
                 attributes.append(word)
+            if 'Hybrid' in self.nhtsa['Trim']:
+                attributes.append('Hybrid')
             if self.make == 'Ram':
                 if '-' in self.nhtsa['Trim']:
                     for word in self.nhtsa['Trim'].split('-'):

@@ -1710,6 +1710,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WBAFZ9C50DD090600
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=BMW
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=BMW&model=ActiveHybrid%205
+    # http://www.fueleconomy.gov/ws/rest/vehicle/33073
+    {'VIN': 'WBAFZ9C50DD090600', 'WMI': 'WBA', 'VDS': 'FZ9C50', 'VIS': 'DD090600',
+     'MODEL': 'ActiveHybrid 5', 'MAKE': 'BMW', 'YEAR': 2013, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '090600', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'ActiveHybrid5', 'nhtsa.series': '5-Series',
+     'epa.id' : '33073', 'epa.co2TailpipeGpm': '346.0', 'epa.model' : 'ActiveHybrid 5', 'epa.trim' : 'Auto (S8), 6 cyl, 3.0 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WBAVM1C50EVW50347
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=BMW
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=BMW&model=X1%20sDrive28i
