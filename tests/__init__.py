@@ -1791,6 +1791,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WMEEK3BA1EK730262
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Smart
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Smart&model=fortwo%20cabriolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34461
+    {'VIN': 'WMEEK3BA1EK730262', 'WMI': 'WME', 'VDS': 'EK3BA1', 'VIS': 'EK730262',
+     'MODEL': 'smart', 'MAKE': 'Smart', 'YEAR': 2014, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '730262', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'FORTWO CABRIO',
+     'epa.id' : '34461', 'epa.co2TailpipeGpm': '243.0', 'epa.model' : 'fortwo cabriolet', 'epa.trim' : 'Auto(AM5), 3 cyl, 1.0 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WMWSV3C56DT393104
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=MINI
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=MINI&model=Cooper%20S

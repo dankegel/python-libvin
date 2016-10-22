@@ -333,6 +333,7 @@ WMI_MAP = {
     'WEB': 'Evobus GmbH (Mercedes-Bus)',
     'WF0': 'Ford Germany',
     'WMA': 'MAN Germany',
+    'WME': 'Smart',
     'WMW': 'MINI',
     'WP0': 'Porsche',
     'WP1': 'Porsche',

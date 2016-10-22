@@ -192,6 +192,9 @@ class EPAVin(Vin):
         elif self.make == 'Scion':
             if m.upper().startswith("SCION "):
                 return m[6:]
+        elif self.make == 'Smart':
+            # Rest of model name is in nhtsa['Series'], kind of
+            return self.nhtsa['Series'].split('-')[0]
         elif self.make == 'Toyota':
             if m == 'Corolla Matrix':
                 # Nobody has ever heard the official name 'Corolla Matrix'
