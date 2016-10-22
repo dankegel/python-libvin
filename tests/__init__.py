@@ -1362,6 +1362,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JTLZE4FEXEJ066046
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Scion
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Scion&model=xB
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34624
+    {'VIN': 'JTLZE4FEXEJ066046', 'WMI': 'JTL', 'VDS': 'ZE4FEX', 'VIS': 'EJ066046',
+     'MODEL': 'SCION xB', 'MAKE': 'Scion', 'YEAR': 2014, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '066046', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'N', 'nhtsa.series': 'AZE151L',
+     'epa.id' : '34624', 'epa.co2TailpipeGpm': '369.0', 'epa.model' : 'xB', 'epa.trim' : 'Man 5-spd, 4 cyl, 2.4 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JTNKARJEXGJ522381
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Scion
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Scion&model=iM
