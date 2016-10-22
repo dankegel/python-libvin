@@ -293,6 +293,18 @@ TEST_DATA = [
      'epa.id' : '32652', 'epa.co2TailpipeGpm': '416.0', 'epa.model' : 'Yukon Denali 1500 Hybrid 4WD', 'epa.trim' : 'Auto (variable gear ratios), 8 cyl, 6.0 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1GKS2HKJXGR406207
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=GMC
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=GMC&model=Yukon%20K1500%20XL%204WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36701
+    {'VIN': '1GKS2HKJXGR406207', 'WMI': '1GK', 'VDS': 'S2HKJX', 'VIS': 'GR406207',
+     'MODEL': 'Yukon XL', 'MAKE': 'GMC', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '406207', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Denali',
+     'epa.id' : '36701', 'epa.co2TailpipeGpm': '535.0', 'epa.model' : 'Yukon K1500 XL 4WD', 'epa.trim' : 'Auto 8-spd, 8 cyl, 6.2 L, SIDI',
+    },
+
     # http://www.vindecoder.net/?vin=1GT020CG4EF828544&submit=Decode doesn't have model
     {'VIN': '1GT020CG4EF828544', 'WMI': '1GT', 'VDS': '020CG4', 'VIS': 'EF828544',
      'MODEL': 'Sierra 2500', 'MAKE':  'GMC', 'YEAR': 2014, 'COUNTRY': 'United States',
