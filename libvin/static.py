@@ -319,6 +319,7 @@ WMI_MAP = {
     'WAG': 'Neoplan',
     'WAU': 'Audi',
     'WA1': 'Audi',
+    'WB1': 'BMW',  # motorcycles?
     'WBA': 'BMW',
     'WBS': 'BMW',
     'WBX': 'BMW',
