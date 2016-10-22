@@ -825,6 +825,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5KBCP36869B501904
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2009&make=Honda
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2009&make=Honda&model=Accord
+    # http://www.fueleconomy.gov/ws/rest/vehicle/26007
+    {'VIN': '5KBCP36869B501904', 'WMI': '5KB', 'VDS': 'CP3686', 'VIS': '9B501904',
+     'MODEL': 'Accord', 'MAKE': 'Honda', 'YEAR': 2009, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '501904', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'EX-L-V6', 'nhtsa.series': '',
+     'epa.id' : '26007', 'epa.co2TailpipeGpm': '404.0', 'epa.model' : 'Accord', 'epa.trim' : 'Auto 5-spd, 6 cyl, 3.5 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5NMZT3LB2HH016192
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Hyundai
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Hyundai&model=Santa%20Fe%20FWD
