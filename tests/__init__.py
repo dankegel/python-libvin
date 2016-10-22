@@ -391,6 +391,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2C8GP64L95R124507
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2005&make=Chrysler
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2005&make=Chrysler&model=Voyager/Town%20and%20Country%202WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/21227
+    {'VIN': '2C8GP64L95R124507', 'WMI': '2C8', 'VDS': 'GP64L9', 'VIS': '5R124507',
+     'MODEL': 'Town & Country', 'MAKE': 'Chrysler', 'YEAR': 2005, 'COUNTRY': 'Canada',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '124507', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Limited', 'nhtsa.series': 'RS',
+     'epa.id' : '21227', 'epa.co2TailpipeGpm': '493.7', 'epa.model' : 'Voyager/Town and Country 2WD', 'epa.trim' : 'Auto 4-spd, 6 cyl, 3.8 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2C4RC1BG8GR193643
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Chrysler
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Chrysler&model=Town%20and%20Country
