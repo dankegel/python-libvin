@@ -452,12 +452,28 @@ TEST_DATA = [
      'epa.id' : '26469', 'epa.co2TailpipeGpm': '341.8', 'epa.model' : 'Terrain FWD', 'epa.trim' : 'Auto 6-spd, 4 cyl, 2.4 L',
     },
 
-    # http://www.vindecoder.net/?vin=2D4RN6DX5AR939562&submit=Decode
-    # https://vpic.nhtsa.dot.gov/decoder/ gives this as Caravan/Grand Caravan, 4 L, 6 cyl,
-    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2010&make=Dodge was tough for my fuzzy match, at first it liked Nitro 2WD better
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2D4RN6DX5AR939562
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2010&make=Dodge
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2010&make=Dodge&model=Grand%20Caravan
+    # http://www.fueleconomy.gov/ws/rest/vehicle/28728
     {'VIN': '2D4RN6DX5AR939562', 'WMI': '2D4', 'VDS': 'RN6DX5', 'VIS': 'AR939562',
-     'MODEL': 'Grand Caravan', 'MAKE':  'Dodge', 'YEAR': 2010, 'COUNTRY': 'Canada',
+     'MODEL': 'Caravan/Grand Caravan', 'MAKE': 'Dodge', 'YEAR': 2010, 'COUNTRY': 'Canada',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '939562', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'RT',
+     'epa.id' : '28728', 'epa.co2TailpipeGpm': '444.4', 'epa.model' : 'Grand Caravan', 'epa.trim' : 'Auto 6-spd, 6 cyl, 4.0 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2D8HN44H78R679960
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2008&make=Dodge
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2008&make=Dodge&model=Caravan/Grand%20Caravan%202WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/24968
+    {'VIN': '2D8HN44H78R679960', 'WMI': '2D8', 'VDS': 'HN44H7', 'VIS': '8R679960',
+     'MODEL': 'Caravan/Grand Caravan', 'MAKE': 'Dodge', 'YEAR': 2008, 'COUNTRY': 'Canada',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '679960', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'SE', 'nhtsa.series': 'RT',
+     'epa.id' : '24968', 'epa.co2TailpipeGpm': '467.7', 'epa.model' : 'Caravan/Grand Caravan 2WD', 'epa.trim' : 'Auto 4-spd, 6 cyl, 3.3 L',
     },
 
     # http://www.vindecoder.net/?vin=2FTCF15F2ECA55516&submit=Decode
