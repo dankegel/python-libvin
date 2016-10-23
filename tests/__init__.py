@@ -949,6 +949,19 @@ TEST_DATA = [
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '215904', 'FEWER_THAN_500_PER_YEAR': False,
     },
 
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5GZCZ53454S846342
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2004&make=Saturn
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2004&make=Saturn&model=Vue%20FWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/20228
+    {'VIN': '5GZCZ53454S846342', 'WMI': '5GZ', 'VDS': 'CZ5345', 'VIS': '4S846342',
+     'MODEL': 'Vue', 'MAKE': 'Saturn', 'YEAR': 2004, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '846342', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '20228', 'epa.co2TailpipeGpm': '444.4', 'epa.model' : 'Vue FWD', 'epa.trim' : 'Auto 5-spd, 6 cyl, 3.5 L',
+    },
+
     # http://www.vindecoder.net/?vin=5J6TF1H33CL339137&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/31913
     {'VIN': '5J6TF1H33CL339137', 'WMI': '5J6', 'VDS': 'TF1H33', 'VIS': 'CL339137',

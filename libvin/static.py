@@ -524,6 +524,7 @@ WMI_MAP = {
     '5GN': 'Hummer',
     '5GR': 'Hummer',   # general motors
     '5GT': 'Hummer',   # general motors
+    '5GZ': 'Saturn',
     '5J6': 'Honda',
     '5J8': 'Acura',
     '5KB': 'Honda',
