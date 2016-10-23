@@ -17,6 +17,10 @@ from pprint import pprint
 from decoding import Vin
 from nhtsa import *
 
+# Cheapo cache, only appropriate for short-lived runs
+# (Cheapo fixme: clear it every hour or something)
+epavin_memo = {}
+
 class EPAVin(Vin):
 
     # Public interfaces
@@ -32,18 +36,36 @@ class EPAVin(Vin):
 
         self.verbosity = verbosity
         self.yearoffset = yearoffset
+        anonv = self.anonvin()
         if self.verbosity > 0 and self.yearoffset != 0:
             print "Setting yearoffset to %d" % yearoffset
         # Use the anonymized vin for privacy, and because it'll make lookups of
         # lots of identical-ish cars faster when using a web cache
-        self.__nhtsa = nhtsa_decode(self.anonvin(), verbosity)
+        self.__nhtsa = nhtsa_decode(anonv, verbosity)
         if (self.__nhtsa == None):
             return
         self.__attribs = self.__get_attributes()
-        self.__model = self.__get_model()
-        if (self.__model != None):
-            self.__ids, self.__trims = self.__get_ids()
-            self.__eco   = [self.__get_vehicle_economy(id) for id in self.__ids]
+
+        self.__eco = []
+        if anonv in epavin_memo:
+            old = epavin_memo[anonv]
+            try:
+                self.__model = old.__model
+                self.__ids   = old.__ids
+                self.__trims = old.__trims
+                self.__eco   = old.__eco
+            except Exception as e:
+                print "epa: exception " + str(e)
+                pass
+        else:
+            self.__model = self.__get_model()
+            if (self.__model != None):
+                self.__ids, self.__trims = self.__get_ids()
+                try:
+                    self.__eco   = [self.__get_vehicle_economy(id) for id in self.__ids]
+                except:
+                    pass
+            epavin_memo[anonv] = self
 
     @property
     def nhtsa(self):
@@ -185,6 +207,10 @@ class EPAVin(Vin):
             elif m == 'NV200, City Express':
                 # NHTSA's Make for this is 'Nissan, Chevrolet'!
                 return 'NV200'
+        elif self.make == 'Porsche':
+            if m == '911':
+               if 'Trim' in self.nhtsa and 'Carrera' in self.nhtsa['Trim']:
+                   return 'Carrera'
         elif self.make == 'Ram':
             if m == 'Ram':
                if 'Trim' in self.nhtsa and '-' in self.nhtsa['Trim']:
@@ -263,7 +289,8 @@ class EPAVin(Vin):
         if 'Trim' in self.nhtsa and self.nhtsa['Trim'] != "":
             for word in self.nhtsa['Trim'].split():
                 attributes.append(word)
-            if 'Hybrid' in self.nhtsa['Trim']:
+            # Grr.  Toyota Highlander trim is Base/Hybrid regardless of hybridness.
+            if 'Hybrid' in self.nhtsa['Trim'] and not '/Hybrid' in self.nhtsa['Trim']:
                 attributes.append('Hybrid')
             if self.make == 'Ram':
                 if '-' in self.nhtsa['Trim']:
@@ -544,8 +571,7 @@ class EPAVin(Vin):
                     # prevent [6] from matching [6-spd], as in Mazda's 6
                     if ("%s-SPD" % attrib) in uval:
                         continue
-                if ((attrib in uval)
-                 or (attrib == '2WD' and ('FWD' in uval or 'RWD' in uval))):
+                if attrib in uval:
                     # Kludge: give bonus for hybrid match
                     if attrib == "HYBRID":
                         chars_matched += 8
@@ -553,6 +579,11 @@ class EPAVin(Vin):
                         chars_matched = len(attrib)
                     else:
                         chars_matched += len(attrib) + 1  # for space
+                # Kludge: give bonus for approximate drive match
+                if ((attrib == '2WD' and ('FWD' in uval or 'RWD' in uval)) or
+                    (attrib == 'AWD' and '4WD' in uval)):
+                      chars_matched += 1
+
             # Kludge: give negative bonus for hybrid no-match
             if "HYBRID" in uval and "Hybrid" not in attributes:
                 chars_matched -= 16

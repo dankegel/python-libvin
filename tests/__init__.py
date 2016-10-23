@@ -200,17 +200,7 @@ TEST_DATA = [
      'epa.id' : '35571', 'epa.co2TailpipeGpm': '478.0', 'epa.model' : 'Sierra C15 2WD', 'epa.trim' : 'Auto 6-spd, 8 cyl, 5.3 L, SIDI',
     },
 
-    # Breadcrumbs for how libvin/epa.py looks up the epa results:
-    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1J8HR68T89C533504
-    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2009&make=Jeep
-    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2009&make=Jeep&model=Grand%20Cherokee%20SRT8%20AWD
-    # http://www.fueleconomy.gov/ws/rest/vehicle/26181
-    {'VIN': '1J8HR68T89C533504', 'WMI': '1J8', 'VDS': 'HR68T8', 'VIS': '9C533504',
-     'MODEL': 'Grand Cherokee', 'MAKE': 'Jeep', 'YEAR': 2009, 'COUNTRY': 'United States',
-     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '533504', 'FEWER_THAN_500_PER_YEAR': False,
-     'nhtsa.trim': 'Overland', 'nhtsa.series': 'WK',
-     'epa.id' : '26181', 'epa.co2TailpipeGpm': '740.6', 'epa.model' : 'Grand Cherokee SRT8 AWD', 'epa.trim' : 'Auto 5-spd, 8 cyl, 6.1 L',
-    },
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1J8HR68T89C533504  displacement wrong, should be 5.7L
 
     # http://www.fueleconomy.gov/ws/rest/vehicle/37066
     {'VIN': '1N4AZ0CP6GC304290', 'WMI': '1N4', 'VDS': 'AZ0CP6', 'VIS': 'GC304290',
@@ -1024,6 +1014,30 @@ TEST_DATA = [
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '717264', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': 'SE / SE NAVI / Limited / Limited NAVI',
      'epa.id' : '32340', 'epa.co2TailpipeGpm': '342.0', 'epa.model' : 'Sonata', 'epa.trim' : 'Auto 6-spd, 4 cyl, 2.0 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5TDDCRFH5GS016034
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Toyota
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Toyota&model=Highlander%20Hybrid%204WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37127
+    {'VIN': '5TDDCRFH5GS016034', 'WMI': '5TD', 'VDS': 'DCRFH5', 'VIS': 'GS016034',
+     'MODEL': 'Highlander', 'MAKE': 'Toyota', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '016034', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Base/Hybrid', 'nhtsa.series': 'ASU50L/GSU50L/GSU55L/GVU58L',
+     'epa.id' : '37127', 'epa.co2TailpipeGpm': '320.0', 'epa.model' : 'Highlander Hybrid 4WD', 'epa.trim' : 'Auto(AV-S6), 6 cyl, 3.5 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5TDKKRFH2GS149649
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Toyota
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Toyota&model=Highlander%202WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37124
+    {'VIN': '5TDKKRFH2GS149649', 'WMI': '5TD', 'VDS': 'KKRFH2', 'VIS': 'GS149649',
+     'MODEL': 'Highlander', 'MAKE': 'Toyota', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '149649', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Base/Hybrid', 'nhtsa.series': 'ASU50L/GSU50L/GSU55L/GVU58L',
+     'epa.id' : '37124', 'epa.co2TailpipeGpm': '425.0', 'epa.model' : 'Highlander 2WD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L',
     },
 
     # http://www.vindecoder.net/?vin=5UMDU93436L421092&submit=Decode
@@ -2039,6 +2053,18 @@ TEST_DATA = [
      'nhtsa.trim': '', 'nhtsa.series': 'Cooper',
      'epa.id' : '36791', 'epa.co2TailpipeGpm': '292.0', 'epa.model' : 'Cooper Hardtop 4 door', 'epa.trim' : 'Auto (S6), 4 cyl, 1.5 L, Turbo',
      #'epa.id' : '36719', 'epa.co2TailpipeGpm': '272.0', 'epa.model' : 'Cooper Hardtop 4 door', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.5 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WP0AA29933S620638
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2003&make=Porsche
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2003&make=Porsche&model=Carrera%202%20Coupe
+    # http://www.fueleconomy.gov/ws/rest/vehicle/18369
+    {'VIN': 'WP0AA29933S620638', 'WMI': 'WP0', 'VDS': 'AA2993', 'VIS': '3S620638',
+     'MODEL': '911', 'MAKE': 'Porsche', 'YEAR': 2003, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '620638', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Carrera (2WD), Carrera 4S (4WD)', 'nhtsa.series': 'Carrera',
+     'epa.id' : '18369', 'epa.co2TailpipeGpm': '467.7', 'epa.model' : 'Carrera 2 Coupe', 'epa.trim' : 'Man 6-spd, 6 cyl, 3.6 L',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
