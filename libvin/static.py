@@ -309,6 +309,7 @@ WMI_MAP = {
     'VF6': 'Renault (Trucks & Buses)',
     'VF7': 'Citroen',
     'VF8': 'Matra',
+    'VF9': 'Bugatti',
     'VLU': 'Scania France',
     'VNE': 'Irisbus (France)',
     'VNK': 'Toyota France',
