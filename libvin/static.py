@@ -56,11 +56,15 @@ WORLD_MANUFACTURER_MAP = {
             'LMNOPQR': 'Thailand'}},
 
     'N': {'region': 'asia', 'countries': {
+            'DEFGHIJK': 'Pakistan',
+            'LMNOPQR': 'Turkey'}},
+
+    'P': {'region': 'asia', 'countries': {
             'ABCDE': 'Philippines',
             'FGHIJK': 'Singapore',
             'LMNOPQR': 'Malaysia'}},
 
-    'P': {'region': 'asia', 'countries': {
+    'R': {'region': 'asia', 'countries': {
             'ABCDE': 'United Arab Emirates',
             'FGHIJK': 'Taiwan',
             'LMNOPQR': 'Vietnam',
