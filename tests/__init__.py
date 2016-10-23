@@ -619,6 +619,16 @@ TEST_DATA = [
      'epa.id' : '24590', 'epa.co2TailpipeGpm': '404.0', 'epa.model' : 'PT Cruiser', 'epa.trim' : 'Man 5-spd, 4 cyl, 2.4 L, Turbo',
     },
 
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3B7KF237X1G820823
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2001&make=Dodge
+    # but guess what?  Dodge didn't report mileage to EPA for its 2500's.
+    # Represent that here (poorly) by just omitting the epa line.
+    {'VIN': '3B7KF237X1G820823', 'WMI': '3B7', 'VDS': 'KF237X', 'VIS': '1G820823',
+     'MODEL': 'Ram', 'MAKE': 'Dodge', 'YEAR': 2001, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '820823', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '2500', 'nhtsa.series': '',
+    },
+
     # http://www.vin-decoder.org/details?vin=3C3CFFCR9FT528063
     # http://www.fiat500usa.com/2013/08/decoding-fiat-500-vin.html
     # Chrysler Passenger Car Vehicle Identification Number Code Guide

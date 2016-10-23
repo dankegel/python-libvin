@@ -477,6 +477,7 @@ WMI_MAP = {
     '2WM': 'Western Star',
     '3A4': 'Chrysler Mexico',
     '3A8': 'Chrysler Mexico',
+    '3B7': 'Dodge Mexico',
     '3C3': 'Chrysler',
     '3C4': 'Dodge Mexico',
     '3C6': 'Chrysler',
