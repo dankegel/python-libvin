@@ -279,6 +279,7 @@ WMI_MAP = {
     'SAL': 'Land Rover',
     'SAJ': 'Jaguar',
     'SAR': 'Rover',
+    'SBM': 'Mclaren',
     'SCA': 'Rolls Royce',
     'SCB': 'Bentley',
     'SCC': 'Lotus Cars',
