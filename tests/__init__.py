@@ -34,6 +34,18 @@ TEST_DATA = [
      'epa.id' : '24818', 'epa.co2TailpipeGpm': '341.8', 'epa.model' : 'Caliber', 'epa.trim' : 'Man 5-spd, 4 cyl, 1.8 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1B7HF13Z8YJ153328
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2000&make=Dodge
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2000&make=Dodge&model=Ram%201500%20Pickup%204WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/16147
+    {'VIN': '1B7HF13Z8YJ153328', 'WMI': '1B7', 'VDS': 'HF13Z8', 'VIS': 'YJ153328',
+     'MODEL': 'Ram', 'MAKE': 'Dodge', 'YEAR': 2000, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '153328', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '1500', 'nhtsa.series': '',
+     'epa.id' : '16147', 'epa.co2TailpipeGpm': '683.6', 'epa.model' : 'Ram 1500 Pickup 4WD', 'epa.trim' : 'Auto 4-spd, 8 cyl, 5.9 L',
+    },
+
     # http://www.vindecoder.net/?vin=1C4RJEAG2EC476429&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/33496
     {'VIN': '1C4RJEAG2EC476429', 'WMI': '1C4', 'VDS': 'RJEAG2', 'VIS': 'EC476429',
@@ -593,6 +605,21 @@ TEST_DATA = [
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '004299', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': 'G grade', 'nhtsa.series': 'GYL25L/GGL25L/GGL20L/GYL20L',
      'epa.id' : '37111', 'epa.co2TailpipeGpm': '299.0', 'epa.model' : 'RX 450h AWD', 'epa.trim' : 'Auto(AV-S6), 6 cyl, 3.5 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2V8HW34159R501060
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2009&make=Volkswagen
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2009&make=Volkswagen&model=Routan%20FWD
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/26117
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/26116
+    {'VIN': '2V8HW34159R501060', 'WMI': '2V8', 'VDS': 'HW3415', 'VIS': '9R501060',
+     'MODEL': 'Routan', 'MAKE': 'Volkswagen', 'YEAR': 2009, 'COUNTRY': 'Canada',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '501060', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'SE',
+     'epa.id' : '26117', 'epa.co2TailpipeGpm': '444.4', 'epa.model' : 'Routan FWD', 'epa.trim' : 'Auto 6-spd, 6 cyl, 4.0 L',
+     #'epa.id' : '26116', 'epa.co2TailpipeGpm': '493.7', 'epa.model' : 'Routan FWD', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.8 L',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
