@@ -775,6 +775,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3MEHM07157R600592
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2007&make=Mercury
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2007&make=Mercury&model=Milan
+    # http://www.fueleconomy.gov/ws/rest/vehicle/23587
+    {'VIN': '3MEHM07157R600592', 'WMI': '3ME', 'VDS': 'HM0715', 'VIS': '7R600592',
+     'MODEL': 'Milan', 'MAKE': 'Mercury', 'YEAR': 2007, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '600592', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Milan', 'nhtsa.series': '',
+     'epa.id' : '23587', 'epa.co2TailpipeGpm': '423.2', 'epa.model' : 'Milan', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.0 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3MYDLBYV0HY148317
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Toyota
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Toyota&model=Yaris

@@ -484,6 +484,7 @@ WMI_MAP = {
     '3D4': 'Dodge Mexico',
     '3D7': 'Dodge Mexico',
     '3KP': 'Kia Mexico',
+    '3ME': 'Mercury Mexico',
     '3MY': 'Mazda Mexico',
     '3MZ': 'Mazda Mexico',
     '3FA': 'Ford Motor Company Mexico',
