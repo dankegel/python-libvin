@@ -380,6 +380,18 @@ TEST_DATA = [
      'epa.id' : '22368', 'epa.co2TailpipeGpm': '522.8', 'epa.model' : 'Pacifica 2WD', 'epa.trim' : 'Auto 4-spd, 6 cyl, 3.5 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2A8HR54199R525806
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2009&make=Chrysler
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2009&make=Chrysler&model=Town%20and%20Country
+    # http://www.fueleconomy.gov/ws/rest/vehicle/26110
+    {'VIN': '2A8HR54199R525806', 'WMI': '2A8', 'VDS': 'HR5419', 'VIS': '9R525806',
+     'MODEL': 'Town & Country', 'MAKE': 'Chrysler', 'YEAR': 2009, 'COUNTRY': 'Canada',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '525806', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Touring/Signature', 'nhtsa.series': 'RT',
+     'epa.id' : '26110', 'epa.co2TailpipeGpm': '493.7', 'epa.model' : 'Town and Country', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.8 L',
+    },
+
     # http://www.vindecoder.net/?vin=2B3KA43G27H825762&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/23609
     {'VIN': '2B3KA43G27H825762', 'WMI': '2B3', 'VDS': 'KA43G2', 'VIS': '7H825762',

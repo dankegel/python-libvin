@@ -426,6 +426,7 @@ WMI_MAP = {
     '19V': 'Acura',
     '19X': 'Honda',
     '2A4': 'Chrysler Canada',
+    '2A8': 'Chrysler Canada',
     '2B3': 'Dodge Canada',
     '2C3': 'Chrysler Canada',
     '2C4': 'Chrysler Canada',
