@@ -581,6 +581,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3A4FY48B76T223562
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2006&make=Chrysler
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2006&make=Chrysler&model=PT%20Cruiser
+    # http://www.fueleconomy.gov/ws/rest/vehicle/22373
+    {'VIN': '3A4FY48B76T223562', 'WMI': '3A4', 'VDS': 'FY48B7', 'VIS': '6T223562',
+     'MODEL': 'PT Cruiser', 'MAKE': 'Chrysler', 'YEAR': 2006, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '223562', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Base/Classic', 'nhtsa.series': 'PT',
+     'epa.id' : '22373', 'epa.co2TailpipeGpm': '404.0', 'epa.model' : 'PT Cruiser', 'epa.trim' : 'Man 5-spd, 4 cyl, 2.4 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3A8FY68818T213031
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2008&make=Chrysler
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2008&make=Chrysler&model=PT%20Cruiser
