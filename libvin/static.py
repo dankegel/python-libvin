@@ -207,6 +207,7 @@ WMI_MAP = {
     'JA3': 'Mitsubishi',
     'JA4': 'Mitsubishi',
     'JA': 'Isuzu',
+    'JB3': 'Dodge',
     'JC1': 'Fiat',    # by Mazda
     'JF': 'Fuji Heavy Industries (Subaru)',
     'JGN': 'Chevrolet',
