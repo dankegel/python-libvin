@@ -1921,6 +1921,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WAUTPBFF6HA037248
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Audi
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Audi&model=A3%20e-tron
+    # http://www.fueleconomy.gov/ws/rest/vehicle/38228
+    {'VIN': 'WAUTPBFF6HA037248', 'WMI': 'WAU', 'VDS': 'TPBFF6', 'VIS': 'HA037248',
+     'MODEL': 'A3 Sportback e-tron', 'MAKE': 'Audi', 'YEAR': 2017, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '037248', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'A3 Premium plus',
+     'epa.id' : '38228', 'epa.co2TailpipeGpm': '158.0', 'epa.model' : 'A3 e-tron', 'epa.trim' : 'Auto(AM-S6), 4 cyl, 1.4 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WBA1L9C54GV325753
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=BMW
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=BMW&model=228i%20xDrive%20Convertible

@@ -545,9 +545,11 @@ class EPAVin(Vin):
             # optional mandatory attribute
             if mustmatch != None:
                 # prevent [Q60 AWD] from matching Q85 AWD instead of Q60 AWD Coupe
-                # but allow modifiers like C1500 and K1500 in middle of model
-                mu = mustmatch.upper().replace(' ', '.*')
-                if not re.search(mu, uval):
+                # but allow modifiers like C1500 or sportback to appear or disappear in middle of model
+                m = mustmatch.upper()
+                mu = m.replace(' ', '.*')       # allow extra words to be inserted into uval
+                mu2 = re.sub(' .* ', '.*', m)   # allow skipping middle word(s) of mustmatch
+                if not re.search(mu, uval) and not re.search(mu2, uval):
                     continue
                 # prevent [2] from matching [2WD], as in Mazda's 2
                 if len(mustmatch) == 1 and mustmatch.isdigit():
