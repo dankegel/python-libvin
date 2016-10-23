@@ -469,6 +469,7 @@ WMI_MAP = {
     '3C3': 'Chrysler',
     '3C4': 'Dodge Mexico',
     '3C6': 'Chrysler',
+    '3C8': 'Chrysler',
     '3CZ': 'Honda Mexico',
     '3D3': 'Dodge Mexico',
     '3D4': 'Dodge Mexico',

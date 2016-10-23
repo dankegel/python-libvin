@@ -582,6 +582,18 @@ TEST_DATA = [
      'epa.id' : '31451', 'epa.co2TailpipeGpm': '592.5', 'epa.model' : 'Ram 1500 Pickup 4WD', 'epa.trim' : 'Auto 6-spd, 8 cyl, 5.7 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3C8FY68B92T294580
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2002&make=Chrysler
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2002&make=Chrysler&model=PT%20Cruiser
+    # http://www.fueleconomy.gov/ws/rest/vehicle/18059
+    {'VIN': '3C8FY68B92T294580', 'WMI': '3C8', 'VDS': 'FY68B9', 'VIS': '2T294580',
+     'MODEL': 'PT Cruiser', 'MAKE': 'Chrysler', 'YEAR': 2002, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '294580', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Limited / Dream Cruiser', 'nhtsa.series': 'PT',
+     'epa.id' : '18059', 'epa.co2TailpipeGpm': '404.0', 'epa.model' : 'PT Cruiser', 'epa.trim' : 'Man 5-spd, 4 cyl, 2.4 L',
+    },
+
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3CZRU5H35GM739695
     # http://www.fueleconomy.gov/ws/rest/vehicle/35999
     {'VIN': '3CZRU5H35GM739695', 'WMI': '3CZ', 'VDS': 'RU5H35', 'VIS': 'GM739695',
