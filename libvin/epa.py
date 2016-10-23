@@ -323,6 +323,7 @@ class EPAVin(Vin):
         if 'Doors' in self.nhtsa and self.nhtsa['Doors'] != "":
             attributes.append(self.nhtsa['Doors']+'Dr')
             attributes.append(self.nhtsa['Doors']+'-Door')
+            attributes.append(self.nhtsa['Doors']+'Door')
             if self.make == 'MINI':
                 if self.nhtsa['Doors'] == '3':
                     attributes.append('2 Door')

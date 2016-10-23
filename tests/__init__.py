@@ -587,6 +587,18 @@ TEST_DATA = [
      'epa.id' : '31533', 'epa.co2TailpipeGpm': '493.7', 'epa.model' : 'MKT AWD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L, Turbo',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2S3TE52V426105737
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2002&make=Suzuki
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2002&make=Suzuki&model=Vitara%204Door
+    # http://www.fueleconomy.gov/ws/rest/vehicle/18130
+    {'VIN': '2S3TE52V426105737', 'WMI': '2S3', 'VDS': 'TE52V4', 'VIS': '26105737',
+     'MODEL': 'Vitara', 'MAKE': 'Suzuki', 'YEAR': 2002, 'COUNTRY': 'Canada',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '105737', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Hard Top', 'nhtsa.series': '',
+     'epa.id' : '18130', 'epa.co2TailpipeGpm': '423.2', 'epa.model' : 'Vitara 4Door', 'epa.trim' : 'Man 5-spd, 4 cyl, 2.0 L',
+    },
+
     # http://www.toyodiy.com/parts/q?vin=2t1kr32e26c557497 says ATM 4-SPEED FLOOR SHIFT (how's it know?)
     # http://www.fueleconomy.gov/ws/rest/vehicle/22123
     {'VIN': '2T1KR32E16C583752', 'WMI': '2T1', 'VDS': 'KR32E1', 'VIS': '6C583752',
