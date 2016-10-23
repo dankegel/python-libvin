@@ -385,6 +385,7 @@ WMI_MAP = {
     '1D3': 'Dodge',
     '1D4': 'Dodge',
     '1D7': 'Dodge',
+    '1D8': 'Dodge',
     '1FA': 'Ford Motor Company',
     '1FB': 'Ford Motor Company',
     '1FC': 'Ford Motor Company',

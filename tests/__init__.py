@@ -83,6 +83,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1D8HB58D44F113391
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2004&make=Dodge
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2004&make=Dodge&model=Durango%204WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/20279
+    {'VIN': '1D8HB58D44F113391', 'WMI': '1D8', 'VDS': 'HB58D4', 'VIS': '4F113391',
+     'MODEL': 'Durango', 'MAKE': 'Dodge', 'YEAR': 2004, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '113391', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Limited', 'nhtsa.series': 'HB',
+     'epa.id' : '20279', 'epa.co2TailpipeGpm': '683.6', 'epa.model' : 'Durango 4WD', 'epa.trim' : 'Auto 5-spd, 8 cyl, 5.7 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1FMCU59H48KB89898
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2008&make=Ford
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2008&make=Ford&model=Escape%20Hybrid%204WD
