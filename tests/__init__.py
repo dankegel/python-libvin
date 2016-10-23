@@ -412,6 +412,21 @@ TEST_DATA = [
      'epa.id' : '23609', 'epa.co2TailpipeGpm': '444.4', 'epa.model' : 'Charger', 'epa.trim' : 'Auto 5-spd, 6 cyl, 3.5 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2B4GP24R8WR518836
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=1998&make=Dodge
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=1998&make=Dodge&model=Caravan/Grand%20Caravan%202WD
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/14639
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/14638 (identical to 14639!  Mail sent.)
+    {'VIN': '2B4GP24R8WR518836', 'WMI': '2B4', 'VDS': 'GP24R8', 'VIS': 'WR518836',
+     'MODEL': 'Caravan/Grand Caravan', 'MAKE': 'Dodge', 'YEAR': 1998, 'COUNTRY': 'Canada',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '518836', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Base', 'nhtsa.series': '',
+     'epa.id' : '14639', 'epa.co2TailpipeGpm': '493.7', 'epa.model' : 'Caravan/Grand Caravan 2WD', 'epa.trim' : 'Auto 4-spd, 6 cyl, 3.3 L, CLKUP',
+     #'epa.id' : '14638', 'epa.co2TailpipeGpm': '493.7', 'epa.model' : 'Caravan/Grand Caravan 2WD', 'epa.trim' : 'Auto 4-spd, 6 cyl, 3.3 L, CLKUP',
+    },
+
     # http://www.vindecoder.net/?vin=2C3CDYAGXDH825982&submit=Decode doesn't have good info
     # http://dodgeforum.com/forum/vindecoder.php?vin=2C3CDYAGXDH825982
     # http://www.fueleconomy.gov/ws/rest/vehicle/32977
