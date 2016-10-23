@@ -314,6 +314,7 @@ WMI_MAP = {
     'VSX': 'Opel Spain',
     'VS6': 'Ford Spain',
     'VS9': 'Carrocerias Ayats (Spain)',
+    'VWG': 'Volkswagen Spain',
     'VWV': 'Volkswagen Spain',
     'VX1': 'Zastava / Yugo Serbia',
     'WAG': 'Neoplan',
