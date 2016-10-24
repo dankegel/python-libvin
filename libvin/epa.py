@@ -350,7 +350,7 @@ class EPAVin(Vin):
                     attributes.append(word)
             # Special cases
             # Chevrolet: 1500=1/2ton, 2500=3/4ton, 3500=1 ton?
-            if self.make == 'Chevrolet':
+            if self.make == 'Chevrolet' or self.make == 'GMC':
                 if "1/2 ton" in s:
                     attributes.append('1500')
                 if "3/4 ton" in s:

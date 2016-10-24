@@ -323,6 +323,19 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1GKS1MEF2DR379440
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=GMC
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=GMC&model=Yukon%20XL%201500%202WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/32475
+    # Or is it a Denali model, in spite of the 2WD?
+    {'VIN': '1GKS1MEF2DR379440', 'WMI': '1GK', 'VDS': 'S1MEF2', 'VIS': 'DR379440',
+     'MODEL': 'Yukon', 'MAKE': 'GMC', 'YEAR': 2013, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '379440', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '1/2 ton, XL Denali',
+     'epa.id' : '32475', 'epa.co2TailpipeGpm': '570.0', 'epa.model' : 'Yukon XL 1500 2WD', 'epa.trim' : 'Auto 6-spd, 8 cyl, 6.2 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1GKS2HKJXGR406207
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=GMC
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=GMC&model=Yukon%20K1500%20XL%204WD
