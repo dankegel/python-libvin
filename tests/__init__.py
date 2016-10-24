@@ -468,6 +468,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2CNALFEC9B6209289
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2011&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2011&make=Chevrolet&model=Equinox%20FWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/30505
+    {'VIN': '2CNALFEC9B6209289', 'WMI': '2CN', 'VDS': 'ALFEC9', 'VIS': 'B6209289',
+     'MODEL': 'Equinox', 'MAKE': 'Chevrolet', 'YEAR': 2011, 'COUNTRY': 'Canada',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '209289', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'LTZ',
+     'epa.id' : '30505', 'epa.co2TailpipeGpm': '341.8', 'epa.model' : 'Equinox FWD', 'epa.trim' : 'Auto 6-spd, 4 cyl, 2.4 L, SIDI',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2C4RC1BG8GR193643
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Chrysler
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Chrysler&model=Town%20and%20Country
