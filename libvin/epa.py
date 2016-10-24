@@ -227,6 +227,8 @@ class EPAVin(Vin):
                 return 'Matrix'
             elif m == '4-Runner':
                 return '4Runner'
+            elif m == 'Scion iM':
+                return 'Corolla iM'
         elif self.make == 'Volkswagen':
             if m == 'New Beetle':
                 # EPA has just 'Beetle' for some years

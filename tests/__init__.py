@@ -1608,6 +1608,18 @@ TEST_DATA = [
      'epa.id' : '36902', 'epa.co2TailpipeGpm': '294.0', 'epa.model' : 'iM', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.8 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JTNKARJE7HJ524249
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Toyota
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Toyota&model=Corolla%20iM
+    # http://www.fueleconomy.gov/ws/rest/vehicle/38113
+    {'VIN': 'JTNKARJE7HJ524249', 'WMI': 'JTN', 'VDS': 'KARJE7', 'VIS': 'HJ524249',
+     'MODEL': 'Scion iM', 'MAKE': 'Toyota', 'YEAR': 2017, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '524249', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'ZRE186L',
+     'epa.id' : '38113', 'epa.co2TailpipeGpm': '297.0', 'epa.model' : 'Corolla iM', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.8 L',
+    },
+
     ## Breadcrumbs for how libvin/epa.py looks up the epa results:
     ## https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JM1BM1W39E1175532
     ## http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Mazda
