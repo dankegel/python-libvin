@@ -249,8 +249,7 @@ class EPAVin(Vin):
         '''
         Returns a list of adjectives for this vehicle that might help identify it in EPA model or trim names
         '''
-        # Strongest attribute: the model name!
-        attributes = [self.__remodel()]
+        attributes = []
 
         driveType = self.nhtsa['DriveType']
         if 'AWD' in driveType:
@@ -311,7 +310,7 @@ class EPAVin(Vin):
                 if "1 ton" in s:
                     attributes.append('3500')
             if self.make == 'Mercedes-Benz':
-                if s == 'base-4m': # or s == '4-matic':
+                if s == 'base-4m' or s == 'base 4-m': # or s == '4-matic':
                     # WDC0G4KB8GF033296 base-4m
                     # WDDLJ7GB9EA113284 4-matic
                     # but 1GCEK19B45E223906 gets confused if 4-matic recognized, so oh well for now
@@ -451,6 +450,14 @@ class EPAVin(Vin):
                #    while 'Hybrid' in attributes:
                #        attributes.remove(u'Hybrid')
 
+        # If model name not already in one of the attributes, append it as an attribute
+        # Avoids giving double credit if model name is GLE and there's an attribute GLE550 already
+        m = self.__remodel()
+        for a in attributes:
+            if a.startswith(m):
+                return attributes
+        attributes.append(m)
+
         return attributes
 
     def __get_possible_models(self):
@@ -570,7 +577,7 @@ class EPAVin(Vin):
                 if attrib == "":
                     continue
                 attrib = attrib.upper()
-                #print "Considering attrib %s, uval %s" % (attrib, uval)
+                #print "Considering attrib %s, uval %s; chars_matched was %d" % (attrib, uval, chars_matched)
                 if len(attrib) == 1 and attrib.isdigit():
                     # prevent [2] from matching [2WD], as in Mazda's 2
                     if not re.search('\\b%s\\b' % attrib, uval):
@@ -579,9 +586,13 @@ class EPAVin(Vin):
                     if ("%s-SPD" % attrib) in uval:
                         continue
                 if attrib in uval:
+                    if self.verbosity > 2:
+                        print "matching, len(%s) = %d" % (attrib, len(attrib))
                     # Kludge: give bonus for hybrid match
                     if attrib == "HYBRID":
                         chars_matched += 8
+                        if self.verbosity > 2:
+                            print "8 bonus points for hybrid"
                     if chars_matched == 0:
                         chars_matched = len(attrib)
                     else:
@@ -590,6 +601,8 @@ class EPAVin(Vin):
                 if ((attrib == '2WD' and ('FWD' in uval or 'RWD' in uval)) or
                     (attrib == 'AWD' and '4WD' in uval)):
                       chars_matched += 1
+                      if self.verbosity > 2:
+                          print "1 bonus points for drive type approx match"
 
             # Kludge: give negative bonus for hybrid no-match
             if "HYBRID" in uval and "Hybrid" not in attributes:
@@ -603,6 +616,8 @@ class EPAVin(Vin):
                 best_ids = [key]
                 best_len = len(val)
                 best_matched = chars_matched
+                if self.verbosity > 2:
+                    print "Best so far is %s" % key
             elif (chars_matched > 0 and chars_matched == best_matched):
                 if len(val) < best_len:
                     if self.verbosity > 1:
