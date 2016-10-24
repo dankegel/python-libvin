@@ -244,6 +244,9 @@ class Vin(object):
                 return 'Scion'
             return 'Subaru'
         if man == 'Toyota':
+            if self.vin.startswith('JTNJJXB0'):
+                # 2012-2014 Scion iQ
+                return 'Scion'
             if self.year == 2016:
                 # JTNKARJEXGJ522381 is 2016 Scion iM still, as far as EPA is concerned
                 if self.vin.startswith('JTNKARJE'):

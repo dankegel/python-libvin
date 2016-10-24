@@ -1597,6 +1597,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JTNJJXB02CJ020302
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2012&make=Scion
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2012&make=Scion&model=iQ
+    # http://www.fueleconomy.gov/ws/rest/vehicle/31647
+    {'VIN': 'JTNJJXB02CJ020302', 'WMI': 'JTN', 'VDS': 'JJXB02', 'VIS': 'CJ020302',
+     'MODEL': 'Scion iQ', 'MAKE': 'Scion', 'YEAR': 2012, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '020302', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'NGJ10L',
+     'epa.id' : '31647', 'epa.co2TailpipeGpm': '240.2', 'epa.model' : 'iQ', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 1.3 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JTNKARJEXGJ522381
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Scion
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Scion&model=iM
