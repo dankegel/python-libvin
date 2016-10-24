@@ -241,6 +241,8 @@ class Vin(object):
         if "FUJI HEAVY INDUSTRIES" in man.upper():
             brandcode = self.vin[4]
             if brandcode == 'N':
+                if self.year > 2016:
+                    return 'Toyota'
                 return 'Scion'
             return 'Subaru'
         if man == 'Toyota':

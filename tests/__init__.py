@@ -1394,6 +1394,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JF1ZNAA18H9700903
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Toyota
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Toyota&model=86
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37478
+    {'VIN': 'JF1ZNAA18H9700903', 'WMI': 'JF1', 'VDS': 'ZNAA18', 'VIS': 'H9700903',
+     'MODEL': '86', 'MAKE': 'Toyota', 'YEAR': 2017, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '700903', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'STD', 'nhtsa.series': '',
+     'epa.id' : '37478', 'epa.co2TailpipeGpm': '373.0', 'epa.model' : '86', 'epa.trim' : 'Man 6-spd, 4 cyl, 2.0 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JF1ZNAA19G8708660
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Scion
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Scion&model=FR-S
