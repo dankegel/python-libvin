@@ -245,6 +245,21 @@ TEST_DATA = [
      'epa.id' : '32612', 'epa.co2TailpipeGpm': '354.0', 'epa.model' : 'Altima', 'epa.trim' : 'Auto(AV-S6), 6 cyl, 3.5 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1NXBR32E56Z739208
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2006&make=Toyota
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2006&make=Toyota&model=Corolla
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/21882
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/21883
+    {'VIN': '1NXBR32E56Z739208', 'WMI': '1NX', 'VDS': 'BR32E5', 'VIS': '6Z739208',
+     'MODEL': 'Corolla', 'MAKE': 'Toyota', 'YEAR': 2006, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '739208', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'ZZE130L',
+     'epa.id' : '21882', 'epa.co2TailpipeGpm': '286.7', 'epa.model' : 'Corolla', 'epa.trim' : 'Man 5-spd, 4 cyl, 1.8 L',
+     #'epa.id' : '21883', 'epa.co2TailpipeGpm': '355.5', 'epa.model' : 'Corolla', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.8 L',
+    },
+
     # http://www.vindecoder.net/?vin=19UUA65694A043249&submit=Decode
     # http://acurazine.com/forums/vindecoder.php?vin=19UUA65694A043249
     # http://www.fueleconomy.gov/ws/rest/vehicle/19711
@@ -1755,6 +1770,33 @@ TEST_DATA = [
      'REGION': 'asia', 'SEQUENTIAL_NUMBER': '657170', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': '1LT AWD',
      'epa.id' : '36769', 'epa.co2TailpipeGpm': '330.0', 'epa.model' : 'Trax AWD', 'epa.trim' : 'Auto (S6), 4 cyl, 1.4 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/KMHGN4JF9HU181321
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Genesis
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Genesis&model=G80%20RWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37496
+    {'VIN': 'KMHGN4JF9HU181321', 'WMI': 'KMH', 'VDS': 'GN4JF9', 'VIS': 'HU181321',
+     'MODEL': 'G80', 'MAKE': 'Genesis', 'YEAR': 2017, 'COUNTRY': 'Korea (South)',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '181321', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '3.8 Base / 3.8 Premium / 3.8 Ultimate / 5.0 Ultimate',
+     'epa.id' : '37496', 'epa.co2TailpipeGpm': '502.0', 'epa.model' : 'G80 RWD', 'epa.trim' : 'Auto (S8), 8 cyl, 5.0 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/KMHTC6AE9GU000000
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Hyundai
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Hyundai&model=Veloster
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36053
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/36054
+    {'VIN': 'KMHTC6AE9GU000000', 'WMI': 'KMH', 'VDS': 'TC6AE9', 'VIS': 'GU000000',
+     'MODEL': 'Veloster', 'MAKE': 'Hyundai', 'YEAR': 2016, 'COUNTRY': 'Korea (South)',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '000000', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Standard / Turbo / R-Spec / Rally Edition',
+     'epa.id' : '36053', 'epa.co2TailpipeGpm': '311.0', 'epa.model' : 'Veloster', 'epa.trim' : 'Auto(AM6), 4 cyl, 1.6 L, Turbo',
+     #'epa.id' : '36054', 'epa.co2TailpipeGpm': '321.0', 'epa.model' : 'Veloster', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.6 L, Turbo',
     },
 
     # http://www.vindecoder.net/?vin=KNDJT2A54D7883468&submit=Decode

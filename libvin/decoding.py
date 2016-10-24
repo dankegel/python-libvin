@@ -232,6 +232,10 @@ class Vin(object):
                     return 'Jeep'
                 if brandcode == 'R':
                     return 'Ram'
+        if man == 'Hyundai':
+            brandcode = self.vin[3]
+            if brandcode == 'G':
+                return 'Genesis'
         if man == 'Kia':
             # WTF?
             if self.year > 2011:

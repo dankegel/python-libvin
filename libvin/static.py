@@ -423,7 +423,7 @@ WMI_MAP = {
     '1M3': 'Mack Truck USA',
     '1M4': 'Mack Truck USA',
     '1N': 'Nissan USA',
-    '1NX': 'NUMMI USA',
+    '1NX': 'Toyota',    # NUMMI
     '1P3': 'Plymouth USA',
     '1R9': 'Roadrunner Hay Squeeze USA',
     '1VW': 'Volkswagen USA',
