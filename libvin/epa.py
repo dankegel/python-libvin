@@ -239,6 +239,8 @@ class EPAVin(Vin):
                 return m.replace("0CC", "0 CC")
             if m == "S60/S60I":
                 return "S60"
+            if "XC" in m:
+                return m.replace("XC", "XC ")
         return m
 
     def __get_attributes(self):

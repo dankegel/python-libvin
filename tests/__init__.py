@@ -2348,6 +2348,30 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/YV4CY592961251056
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2006&make=Volvo
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2006&make=Volvo&model=XC%2090%20FWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/22461
+    {'VIN': 'YV4CY592961251056', 'WMI': 'YV4', 'VDS': 'CY5929', 'VIS': '61251056',
+     'MODEL': 'XC90', 'MAKE': 'Volvo', 'YEAR': 2006, 'COUNTRY': 'Sweden',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '251056', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'ULEV2', 'nhtsa.series': '',
+     'epa.id' : '22461', 'epa.co2TailpipeGpm': '493.7', 'epa.model' : 'XC 90 FWD', 'epa.trim' : 'Auto (S5), 5 cyl, 2.5 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/YV4SZ592771279979
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2007&make=Volvo
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2007&make=Volvo&model=XC%2070%20AWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/23426
+    {'VIN': 'YV4SZ592771279979', 'WMI': 'YV4', 'VDS': 'SZ5927', 'VIS': '71279979',
+     'MODEL': 'XC70', 'MAKE': 'Volvo', 'YEAR': 2007, 'COUNTRY': 'Sweden',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '279979', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '23426', 'epa.co2TailpipeGpm': '467.7', 'epa.model' : 'XC 70 AWD', 'epa.trim' : 'Auto (S5), 5 cyl, 2.5 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/ZACCJABH0FPB66736
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2015&make=Jeep
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2015&make=Jeep&model=Renegade%202WD
