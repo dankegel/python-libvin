@@ -1773,6 +1773,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/KMHGN4JEXGU143358
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Hyundai
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Hyundai&model=Genesis%20RWD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36481
+    {'VIN': 'KMHGN4JEXGU143358', 'WMI': 'KMH', 'VDS': 'GN4JEX', 'VIS': 'GU143358',
+     'MODEL': 'Genesis', 'MAKE': 'Hyundai', 'YEAR': 2016, 'COUNTRY': 'Korea (South)',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '143358', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '3.8L', 'nhtsa.series': 'GLS(Middle grade)',
+     'epa.id' : '36481', 'epa.co2TailpipeGpm': '411.0', 'epa.model' : 'Genesis RWD', 'epa.trim' : 'Auto (S8), 6 cyl, 3.8 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/KMHGN4JF9HU181321
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Genesis
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Genesis&model=G80%20RWD
