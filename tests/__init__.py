@@ -46,6 +46,18 @@ TEST_DATA = [
      'epa.id' : '16147', 'epa.co2TailpipeGpm': '683.6', 'epa.model' : 'Ram 1500 Pickup 4WD', 'epa.trim' : 'Auto 4-spd, 8 cyl, 5.9 L',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1C3CCCBG2FN533158
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2015&make=Chrysler
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2015&make=Chrysler&model=200
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34831
+    {'VIN': '1C3CCCBG2FN533158', 'WMI': '1C3', 'VDS': 'CCCBG2', 'VIS': 'FN533158',
+     'MODEL': '200', 'MAKE': 'Chrysler', 'YEAR': 2015, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '533158', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '200S', 'nhtsa.series': '',
+     'epa.id' : '34831', 'epa.co2TailpipeGpm': '388.0', 'epa.model' : '200', 'epa.trim' : 'Auto 9-spd, 6 cyl, 3.6 L',
+    },
+
     # http://www.vindecoder.net/?vin=1C4RJEAG2EC476429&submit=Decode
     # http://www.fueleconomy.gov/ws/rest/vehicle/33496
     {'VIN': '1C4RJEAG2EC476429', 'WMI': '1C4', 'VDS': 'RJEAG2', 'VIS': 'EC476429',
@@ -1561,6 +1573,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN8AF5MR4ET454657
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Nissan
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Nissan&model=Juke
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34496
+    {'VIN': 'JN8AF5MR4ET454657', 'WMI': 'JN8', 'VDS': 'AF5MR4', 'VIS': 'ET454657',
+     'MODEL': 'Juke', 'MAKE': 'Nissan', 'YEAR': 2014, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '454657', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Juke/Juke Nismo',
+     'epa.id' : '34496', 'epa.co2TailpipeGpm': '329.0', 'epa.model' : 'Juke', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.6 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN8AZ2NE0D9060764
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Infiniti
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Infiniti&model=QX56%204WD
@@ -1599,6 +1623,18 @@ TEST_DATA = [
      'REGION': 'asia', 'SEQUENTIAL_NUMBER': '340695', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': 'Base Grade', 'nhtsa.series': 'GRN280L/GRN285L',
      'epa.id' : '36858', 'epa.co2TailpipeGpm': '478.0', 'epa.model' : '4Runner 4WD', 'epa.trim' : 'Auto (S5), 6 cyl, 4.0 L, Part-time 4WD',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JTHBF1D29E5019101
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Lexus
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Lexus&model=IS%20F
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34469
+    {'VIN': 'JTHBF1D29E5019101', 'WMI': 'JTH', 'VDS': 'BF1D29', 'VIS': 'E5019101',
+     'MODEL': 'IS', 'MAKE': 'Lexus', 'YEAR': 2014, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '019101', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'GSE30L/GSE31L/GSE35L/GSE36L',
+     'epa.id' : '34469', 'epa.co2TailpipeGpm': '475.0', 'epa.model' : 'IS F', 'epa.trim' : 'Auto (S8), 8 cyl, 5.0 L',
     },
 
     # http://www.vindecoder.net/?vin=JTHBW1GG7D2369737&submit=Decode has no model

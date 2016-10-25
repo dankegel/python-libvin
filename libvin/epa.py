@@ -659,7 +659,13 @@ class EPAVin(Vin):
             return None
         if self.verbosity > 0:
             print "Finding model for vin %s" % self.vin
-        ids = self.__fuzzy_match(self.__remodel(), self.__attribs, id2models)
+        m = self.__remodel()
+        ids = self.__fuzzy_match(m, self.__attribs, id2models)
+        if len(ids) == 0 and m not in self.__attribs:
+            # try matching model verbatim even though it's a substring of some attribute;
+            # it helps for the Pontiac 200.
+            self.__attribs.append(m)
+            ids = self.__fuzzy_match(m, self.__attribs, id2models)
         if len(ids) != 1:
             if self.verbosity > 0:
                 print "epa:__get_model: Failed to find model for vin %s" % self.vin
