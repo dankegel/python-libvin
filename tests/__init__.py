@@ -1026,6 +1026,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/4JGDA0EB6GA760930
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Mercedes-Benz
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Mercedes-Benz&model=GLE300%20d%204matic
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36814
+    {'VIN': '4JGDA0EB6GA760930', 'WMI': '4JG', 'VDS': 'DA0EB6', 'VIS': 'GA760930',
+     'MODEL': 'GLE', 'MAKE': 'Mercedes-Benz', 'YEAR': 2016, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '760930', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Base 4-M', 'nhtsa.series': 'GLE300d',
+     'epa.id' : '36814', 'epa.co2TailpipeGpm': '415.0', 'epa.model' : 'GLE300 d 4matic', 'epa.trim' : 'Auto 7-spd, 4 cyl, 2.1 L, Diesel, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/4JGDA5HB0HA821540
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Mercedes-Benz
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Mercedes-Benz&model=GLE350%204matic

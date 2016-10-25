@@ -357,8 +357,10 @@ class EPAVin(Vin):
                 if "1 ton" in s:
                     attributes.append('3500')
             if self.make == 'Mercedes-Benz':
+                s = s.upper()
                 # e.g. WDBTJ65JX5F126044: NHTSA calls it CLK320C, but EPA expects CLK320
-                if s.endswith('0C'):
+                # or 4JGDA0EB6GA760930: NHTSA calls it GLE300d, but EPA expects GLE300 d
+                if s.endswith('0C') or s.endswith('0D'):
                     attributes.append(s[:-1])
                 # gle550e-4M -> gle550e 4matic, kinda
                 words = self.nhtsa['Series'].replace("-", " ").split()
