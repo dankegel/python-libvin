@@ -47,25 +47,19 @@ class EPAVin(Vin):
         self.__attribs = self.__get_attributes()
 
         self.__eco = []
+        self.__ids = []
         if anonv in epavin_memo:
             old = epavin_memo[anonv]
-            try:
-                self.__model = old.__model
-                self.__ids   = old.__ids
-                self.__trims = old.__trims
-                self.__eco   = old.__eco
-            except Exception as e:
-                print "epa: exception " + str(e)
-                pass
+            self.__model = old.__model
+            self.__ids   = old.__ids
+            self.__trims = old.__trims
+            self.__eco   = old.__eco
         else:
             self.__model = self.__get_model()
             if (self.__model != None):
                 self.__ids, self.__trims = self.__get_ids()
-                try:
-                    self.__eco   = [self.__get_vehicle_economy(id) for id in self.__ids]
-                except:
-                    pass
-            epavin_memo[anonv] = self
+                self.__eco   = [self.__get_vehicle_economy(id) for id in self.__ids]
+                epavin_memo[anonv] = self
 
     @property
     def nhtsa(self):
