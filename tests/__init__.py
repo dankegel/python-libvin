@@ -2108,6 +2108,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WBA7F0C53HGM20940
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=BMW
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=BMW&model=750i
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37933
+    {'VIN': 'WBA7F0C53HGM20940', 'WMI': 'WBA', 'VDS': '7F0C53', 'VIS': 'HGM20940',
+     'MODEL': '750i/B7', 'MAKE': 'BMW', 'YEAR': 2017, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'M20940', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '7-series',
+     'epa.id' : '37933', 'epa.co2TailpipeGpm': '441.0', 'epa.model' : '750i', 'epa.trim' : 'Auto (S8), 8 cyl, 4.4 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WBAFZ9C50DD090600
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=BMW
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=BMW&model=ActiveHybrid%205

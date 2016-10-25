@@ -457,6 +457,10 @@ class EPAVin(Vin):
             if a.startswith(m):
                 return attributes
         attributes.append(m)
+        # And break it apart a bit
+        if '/' in m:
+            for word in m.split("/"):
+                attributes.append(word)
 
         return attributes
 
@@ -666,6 +670,9 @@ class EPAVin(Vin):
             # it helps for the Pontiac 200.
             self.__attribs.append(m)
             ids = self.__fuzzy_match(m, self.__attribs, id2models)
+        if len(ids) == 0 and '/' in m:
+            # Leave off mustmatch; that helps for models with extra slashes like 750i/B7
+            ids = self.__fuzzy_match(None, self.__attribs, id2models)
         if len(ids) != 1:
             if self.verbosity > 0:
                 print "epa:__get_model: Failed to find model for vin %s" % self.vin
