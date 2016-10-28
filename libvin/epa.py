@@ -174,6 +174,8 @@ class EPAVin(Vin):
                 return m.replace("00L", "00 L")
             if m.endswith("00X"):
                 return m.replace("00X", "00 X")
+            if m == "500" and "Electric" in self.nhtsa['Trim']:
+                return "500e"
         elif self.make == 'Ford':
             if m.startswith('F-150'):
                 return m.replace('F-', 'F', 1)
@@ -428,6 +430,7 @@ class EPAVin(Vin):
             if f1 == 'Electric':
                if f2 == '':
                    attributes.append('BEV')
+                   attributes.append('EV')
                    attributes.append('Electric')
                else:
                    attributes.append('PHEV')

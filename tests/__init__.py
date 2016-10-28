@@ -724,15 +724,44 @@ TEST_DATA = [
     # http://www.fiat500usa.com/2013/08/decoding-fiat-500-vin.html
     # Chrysler Passenger Car Vehicle Identification Number Code Guide
     # ftp://ftp.nhtsa.dot.gov/MfrMail/ORG9653.pdf
-    # Note: Can't tell what transmission it has?!
-    # http://www.fueleconomy.gov/ws/rest/vehicle/35154  'Auto 6-spd, 4 cyl, 1.4 L'
-    # http://www.fueleconomy.gov/ws/rest/vehicle/35156  'Man 5-spd, 4 cyl, 1.4 L'
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3C3CFFCR9FT528063
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2015&make=Fiat
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2015&make=Fiat&model=500
+    # http://www.fueleconomy.gov/ws/rest/vehicle/35156
+    # Really, this is ambiguous, but the matching algorithm picks man instead of auto because it's shorter!?
     {'VIN': '3C3CFFCR9FT528063', 'WMI': '3C3', 'VDS': 'CFFCR9', 'VIS': 'FT528063',
-     'MODEL': '500', 'MAKE':  'Fiat', 'YEAR': 2015, 'COUNTRY': 'Mexico',
+     'MODEL': '500', 'MAKE': 'Fiat', 'YEAR': 2015, 'COUNTRY': 'Mexico',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '528063', 'FEWER_THAN_500_PER_YEAR': False,
-     #'epa.id' : '35154', 'epa.co2TailpipeGpm': '295.0', 'epa.model' : '500', 'epa.trim' : 'Auto 6-spd, 4 cyl, 1.4 L',
+     'nhtsa.trim': 'Lounge', 'nhtsa.series': '',
      'epa.id' : '35156', 'epa.co2TailpipeGpm': '265.0', 'epa.model' : '500', 'epa.trim' : 'Man 5-spd, 4 cyl, 1.4 L',
     },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3C3CFFGEXGT229545
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Fiat
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Fiat&model=500e
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37156
+    {'VIN': '3C3CFFGEXGT229545', 'WMI': '3C3', 'VDS': 'CFFGEX', 'VIS': 'GT229545',
+     'MODEL': '500', 'MAKE': 'Fiat', 'YEAR': 2016, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '229545', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Electric', 'nhtsa.series': 'FF',
+     'epa.id' : '37156', 'epa.co2TailpipeGpm': '0.0', 'epa.model' : '500e', 'epa.trim' : 'Auto (A1)',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3C3CFFGE3HT547802
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Fiat
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Fiat&model=500e
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37798
+    {'VIN': '3C3CFFGE3HT547802', 'WMI': '3C3', 'VDS': 'CFFGE3', 'VIS': 'HT547802',
+     'MODEL': '500', 'MAKE': 'Fiat', 'YEAR': 2017, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '547802', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Battery Electric', 'nhtsa.series': '',
+     'epa.id' : '37798', 'epa.co2TailpipeGpm': '0.0', 'epa.model' : '500e', 'epa.trim' : 'Auto (A1)',
+    },
+
 
     # http://www.fueleconomy.gov/ws/rest/vehicle/34122
     {'VIN': '3C4PDCBG3ET296933', 'WMI': '3C4', 'VDS': 'PDCBG3', 'VIS': 'ET296933',
@@ -1843,6 +1872,18 @@ TEST_DATA = [
      'REGION': 'asia', 'SEQUENTIAL_NUMBER': '657170', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': '1LT AWD',
      'epa.id' : '36769', 'epa.co2TailpipeGpm': '330.0', 'epa.model' : 'Trax AWD', 'epa.trim' : 'Auto (S6), 4 cyl, 1.4 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/KL8CK6S00GC561081
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Chevrolet&model=Spark%20EV
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36996
+    {'VIN': 'KL8CK6S00GC561081', 'WMI': 'KL8', 'VDS': 'CK6S00', 'VIS': 'GC561081',
+     'MODEL': 'Spark', 'MAKE': 'Chevrolet', 'YEAR': 2016, 'COUNTRY': 'Korea (South)',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '561081', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Electric Vehicle, 1LT',
+     'epa.id' : '36996', 'epa.co2TailpipeGpm': '0.0', 'epa.model' : 'Spark EV', 'epa.trim' : 'Auto (A1)',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
