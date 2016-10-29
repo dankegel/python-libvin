@@ -656,6 +656,17 @@ class EPAVin(Vin):
             if self.verbosity > 0:
                 print "epa:__get_model: vin %s had no NHTSA model, giving up" % self.vin
             return None
+        maxgvwr='2H'
+        if self.nhtsa['VehicleType'].upper() == 'TRUCK':
+            maxgvwr='2G'
+        if self.nhtsaGVWRClass() != None:
+            if self.nhtsaGVWRClass().upper() > maxgvwr:
+                if self.verbosity > 0:
+                    print(
+                      ("epa:__get_model: vin %s is gvwr class %s, higher"+
+                      " than the max %s required to report fuel economy for"+
+                      " vehicle type %s") % (self.vin, self.nhtsaGVWRClass(), maxgvwr, self.nhtsa['VehicleType']))
+                return None
         # Get candidate modifier strings
         id2models = self.__get_possible_models()
         if id2models == None:
@@ -762,7 +773,7 @@ def main():
         print("    {'VIN': '%s', 'WMI': '%s', 'VDS': '%s', 'VIS': '%s'," % (v.decode(), v.wmi, v.vds, v.vis))
         print("     'MODEL': '%s', 'MAKE': '%s', 'YEAR': %d, 'COUNTRY': '%s'," % (v.nhtsaModel, v.make, v.year, v.country))
         print("     'REGION': '%s', 'SEQUENTIAL_NUMBER': '%s', 'FEWER_THAN_500_PER_YEAR': %s," % (v.region, v.vsn, v.less_than_500_built_per_year))
-        print("     'nhtsa.trim': '%s', 'nhtsa.series': '%s'," % (v.nhtsa['Trim'], v.nhtsa['Series']))
+        print("     'nhtsa.trim': '%s', 'nhtsa.series': '%s', 'nhtsa.gvwrclass':'%s', 'nhtsa.vehicletype':'%s'," % (v.nhtsa['Trim'], v.nhtsa['Series'], v.nhtsaGVWRClass(), v.nhtsa['VehicleType']))
         for i in range(0, len(v.ecos)):
             print("     'epa.id' : '%s', 'epa.co2TailpipeGpm': '%s', 'epa.model' : '%s', 'epa.trim' : '%s'," %
                   (v.ids[i], round(float(v.ecos[i]['co2TailpipeGpm']), 1), v.model, v.trims[i]))

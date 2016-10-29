@@ -170,6 +170,16 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1GCHK83649F139120
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2009&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2009&make=Chevrolet&model=None
+    {'VIN': '1GCHK83649F139120', 'WMI': '1GC', 'VDS': 'HK8364', 'VIS': '9F139120',
+     'MODEL': 'Silverado', 'MAKE': 'Chevrolet', 'YEAR': 2009, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '139120', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '1 Ton', 'nhtsa.series': 'SLE', 'nhtsa.gvwrclass':'2H', 'nhtsa.vehicletype':'TRUCK',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1G11D5RR7DF107260
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Chevrolet
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Chevrolet&model=Malibu%20eAssist
