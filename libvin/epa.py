@@ -773,7 +773,23 @@ def main():
         print("    {'VIN': '%s', 'WMI': '%s', 'VDS': '%s', 'VIS': '%s'," % (v.decode(), v.wmi, v.vds, v.vis))
         print("     'MODEL': '%s', 'MAKE': '%s', 'YEAR': %d, 'COUNTRY': '%s'," % (v.nhtsaModel, v.make, v.year, v.country))
         print("     'REGION': '%s', 'SEQUENTIAL_NUMBER': '%s', 'FEWER_THAN_500_PER_YEAR': %s," % (v.region, v.vsn, v.less_than_500_built_per_year))
-        print("     'nhtsa.trim': '%s', 'nhtsa.series': '%s', 'nhtsa.gvwrclass':'%s', 'nhtsa.vehicletype':'%s'," % (v.nhtsa['Trim'], v.nhtsa['Series'], v.nhtsaGVWRClass(), v.nhtsa['VehicleType']))
+        cyl = 'None'
+        if 'EngineCylinders' in v.nhtsa and v.nhtsa['EngineCylinders'] != '':
+            cyl = v.nhtsa['EngineCylinders']
+        f1 = 'None'
+        if 'FuelTypePrimary' in v.nhtsa and v.nhtsa['FuelTypePrimary'] != '':
+            f1 = v.nhtsa['FuelTypePrimary']
+        f2 = 'None'
+        if 'FuelTypeSecondary' in v.nhtsa and v.nhtsa['FuelTypeSecondary'] != '':
+            f1 = v.nhtsa['FuelTypeSecondary']
+        dl = 'None'
+        if 'DisplacementL' in v.nhtsa and v.nhtsa['DisplacementL'] != '':
+            dl = v.nhtsa['DisplacementL']
+        if f1 == 'Gasoline' and cyl == 'None':
+            print("# error: vin %s has f1=%s but cyl=%s" % (vin, f1, cyl))
+        if f1 == 'Gasoline' and dl == 'None':
+            print("# error: vin %s has f1=%s but displacementL=%s" % (vin, f1, dl))
+        print("     'nhtsa.trim': '%s', 'nhtsa.series': '%s', 'nhtsa.cyl':'%s', 'nhtsa.f1':'%s', 'nhtsa.f2':'%s', 'nhtsa.dl':'%s', 'nhtsa.gvwrclass':'%s', 'nhtsa.vehicletype':'%s'," % (v.nhtsa['Trim'], v.nhtsa['Series'], cyl, f1, f2, dl, v.nhtsaGVWRClass(), v.nhtsa['VehicleType']))
         for i in range(0, len(v.ecos)):
             print("     'epa.id' : '%s', 'epa.co2TailpipeGpm': '%s', 'epa.model' : '%s', 'epa.trim' : '%s'," %
                   (v.ids[i], round(float(v.ecos[i]['co2TailpipeGpm']), 1), v.model, v.trims[i]))
