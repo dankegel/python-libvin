@@ -130,18 +130,19 @@ TEST_DATA = [
      'epa.id' : '24113', 'epa.co2TailpipeGpm': '317.4', 'epa.model' : 'Escape Hybrid 4WD', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 2.3 L',
     },
 
-    # http://www.fueleconomy.gov/ws/rest/vehicle/37047
-    # Note: EPA has option package names like
+    # Fun fact: GVWR can vary with engine size!
     #  F150 5.0L 2WD FFV GVWR>7599 LBS PAYLOAD PACKAGE
-    #  F150 Pickup 4WD FFV
     #  F150 2.7L 4WD GVWR>6799 LBS PAYLOAD PACKAGE
-    # and NHTSA has attributes like
-    #  <GVWR>Class 2E: 6,001 - 7,000 lb (2,722 - 3,175 kg)</GVWR>
-    # libvin/epa.py will need to handle GVWR intelligently to match those.
-    # Not sure it's worth it yet.
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1FTEW1EP7GKD77746
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Ford
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Ford&model=F150%20Pickup%204WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37047
     {'VIN': '1FTEW1EP7GKD77746', 'WMI': '1FT', 'VDS': 'EW1EP7', 'VIS': 'GKD77746',
      'MODEL': 'F-150', 'MAKE': 'Ford', 'YEAR': 2016, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': 'D77746', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '', 'nhtsa.cyl':'6', 'nhtsa.f1':'Gasoline', 'nhtsa.f2':'None', 'nhtsa.dl':'2.7', 'nhtsa.gvwrclass':'2E', 'nhtsa.vehicletype':'TRUCK',
      'epa.id' : '37047', 'epa.co2TailpipeGpm': '452.0', 'epa.model' : 'F150 Pickup 4WD', 'epa.trim' : 'Auto (S6), 6 cyl, 2.7 L, Turbo',
     },
 
@@ -150,6 +151,18 @@ TEST_DATA = [
      'MODEL': 'F-150', 'MAKE': 'Ford', 'YEAR': 2016, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': 'D23989', 'FEWER_THAN_500_PER_YEAR': False,
      'epa.id' : '37040', 'epa.co2TailpipeGpm': '454.0', 'epa.model' : 'F150 Pickup 2WD', 'epa.trim' : 'Auto (S6), 6 cyl, 3.5 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1FTNE2EW1EDA43732
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Ford
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Ford&model=E250%20Van%20FFV
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34366
+    {'VIN': '1FTNE2EW1EDA43732', 'WMI': '1FT', 'VDS': 'NE2EW1', 'VIS': 'EDA43732',
+     'MODEL': 'E-250', 'MAKE': 'Ford', 'YEAR': 2014, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': 'A43732', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Econoline/E-series', 'nhtsa.cyl':'8', 'nhtsa.f1':'Gasoline', 'nhtsa.f2':'None', 'nhtsa.dl':'4.6', 'nhtsa.gvwrclass':'2G', 'nhtsa.vehicletype':'TRUCK',
+     'epa.id' : '34366', 'epa.co2TailpipeGpm': '607.0', 'epa.model' : 'E250 Van FFV', 'epa.trim' : 'Auto 4-spd, 8 cyl, 4.6 L',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
