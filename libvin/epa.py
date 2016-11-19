@@ -660,7 +660,7 @@ class EPAVin(Vin):
             return None
         maxgvwr='2H'
         if self.nhtsa['VehicleType'].upper() == 'TRUCK':
-            maxgvwr='2G'
+            maxgvwr='2H'
         if self.nhtsaGVWRClass() != None:
             if self.nhtsaGVWRClass().upper() > maxgvwr:
                 if self.verbosity > 0:
