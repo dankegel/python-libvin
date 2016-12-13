@@ -194,3 +194,4 @@ References
  * http://www.nisrinc.com/include/common/VIN.html
  * http://vpic.nhtsa.dot.gov
  * http://vpic.nhtsa.dot.gov/mid/
+ * http://gm.oemdtc.com/2772/vehicle-identification-number-vin-information-1960-2017
