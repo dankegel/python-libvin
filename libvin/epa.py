@@ -33,6 +33,8 @@ class EPAVin(Vin):
         (for when EPA has a hole in its database).
         '''
         super(EPAVin, self).__init__(vin)
+        if not self.is_valid:
+            return
 
         self.verbosity = verbosity
         self.yearoffset = yearoffset
@@ -50,13 +52,13 @@ class EPAVin(Vin):
         self.__ids = []
         if anonv in epavin_memo:
             old = epavin_memo[anonv]
-            self.__model = old.__model
+            self.__models = old.__models
             self.__ids   = old.__ids
             self.__trims = old.__trims
             self.__eco   = old.__eco
         else:
-            self.__model = self.__get_model()
-            if (self.__model != None):
+            self.__models = self.__get_models()
+            if (self.__models != None):
                 self.__ids, self.__trims = self.__get_ids()
                 self.__eco   = [self.__get_vehicle_economy(id) for id in self.__ids]
                 epavin_memo[anonv] = self
@@ -81,17 +83,17 @@ class EPAVin(Vin):
         1 - 0-6000 lbs
         2 - 6001-10000 lbs
         '''
-        if 'GVWR' in self.nhtsa and self.nhtsa['GVWR'].startswith('Class'):
+        if self.nhtsa != None and 'GVWR' in self.nhtsa and self.nhtsa['GVWR'].startswith('Class'):
              # 'Class 3: 10,001 - 14,000 lb (4,536 - 6,350 kg)'
              return self.nhtsa['GVWR'].split(':')[0].split()[1]
         return None
 
     @property
-    def model(self):
+    def models(self):
         '''
         EPA model name for this vehicle.
         '''
-        return self.__model
+        return self.__models
 
     @property
     def id(self):
@@ -154,12 +156,19 @@ class EPAVin(Vin):
         Return model name translated from NHTSA-ese into EPA-ese
         '''
         m = self.nhtsa['Model']
-        if self.make == 'BMW':
+        if self.make == 'Audi':
+            if m == 'RS5':
+                return 'RS 5'
+        elif self.make == 'BMW':
             if m == 'i3':
                 if self.nhtsa['FuelTypeSecondary'] == 'Gasoline':
                    return 'i3 REX'
                 else:
                    return 'i3 BEV'
+            if m == '650i' and self.year <= 2010:
+               return '650ci'  # 645ci died ~2005, but epa lists 650ci until 2011
+            if m == '650xi' and self.year >= 2009:
+               return '650i xdrive'
         elif self.make == 'Chevrolet':
             if m == 'Captiva Sport':
                 return 'Captiva'
@@ -196,7 +205,7 @@ class EPAVin(Vin):
                 # Rest of model name is in nhtsa['Series'], kind of
                 return m.replace('-Class', '')
         elif self.make == 'MINI':
-            if m.endswith('Hardtop') and (self.year >= 2013):
+            if m.endswith('Hardtop') and (self.year >= 2011):
                 return m.replace(' Hardtop', '')
         elif self.make == 'Nissan':
             if m == 'Versa Note':
@@ -341,10 +350,12 @@ class EPAVin(Vin):
             else:
                 attributes.append(s)
             # Handle Chevy Spark, where Series is e.g. "EV, 2LT"
-            words = self.nhtsa['Series'].replace(",", "").split()
+            words = self.nhtsa['Series'].upper().replace(",", "").split()
             if len(words) > 1:
                 for word in words:
-                    attributes.append(word)
+                    # Avoid matching I in PREMIUM I GROUP against some random word like eAssist as in 1G4PR5SK4G4116834
+                    if word != 'I':
+                        attributes.append(word)
             # Special cases
             # Chevrolet: 1500=1/2ton, 2500=3/4ton, 3500=1 ton?
             if self.make == 'Chevrolet' or self.make == 'GMC':
@@ -510,18 +521,19 @@ class EPAVin(Vin):
         '''
 
         id2trim = dict()
-        url = 'http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=%s&make=%s&model=%s' % (self.year + self.yearoffset, self.make, self.model)
-        if self.verbosity > 0:
+        for model in self.models:
+          url = 'http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=%s&make=%s&model=%s' % (self.year + self.yearoffset, self.make, model)
+          if self.verbosity > 0:
             print "epa:__get_possible_ids: URL is %s" % url
-        try:
+          try:
             r = requests.get(url)
-        except requests.Timeout:
+          except requests.Timeout:
             print "epa:__get_possible_ids: connection timed out"
             return None
-        except requests.ConnectionError:
+          except requests.ConnectionError:
             print "epa:__get_possible_ids: connection failed"
             return None
-        try:
+          try:
             content = r.content
             # You can't make this stuff up.  I love xml.
             parsed = xmltodict.parse(content)
@@ -533,7 +545,7 @@ class EPAVin(Vin):
                id = item.popitem()[1]
                trim = item.popitem()[1]
                id2trim[id] = trim
-        except ValueError:
+          except ValueError:
             print "epa:__get_possible_ids: could not parse result"
             return None
         return id2trim
@@ -605,15 +617,22 @@ class EPAVin(Vin):
                 # Kludge: give bonus for approximate drive match
                 if ((attrib == '2WD' and ('FWD' in uval or 'RWD' in uval)) or
                     (attrib == 'AWD' and '4WD' in uval)):
-                      chars_matched += 1
+                      # 1 was not enough for 1C4PJLJB7GW303507
+                      chars_matched += 3
                       if self.verbosity > 2:
-                          print "1 bonus points for drive type approx match"
+                          print "3 bonus points for drive type approx match"
 
             # Kludge: give negative bonus for hybrid no-match
             if "HYBRID" in uval and "Hybrid" not in attributes:
                 chars_matched -= 16
                 if self.verbosity > 1:
                     print "Penalizing for hybrid in candidate but not in attributes"
+
+            # Kludge: give negative bonus for diesel no-match
+            if "DIESEL" in uval != "Diesel" not in attributes:
+                chars_matched -= 16
+                if self.verbosity > 1:
+                    print "Penalizing for diesel in candidate != diesel in attributes"
 
             if self.verbosity > 1:
                 print "chars_matched %d, for %s" % (chars_matched, val)
@@ -650,22 +669,24 @@ class EPAVin(Vin):
                 pprint(choices)
         return best_ids
 
-    def __get_model(self):
+    def __get_models(self):
         '''
-        Given a decoded vin and its nhtsa data, look up its epa model name
+        Given a decoded vin and its nhtsa data, look up its possible epa model names
         '''
         if self.nhtsaModel == "":
             if self.verbosity > 0:
-                print "epa:__get_model: vin %s had no NHTSA model, giving up" % self.vin
+                print "epa:__get_models: vin %s had no NHTSA model, giving up" % self.vin
             return None
-        maxgvwr='2H'
-        if self.nhtsa['VehicleType'].upper() == 'TRUCK':
+        # Avoid falsely matching smaller versions when large version not listed
+        maxgvwr='2G'
+        if self.nhtsa['VehicleType'].upper() != 'TRUCK' and self.year >= 2011:
+            # See https://www.fueleconomy.gov/feg/which_tested.shtml
             maxgvwr='2H'
         if self.nhtsaGVWRClass() != None:
             if self.nhtsaGVWRClass().upper() > maxgvwr:
                 if self.verbosity > 0:
                     print(
-                      ("epa:__get_model: vin %s is gvwr class %s, higher"+
+                      ("epa:__get_models: vin %s is gvwr class %s, higher"+
                       " than the max %s required to report fuel economy for"+
                       " vehicle type %s") % (self.vin, self.nhtsaGVWRClass(), maxgvwr, self.nhtsa['VehicleType']))
                 return None
@@ -685,25 +706,24 @@ class EPAVin(Vin):
         if len(ids) == 0 and '/' in m:
             # Leave off mustmatch; that helps for models with extra slashes like 750i/B7
             ids = self.__fuzzy_match(None, self.__attribs, id2models)
-        if len(ids) != 1:
+        if len(ids) == 0:
             if self.verbosity > 0:
-                print "epa:__get_model: Failed to find model for vin %s" % self.vin
+                print "epa:__get_models: Failed to find model for vin %s" % self.vin
                 pprint(id2models)
                 pprint(self.__attribs)
                 if self.verbosity > 1:
                     pprint(self.nhtsa)
             return None
 
-        modelname = ids[0]  # key same as val
         if self.verbosity > 0:
-            print "VIN %s has model %s" % (self.vin, modelname)
-        return modelname
+            print "VIN %s has models %s" % (self.vin, ",".join(ids))
+        return ids
 
     def __get_ids(self):
         '''
         Given a decoded vin, look up the matching epa id(s) and trims, or return None on failure
         '''
-        if self.model == None:
+        if self.models == None:
             return None
         id2trim = self.__get_possible_ids()
         if id2trim == None:
@@ -762,12 +782,16 @@ def main():
     for line in sys.stdin:
         vin = line.strip()
         v = EPAVin(vin, verbosity=verbosity, yearoffset=yearoffset)
+        if not v.is_valid:
+            print("error: %s is invalid" % vin)
+            continue
         url1 = myquote("http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=%s&make=%s" % (v.year, v.make))
-        url2 = myquote("http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=%s&make=%s&model=%s" % (v.year, v.make, v.model))
         print("    # Breadcrumbs for how libvin/epa.py looks up the epa results:")
         print("    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/%s" % v.decode())
         print("    # %s" % url1)
-        print("    # %s" % url2)
+        for model in v.models:
+            url2 = myquote("http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=%s&make=%s&model=%s" % (v.year, v.make, model))
+            print("    # %s" % url2)
         if len(v.ecos) > 1:
             print("    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:")
         for i in range(0, len(v.ecos)):
@@ -783,7 +807,7 @@ def main():
             f1 = v.nhtsa['FuelTypePrimary']
         f2 = 'None'
         if 'FuelTypeSecondary' in v.nhtsa and v.nhtsa['FuelTypeSecondary'] != '':
-            f1 = v.nhtsa['FuelTypeSecondary']
+            f2 = v.nhtsa['FuelTypeSecondary']
         dl = 'None'
         if 'DisplacementL' in v.nhtsa and v.nhtsa['DisplacementL'] != '':
             dl = v.nhtsa['DisplacementL']
@@ -794,7 +818,7 @@ def main():
         print("     'nhtsa.trim': '%s', 'nhtsa.series': '%s', 'nhtsa.cyl':'%s', 'nhtsa.f1':'%s', 'nhtsa.f2':'%s', 'nhtsa.dl':'%s', 'nhtsa.gvwrclass':'%s', 'nhtsa.vehicletype':'%s'," % (v.nhtsa['Trim'], v.nhtsa['Series'], cyl, f1, f2, dl, v.nhtsaGVWRClass(), v.nhtsa['VehicleType']))
         for i in range(0, len(v.ecos)):
             print("     'epa.id' : '%s', 'epa.co2TailpipeGpm': '%s', 'epa.model' : '%s', 'epa.trim' : '%s'," %
-                  (v.ids[i], round(float(v.ecos[i]['co2TailpipeGpm']), 1), v.model, v.trims[i]))
+                  (v.ids[i], round(float(v.ecos[i]['co2TailpipeGpm']), 1), v.ecos[i]['model'], v.trims[i]))
         print("    },")
 
 if __name__ == "__main__":

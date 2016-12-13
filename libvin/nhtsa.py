@@ -7,6 +7,8 @@ License: AGPL v3.0
 # Note: client app may wish to 'import requests_cache' and install a cache
 # to avoid duplicate fetches
 import requests
+import requests_cache
+import time
 
 def nhtsa_decode(vin, verbosity=0):
     '''
@@ -28,23 +30,53 @@ def nhtsa_decode(vin, verbosity=0):
     Trim: BMW, Dodge
     '''
 
-    url = 'https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/' + vin + '?format=json'
-    if (verbosity > 0):
-        print "nhtsa_decode: url is %s" % url
-    try:
-        r = requests.get(url)
-    except requests.Timeout:
-        print "nhtsa: connection timed out"
-        return None
-    except requests.ConnectionError:
-        print "nhtsa: connection failed"
-        return None
-    try:
-        jresult = r.json()
-        results = jresult['Results'][0]
-    except ValueError:
-        print "nhtsa: could not parse result %s" % r.text
-        return None
+    tries = 5
+    jresult = None
+    results = None
+
+    while tries > 0:
+        url = 'https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/' + vin + '?format=json'
+        if (verbosity > 0):
+            print("nhtsa_decode: url is %s" % url)
+        try:
+            if tries < 2:
+                with requests_cache.disabled():
+                    r = requests.get(url)
+            else:
+                r = requests.get(url)
+        except requests.Timeout:
+            if verbosity > 0:
+                print "nhtsa: connection timed out"
+            continue
+        except requests.ConnectionError:
+            if verbosity > 0:
+                print "nhtsa: connection failed"
+            continue
+        try:
+            jresult = r.json()
+            results = jresult['Results'][0]
+        except ValueError:
+            if (verbosity > 0):
+                print("nhtsa: could not parse result %s" % r.text)
+            return None
+
+        if jresult['Message'] != "Execution Error":
+            break
+        if (verbosity > 0):
+            print("nhtsa: execution error; sleeping then retrying without cache")
+        tries -= 1
+        time.sleep(1)
+
+    if tries == 0:
+       if (verbosity > 0):
+           print("error: nhtsa: Make not found in results %s" % r.text)
+       return None
+
+    # Sanity-check
+    if 'Make' not in results:
+       if (verbosity > 0):
+           print("error: nhtsa: Make not found in results %s" % r.text)
+       return None
 
     # Strip trailing spaces (as in 'Hummer ')
     for key in results:

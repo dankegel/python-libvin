@@ -218,6 +218,10 @@ WMI_MAP = {
     'JK': 'Kawasaki (motorcycles)',
     'JM': 'Mazda',
     'JN': 'Nissan',
+    'JNK': 'Infiniti',    # See https://vpic.nhtsa.dot.gov/mid/home/displayfile/28822
+    'JNR': 'Infiniti',    # See https://vpic.nhtsa.dot.gov/mid/home/displayfile/28823
+    'JNT': 'Infiniti',    # See https://vpic.nhtsa.dot.gov/mid/home/displayfile/28823
+    'JNX': 'Infiniti',    # See https://vpic.nhtsa.dot.gov/mid/home/displayfile/28822
     'JS': 'Suzuki',
     'JT': 'Toyota',
     'JTH': 'Lexus',
@@ -540,7 +544,7 @@ WMI_MAP = {
     '5KB': 'Honda',
     '5L': 'Lincoln',
     '5N1': 'Nissan USA',
-    '5N3': 'Infiniti USA',
+    '5N3': 'Infiniti USA',  # https://vpic.nhtsa.dot.gov/mid/home/displayfile/28823
     '5NM': 'Hyundai USA',
     '5NP': 'Hyundai USA',
     '5T': 'Toyota USA - trucks',

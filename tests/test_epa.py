@@ -22,5 +22,5 @@ else:
                     yearoffset=int(test['yearoffset'])
                 v = EPAVin(test['VIN'], verbosity=0, yearoffset=yearoffset)
                 co2 = round(float(v.eco['co2TailpipeGpm']), 1)
-                print("%s ; id %s, co2TailpipeGpm (want %s, got %s), make %s, model %s, trim %s" % (test['VIN'], v.id, test['epa.co2TailpipeGpm'], co2, v.make, v.model, v.trim))
+                print("%s ; id %s, co2TailpipeGpm (want %s, got %s), make %s, model %s, trim %s" % (test['VIN'], v.id, test['epa.co2TailpipeGpm'], co2, v.make, ",".join(v.models), v.trim))
                 assert_almost_equals(float(co2), float(test['epa.co2TailpipeGpm']), places= -1)

@@ -217,6 +217,14 @@ class Vin(object):
 
         if man == "General Motors":
             return "GMC"
+        if man == 'Chrysler' or man == 'Dodge':
+            # 3C4FY48B62T305332 is a 2002 Chrysler PT Cruiser
+            if self.year > 2001 and self.year <= 2011:
+                brandcode = self.vin[1]
+                if brandcode == 'B':
+                    return 'Dodge'
+                elif brandcode == 'C':
+                    return 'Chrysler'
         if man == 'Chrysler' or man == 'FCA' or man == 'Fiat':
             # 2012 and later: first 3 positions became overloaded, some 'make' aka brand info moved further in; see
             # https://en.wikibooks.org/wiki/Vehicle_Identification_Numbers_(VIN_codes)/Chrysler/VIN_Codes
@@ -259,22 +267,32 @@ class Vin(object):
                    return 'Scion'
 
         if man == 'Nissan':
-            # ftp://safercar.gov/MfrMail/ORG7377.pdf "MY12 Nissan VIN Coding System"
-            # https://vpic.nhtsa.dot.gov/mid/home/displayfile/29173 "MY16 Nissan VIN Coding System"
-            # say Ininiti if offset 4 is [JVY], Nissan otherwise.
-            # ftp://safercar.gov/MfrMail/ORG6337.pdf "MY11 Nissan VIN Coding System"
-            # says that plus Infiniti if offset 4 + 5 are S1.  (Nissan Rogue is S5.)
-            # ftp://ftp.nhtsa.dot.gov/mfrmail/ORG7846.pdf "MY13 Nissan VIN Coding System"
-            # says that plus Infiniti if offset 4 + 5 are L0.
-            # https://vpic.nhtsa.dot.gov/mid/home/displayfile/31784 "MY16 Nissan Vin Coding System"
-            # says that plus Infiniti if offset 4 + 5 + 6 are Z2M.
-            # JN8AZ2NE0D9060764 is 2013 infiniti qx56
-            # 5N1AZ2MG1GN146218 is 2016 Nissan Murano
+            # Sources, by model year:
+            # MY05 https://vpic.nhtsa.dot.gov/mid/home/displayfile/28822
+            # MY11 ftp://safercar.gov/MfrMail/ORG6337.pdf
+            # MY12 ftp://safercar.gov/MfrMail/ORG7377.pdf
+            # MY13 ftp://ftp.nhtsa.dot.gov/mfrmail/ORG7846.pdf
+            # MY16 https://vpic.nhtsa.dot.gov/mid/home/displayfile/29173
+            # MY16 https://vpic.nhtsa.dot.gov/mid/home/displayfile/31784
+            # 01234567
             # 1N4AZ0CP3EC336448 is 2014 nissan leaf
+            # 5N1AZ2MG1GN146218 is 2016 Nissan Murano
+            # 5N1BV28U17N100517 is 2007 Nissan Quest
+            # 5N1DL0MNXHC508030 is 2017 Infiniti QX60
+            # JN1FV7AP1GM421263 is 2016 Infiniti Q50
+            # JN8AZ2NE0D9060764 is 2013 infiniti qx56
+            # JNRAS08UX3X101869 is 2003 Infiniti fx35
             v46 = self.vin[4:6]
             v47 = self.vin[4:7]
-            if self.vin[4] in "JVY" or v46 == 'S1' or v46 == 'L0' or v47 == 'Z2N':
-                return 'Infiniti'
+            if (
+               v46 == 'J0' or      # 2016 Infiniti QX60, 2011 Infiniti EX35
+               v46 == 'L0' or      #
+               v46 == 'S1' or      #
+               v46 == 'V6' or      # 2011 Infiniti G37, G25
+               v46 == 'V7' or      # 2016 Infiniti Q50
+               v46 == 'Y1' or      # 2011 Infiniti M56, M37
+               v47 == 'Z2N'):      # 2011 Infiniti QX56
+                 return 'Infiniti'
         if man == 'Renault Samsung':
             # FIXME: they build other makes, too
             return 'Nissan'

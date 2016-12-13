@@ -621,6 +621,18 @@ TEST_DATA = [
      'epa.id' : '31467', 'epa.co2TailpipeGpm': '444.4', 'epa.model' : 'Equinox FWD', 'epa.trim' : 'Auto 6-spd, 6 cyl, 3.0 L, SIDI',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/2G4GP5EX2G9157036
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Buick
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Buick&model=Regal
+    # http://www.fueleconomy.gov/ws/rest/vehicle/36456
+    {'VIN': '2G4GP5EX2G9157036', 'WMI': '2G4', 'VDS': 'GP5EX2', 'VIS': 'G9157036',
+     'MODEL': 'Regal', 'MAKE': 'Buick', 'YEAR': 2016, 'COUNTRY': 'Canada',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '157036', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Premium I Group', 'nhtsa.cyl':'4', 'nhtsa.f1':'Gasoline', 'nhtsa.f2':'Ethanol (E85)', 'nhtsa.dl':'2.0', 'nhtsa.gvwrclass':'None', 'nhtsa.vehicletype':'PASSENGER CAR',
+     'epa.id' : '36456', 'epa.co2TailpipeGpm': '372.0', 'epa.model' : 'Regal', 'epa.trim' : 'Man 6-spd, 4 cyl, 2.0 L, Turbo',
+    },
+
     # http://www.gmforum.com/vindecoder.php?vin=2G61W5S83E9422251
     # ftp://safercar.gov/MfrMail/ORG7595.pdf "General Motors LLC 2013 Vehicle Identification Numbering Standard"
     # http://www.fueleconomy.gov/ws/rest/vehicle/33852
@@ -785,6 +797,18 @@ TEST_DATA = [
      'epa.id' : '37798', 'epa.co2TailpipeGpm': '0.0', 'epa.model' : '500e', 'epa.trim' : 'Auto (A1)',
     },
 
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/3C4FY48B62T305332
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2002&make=Chrysler
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2002&make=Chrysler&model=PT%20Cruiser
+    # http://www.fueleconomy.gov/ws/rest/vehicle/18059
+    {'VIN': '3C4FY48B62T305332', 'WMI': '3C4', 'VDS': 'FY48B6', 'VIS': '2T305332',
+     'MODEL': 'PT Cruiser', 'MAKE': 'Chrysler', 'YEAR': 2002, 'COUNTRY': 'Mexico',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '305332', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': 'Base/Classic', 'nhtsa.series': 'PT', 'nhtsa.cyl':'4', 'nhtsa.f1':'Gasoline', 'nhtsa.f2':'None', 'nhtsa.dl':'2.4', 'nhtsa.gvwrclass':'1C', 'nhtsa.vehicletype':'MULTIPURPOSE PASSENGER VEHICLE (MPV)',
+     'epa.id' : '18059', 'epa.co2TailpipeGpm': '404.0', 'epa.model' : 'PT Cruiser', 'epa.trim' : 'Man 5-spd, 4 cyl, 2.4 L',
+    },
 
     # http://www.fueleconomy.gov/ws/rest/vehicle/34122
     {'VIN': '3C4PDCBG3ET296933', 'WMI': '3C4', 'VDS': 'PDCBG3', 'VIS': 'ET296933',
@@ -1207,6 +1231,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5N1BV28U17N100517
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2007&make=Nissan
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2007&make=Nissan&model=Quest
+    # http://www.fueleconomy.gov/ws/rest/vehicle/22946
+    {'VIN': '5N1BV28U17N100517', 'WMI': '5N1', 'VDS': 'BV28U1', 'VIS': '7N100517',
+     'MODEL': 'Quest', 'MAKE': 'Nissan', 'YEAR': 2007, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '100517', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '', 'nhtsa.f1':'Gasoline', 'nhtsa.dl':'3.5', 'nhtsa.gvwrclass':'1D', 'nhtsa.vehicletype':'MULTIPURPOSE PASSENGER VEHICLE (MPV)',
+     'epa.id' : '22946', 'epa.co2TailpipeGpm': '467.7', 'epa.model' : 'Quest', 'epa.trim' : 'Auto 5-spd, 6 cyl, 3.5 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5NMZT3LB2HH016192
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Hyundai
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Hyundai&model=Santa%20Fe%20FWD
@@ -1398,12 +1434,25 @@ TEST_DATA = [
      'epa.id' : '36208', 'epa.co2TailpipeGpm': '387.0', 'epa.model' : 'Santa Fe Sport FWD', 'epa.trim' : 'Auto (S6), 4 cyl, 2.4 L',
     },
 
-    # http://www.fueleconomy.gov/ws/rest/vehicle/35500
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5YFBURHE9FP280940
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2015&make=Toyota
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2015&make=Toyota&model=Corolla
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/35499
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/35500
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/35498
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/35503
     {'VIN': '5YFBURHE9FP280940', 'WMI': '5YF', 'VDS': 'BURHE9', 'VIS': 'FP280940',
-     'MODEL': 'Corolla', 'MAKE':  'Toyota', 'YEAR': 2015, 'COUNTRY': 'United States',
+     'MODEL': 'Corolla', 'MAKE': 'Toyota', 'YEAR': 2015, 'COUNTRY': 'United States',
      'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '280940', 'FEWER_THAN_500_PER_YEAR': False,
-     'epa.id' : '35500', 'epa.co2TailpipeGpm': '285.0', 'epa.model' : 'Corolla', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.8 L',
+     'nhtsa.trim': '', 'nhtsa.series': 'ZRE172L', 'nhtsa.cyl':'4, 4', 'nhtsa.f1':'Gasoline', 'nhtsa.f2':'None', 'nhtsa.dl':'1.8, 1.8', 'nhtsa.gvwrclass':'None', 'nhtsa.vehicletype':'PASSENGER CAR',
+     'epa.id' : '35499', 'epa.co2TailpipeGpm': '291.0', 'epa.model' : 'Corolla', 'epa.trim' : 'Auto 4-spd, 4 cyl, 1.8 L',
+     #'epa.id' : '35500', 'epa.co2TailpipeGpm': '285.0', 'epa.model' : 'Corolla', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.8 L',
+     #'epa.id' : '35498', 'epa.co2TailpipeGpm': '281.0', 'epa.model' : 'Corolla', 'epa.trim' : 'Auto (variable gear ratios), 4 cyl, 1.8 L',
+     #'epa.id' : '35503', 'epa.co2TailpipeGpm': '283.0', 'epa.model' : 'Corolla', 'epa.trim' : 'Auto(AV-S7), 4 cyl, 1.8 L',
     },
+
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/5Y2SP67069Z433697
@@ -1569,34 +1618,6 @@ TEST_DATA = [
     # ftp://safercar.gov/MfrMail/ORG7377.pdf "MY12 Nissan VIN Coding System"
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
-    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN1BJ0HP3DM430419
-    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Infiniti
-    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Infiniti&model=EX37
-    # http://www.fueleconomy.gov/ws/rest/vehicle/33276
-    # Note: Wikipedia mentioned this was rebadged.  Looks like EPA noticed and NHTSA didn't.
-    {'VIN': 'JN1BJ0HP3DM430419', 'WMI': 'JN1', 'VDS': 'BJ0HP3', 'VIS': 'DM430419',
-     'MODEL': 'EX35', 'MAKE': 'Infiniti', 'YEAR': 2013, 'COUNTRY': 'Japan',
-     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '430419', 'FEWER_THAN_500_PER_YEAR': False,
-     'nhtsa.trim': '', 'nhtsa.series': '',
-     'epa.id' : '33276', 'epa.co2TailpipeGpm': '438.0', 'epa.model' : 'EX37', 'epa.trim' : 'Auto (S7), 6 cyl, 3.7 L',
-    },
-
-    # Breadcrumbs for how libvin/epa.py looks up the epa results:
-    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN1CV6FE4EM164066
-    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Infiniti
-    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Infiniti&model=Q60%20Convertible
-    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
-    # http://www.fueleconomy.gov/ws/rest/vehicle/34134
-    ## http://www.fueleconomy.gov/ws/rest/vehicle/34133
-    {'VIN': 'JN1CV6FE4EM164066', 'WMI': 'JN1', 'VDS': 'CV6FE4', 'VIS': 'EM164066',
-     'MODEL': 'Q60', 'MAKE': 'Infiniti', 'YEAR': 2014, 'COUNTRY': 'Japan',
-     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '164066', 'FEWER_THAN_500_PER_YEAR': False,
-     'nhtsa.trim': '', 'nhtsa.series': '',
-     'epa.id' : '34134', 'epa.co2TailpipeGpm': '464.0', 'epa.model' : 'Q60 Convertible', 'epa.trim' : 'Man 6-spd, 6 cyl, 3.7 L',
-     #'epa.id' : '34133', 'epa.co2TailpipeGpm': '434.0', 'epa.model' : 'Q60 Convertible', 'epa.trim' : 'Auto (S7), 6 cyl, 3.7 L',
-    },
-
-    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN1AJ0HP7CM401080
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2012&make=Infiniti
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2012&make=Infiniti&model=EX35
@@ -1634,6 +1655,47 @@ TEST_DATA = [
      'nhtsa.trim': '', 'nhtsa.series': '',
      'epa.id' : '26324', 'epa.co2TailpipeGpm': '423.2', 'epa.model' : '370z', 'epa.trim' : 'Man 6-spd, 6 cyl, 3.7 L',
      #'epa.id' : '26323', 'epa.co2TailpipeGpm': '423.2', 'epa.model' : '370z', 'epa.trim' : 'Auto (S7), 6 cyl, 3.7 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN1BJ0HP3DM430419
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Infiniti
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Infiniti&model=EX37
+    # http://www.fueleconomy.gov/ws/rest/vehicle/33276
+    # Note: Wikipedia mentioned this was rebadged.  Looks like EPA noticed and NHTSA didn't.
+    {'VIN': 'JN1BJ0HP3DM430419', 'WMI': 'JN1', 'VDS': 'BJ0HP3', 'VIS': 'DM430419',
+     'MODEL': 'EX35', 'MAKE': 'Infiniti', 'YEAR': 2013, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '430419', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '33276', 'epa.co2TailpipeGpm': '438.0', 'epa.model' : 'EX37', 'epa.trim' : 'Auto (S7), 6 cyl, 3.7 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN1CV6FE4EM164066
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Infiniti
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Infiniti&model=Q60%20Convertible
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # http://www.fueleconomy.gov/ws/rest/vehicle/34134
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/34133
+    {'VIN': 'JN1CV6FE4EM164066', 'WMI': 'JN1', 'VDS': 'CV6FE4', 'VIS': 'EM164066',
+     'MODEL': 'Q60', 'MAKE': 'Infiniti', 'YEAR': 2014, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '164066', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '',
+     'epa.id' : '34134', 'epa.co2TailpipeGpm': '464.0', 'epa.model' : 'Q60 Convertible', 'epa.trim' : 'Man 6-spd, 6 cyl, 3.7 L',
+     #'epa.id' : '34133', 'epa.co2TailpipeGpm': '434.0', 'epa.model' : 'Q60 Convertible', 'epa.trim' : 'Auto (S7), 6 cyl, 3.7 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JN1FV7AP1GM421263
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2016&make=Infiniti
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2016&make=Infiniti&model=Q50
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37419
+    {'VIN': 'JN1FV7AP1GM421263', 'WMI': 'JN1', 'VDS': 'FV7AP1', 'VIS': 'GM421263',
+     'MODEL': 'Q50', 'MAKE': 'Infiniti', 'YEAR': 2016, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '421263', 'FEWER_THAN_500_PER_YEAR': False,
+# error: vin JN1FV7AP1GM421263 has f1=Gasoline but cyl=None
+     'nhtsa.trim': '', 'nhtsa.series': '', 'nhtsa.cyl':'None', 'nhtsa.f1':'Gasoline', 'nhtsa.f2':'None', 'nhtsa.dl':'3', 'nhtsa.gvwrclass':'None', 'nhtsa.vehicletype':'PASSENGER CAR',
+     'epa.id' : '37419', 'epa.co2TailpipeGpm': '399.0', 'epa.model' : 'Q50', 'epa.trim' : 'Auto (S7), 6 cyl, 3.0 L, Turbo',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
@@ -1675,6 +1737,18 @@ TEST_DATA = [
      'MODEL': 'FX37', 'MAKE':  'Infiniti', 'YEAR': 2013, 'COUNTRY': 'Japan',
      'REGION': 'asia', 'SEQUENTIAL_NUMBER': '236239', 'FEWER_THAN_500_PER_YEAR': False,
      'epa.id' : '32818', 'epa.co2TailpipeGpm': '460.0', 'epa.model' : 'FX37 RWD', 'epa.trim' : 'Auto (S7), 6 cyl, 3.7 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/JNRAS08UX3X101869
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2003&make=Infiniti
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2003&make=Infiniti&model=FX35%202WD
+    # http://www.fueleconomy.gov/ws/rest/vehicle/19063
+    {'VIN': 'JNRAS08UX3X101869', 'WMI': 'JNR', 'VDS': 'AS08UX', 'VIS': '3X101869',
+     'MODEL': 'FX35', 'MAKE': 'Infiniti', 'YEAR': 2003, 'COUNTRY': 'Japan',
+     'REGION': 'asia', 'SEQUENTIAL_NUMBER': '101869', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '', 'nhtsa.f1':'Gasoline', 'nhtsa.dl':'3.5', 'nhtsa.gvwrclass':'1D', 'nhtsa.vehicletype':'MULTIPURPOSE PASSENGER VEHICLE (MPV)',
+     'epa.id' : '19063', 'epa.co2TailpipeGpm': '522.8', 'epa.model' : 'FX35 2WD', 'epa.trim' : 'Auto (S5), 6 cyl, 3.5 L',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
@@ -2025,6 +2099,19 @@ TEST_DATA = [
      'epa.id' : '37312', 'epa.co2TailpipeGpm': '500.0', 'epa.model' : 'F-Type R AWD Convertible', 'epa.trim' : 'Auto (S8), 8 cyl, 5.0 L, Sup Charg',
     },
 
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/SAJWJ6J85HMK40648
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Jaguar
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Jaguar&model=F-Type%20S%20AWD%20Coupe
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Jaguar&model=F-Type%20R%20AWD%20Coupe
+    # http://www.fueleconomy.gov/ws/rest/vehicle/37311
+    {'VIN': 'SAJWJ6J85HMK40648', 'WMI': 'SAJ', 'VDS': 'WJ6J85', 'VIS': 'HMK40648',
+     'MODEL': 'F-Type', 'MAKE': 'Jaguar', 'YEAR': 2017, 'COUNTRY': 'United Kingdom',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '40648', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'SVR', 'nhtsa.cyl':'8', 'nhtsa.f1':'Gasoline', 'nhtsa.f2':'None', 'nhtsa.dl':'5.0', 'nhtsa.gvwrclass':'None', 'nhtsa.vehicletype':'PASSENGER CAR',
+     'epa.id' : '37311', 'epa.co2TailpipeGpm': '500.0', 'epa.model' : 'F-Type R AWD Coupe', 'epa.trim' : 'Auto (S8), 8 cyl, 5.0 L, Sup Charg',
+    },
+
     # Mclaren: ftp://ftp.nhtsa.dot.gov/MfrMail/ORG9279.pdf
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/SBM11RAA3GW675286
@@ -2193,6 +2280,18 @@ TEST_DATA = [
      'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'M20940', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': '', 'nhtsa.series': '7-series',
      'epa.id' : '37933', 'epa.co2TailpipeGpm': '441.0', 'epa.model' : '750i', 'epa.trim' : 'Auto (S8), 8 cyl, 4.4 L, Turbo',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WBAEA53529CV92727
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2009&make=BMW
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2009&make=BMW&model=650ci
+    # http://www.fueleconomy.gov/ws/rest/vehicle/25856
+    {'VIN': 'WBAEA53529CV92727', 'WMI': 'WBA', 'VDS': 'EA5352', 'VIS': '9CV92727',
+     'MODEL': '650i', 'MAKE': 'BMW', 'YEAR': 2009, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'V92727', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '6 - Series', 'nhtsa.cyl':'8', 'nhtsa.f1':'Gasoline', 'nhtsa.f2':'None', 'nhtsa.dl':'4.8', 'nhtsa.gvwrclass':'None', 'nhtsa.vehicletype':'PASSENGER CAR',
+     'epa.id' : '25856', 'epa.co2TailpipeGpm': '493.7', 'epa.model' : '650ci', 'epa.trim' : 'Man 6-spd, 8 cyl, 4.8 L',
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
@@ -2424,6 +2523,22 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WMWSU3C51BT092269
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2011&make=MINI
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2011&make=MINI&model=Cooper
+    # There is ambiguity, so all possibly matching epa variants for this epa model are listed:
+    # (Really, this is a manual, but the vin doesn't indicate this, and the test is hard to code.)
+    # http://www.fueleconomy.gov/ws/rest/vehicle/30591
+    ## http://www.fueleconomy.gov/ws/rest/vehicle/30592
+    {'VIN': 'WMWSU3C51BT092269', 'WMI': 'WMW', 'VDS': 'SU3C51', 'VIS': 'BT092269',
+     'MODEL': 'Cooper Hardtop', 'MAKE': 'MINI', 'YEAR': 2011, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '092269', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Cooper', 'nhtsa.cyl':'4', 'nhtsa.f1':'Gasoline', 'nhtsa.f2':'None', 'nhtsa.dl':'1.6', 'nhtsa.gvwrclass':'None', 'nhtsa.vehicletype':'PASSENGER CAR',
+     'epa.id' : '30591', 'epa.co2TailpipeGpm': '286.7', 'epa.model' : 'Cooper', 'epa.trim' : 'Auto (S6), 4 cyl, 1.6 L',
+     #'epa.id' : '30592', 'epa.co2TailpipeGpm': '277.7', 'epa.model' : 'Cooper', 'epa.trim' : 'Man 6-spd, 4 cyl, 1.6 L',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WMWXM5C52F3A57895
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2015&make=MINI
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2015&make=MINI&model=Cooper%20(3-doors)
@@ -2505,6 +2620,18 @@ TEST_DATA = [
      'REGION': 'europe', 'SEQUENTIAL_NUMBER': 'A52901', 'FEWER_THAN_500_PER_YEAR': False,
      'nhtsa.trim': 'E-Hybrid', 'nhtsa.series': 'S',
      'epa.id' : '35896', 'epa.co2TailpipeGpm': '260.0', 'epa.model' : 'Cayenne S e-Hybrid', 'epa.trim' : 'Auto(AM8), 6 cyl, 3.0 L, Sup Charg',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/WUAC6AFR1EA900661
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2014&make=Audi
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2014&make=Audi&model=RS%205
+    # http://www.fueleconomy.gov/ws/rest/vehicle/33638
+    {'VIN': 'WUAC6AFR1EA900661', 'WMI': 'WUA', 'VDS': 'C6AFR1', 'VIS': 'EA900661',
+     'MODEL': 'RS5', 'MAKE': 'Audi', 'YEAR': 2014, 'COUNTRY': 'Germany',
+     'REGION': 'europe', 'SEQUENTIAL_NUMBER': '900661', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': '', 'nhtsa.cyl':'8', 'nhtsa.f1':'Gasoline', 'nhtsa.f2':'None', 'nhtsa.dl':'4.163000', 'nhtsa.gvwrclass':'None', 'nhtsa.vehicletype':'PASSENGER CAR',
+     'epa.id' : '33638', 'epa.co2TailpipeGpm': '480.0', 'epa.model' : 'RS 5', 'epa.trim' : 'Auto(AM-S7), 8 cyl, 4.2 L',
     },
 
     # http://www.vindecoder.net/?vin=WUADUAFG6AN410499&submit=Decode
