@@ -172,6 +172,8 @@ class EPAVin(Vin):
         elif self.make == 'Chevrolet':
             if m == 'Captiva Sport':
                 return 'Captiva'
+            elif m == 'Bolt EV':
+                return 'Bolt'
         elif self.make == 'Chrysler':
             if m == 'Town & Country':
                 return 'Town and Country'

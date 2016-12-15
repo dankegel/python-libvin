@@ -193,6 +193,18 @@ TEST_DATA = [
     },
 
     # Breadcrumbs for how libvin/epa.py looks up the epa results:
+    # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1G1FX6S06H4131047
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2017&make=Chevrolet
+    # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2017&make=Chevrolet&model=Bolt
+    # http://www.fueleconomy.gov/ws/rest/vehicle/38187
+    {'VIN': '1G1FX6S06H4131047', 'WMI': '1G1', 'VDS': 'FX6S06', 'VIS': 'H4131047',
+     'MODEL': 'Bolt EV', 'MAKE': 'Chevrolet', 'YEAR': 2017, 'COUNTRY': 'United States',
+     'REGION': 'north_america', 'SEQUENTIAL_NUMBER': '131047', 'FEWER_THAN_500_PER_YEAR': False,
+     'nhtsa.trim': '', 'nhtsa.series': 'Premier', 'nhtsa.cyl':'None', 'nhtsa.f1':'Electric', 'nhtsa.f2':'None', 'nhtsa.dl':'None', 'nhtsa.gvwrclass':'None', 'nhtsa.vehicletype':'PASSENGER CAR',
+     'epa.id' : '38187', 'epa.co2TailpipeGpm': '0.0', 'epa.model' : 'Bolt', 'epa.trim' : 'Auto (A1)',
+    },
+
+    # Breadcrumbs for how libvin/epa.py looks up the epa results:
     # https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/1G11D5RR7DF107260
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/model?year=2013&make=Chevrolet
     # http://www.fueleconomy.gov/ws/rest/vehicle/menu/options?year=2013&make=Chevrolet&model=Malibu%20eAssist
